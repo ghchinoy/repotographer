@@ -1,0 +1,48 @@
+{
+  "generated": "2026-08-22T17:50:09Z",
+  "account": "ghchinoy",
+  "domains": [
+    {
+      "id": "domain_agent_protocols",
+      "label": "Agent Protocols \u0026 Multi-Agent Systems",
+      "blurb": "Protocols, CLI clients, and runtime environments facilitating autonomous Agent-to-Agent (A2A) communication and social simulation."
+    },
+    {
+      "id": "domain_voice_audio",
+      "label": "Speech Intelligence \u0026 Voice Interfaces",
+      "blurb": "On-device speech-to-text engines, expressive text-to-speech experimentation, and modern audio UI component libraries."
+    },
+    {
+      "id": "domain_mcp_agent_skills",
+      "label": "MCP Servers, Tools \u0026 Agent Skills",
+      "blurb": "Model Context Protocol (MCP) servers, knowledge ingestion tooling, and extensible skill frameworks for autonomous agents."
+    },
+    {
+      "id": "domain_genai_apps_tooling",
+      "label": "GenAI Applications, SDKs \u0026 Developer Tools",
+      "blurb": "Exploratory generative AI applications, client SDKs, computer-use agents, and developer distribution utilities."
+    }
+  ],
+  "assignments": {
+    "repo_a2a_cli": "domain_agent_protocols",
+    "repo_a2a_experiments": "domain_agent_protocols",
+    "repo_a2acli": "domain_agent_protocols",
+    "repo_agent_skills": "domain_mcp_agent_skills",
+    "repo_agentskills": "domain_mcp_agent_skills",
+    "repo_banana_weather": "domain_genai_apps_tooling",
+    "repo_binder": "domain_mcp_agent_skills",
+    "repo_cloud_interactions_go": "domain_genai_apps_tooling",
+    "repo_docstats": "domain_mcp_agent_skills",
+    "repo_editorial_look": "domain_genai_apps_tooling",
+    "repo_eldamoapi": "domain_mcp_agent_skills",
+    "repo_homebrew_tap": "domain_genai_apps_tooling",
+    "repo_moonshine_go": "domain_voice_audio",
+    "repo_moonshine_rs": "domain_voice_audio",
+    "repo_pandemonium": "domain_agent_protocols",
+    "repo_repotographer": "domain_genai_apps_tooling",
+    "repo_riptide": "domain_genai_apps_tooling",
+    "repo_scream_ui": "domain_voice_audio",
+    "repo_spark_agent_tools": "domain_mcp_agent_skills",
+    "repo_take3bounce": "domain_voice_audio"
+  }
+}

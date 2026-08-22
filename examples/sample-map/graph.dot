@@ -1,0 +1,124 @@
+digraph ConceptGraph {
+  // Graph styling
+  graph [rankdir=LR, bgcolor="#0f172a", pad="0.5", nodesep="0.6", ranksep="0.8", fontname="Helvetica"];
+  node [fontname="Helvetica", fontsize=10, margin="0.15,0.08"];
+  edge [fontname="Helvetica", fontsize=8, color="#475569", fontcolor="#94a3b8", arrowsize=0.6];
+
+  // Core Technology Hubs
+  "tech_mcp" [label="Model Context Protocol (MCP)", shape=diamond, style=filled, fillcolor="#f59e0b", fontcolor="#0f172a", color="#fbbf24", penwidth=1.8];
+  "tech_a2a" [label="A2A Protocol", shape=diamond, style=filled, fillcolor="#f59e0b", fontcolor="#0f172a", color="#fbbf24", penwidth=1.8];
+  "tech_ai" [label="AI & LLM Runtimes", shape=diamond, style=filled, fillcolor="#f59e0b", fontcolor="#0f172a", color="#fbbf24", penwidth=1.8];
+  "tech_audio" [label="Voice & Speech Audio", shape=diamond, style=filled, fillcolor="#f59e0b", fontcolor="#0f172a", color="#fbbf24", penwidth=1.8];
+  "tech_cli" [label="CLIs & TUIs", shape=diamond, style=filled, fillcolor="#f59e0b", fontcolor="#0f172a", color="#fbbf24", penwidth=1.8];
+  "tech_go" [label="Go", shape=diamond, style=filled, fillcolor="#f59e0b", fontcolor="#0f172a", color="#fbbf24", penwidth=1.8];
+  "tech_rust" [label="Rust", shape=diamond, style=filled, fillcolor="#f59e0b", fontcolor="#0f172a", color="#fbbf24", penwidth=1.8];
+  "tech_python" [label="Python", shape=diamond, style=filled, fillcolor="#f59e0b", fontcolor="#0f172a", color="#fbbf24", penwidth=1.8];
+  "tech_typescript" [label="TypeScript / JavaScript", shape=diamond, style=filled, fillcolor="#f59e0b", fontcolor="#0f172a", color="#fbbf24", penwidth=1.8];
+
+  subgraph "cluster_domain_agent_protocols" {
+    label="Agent Protocols & Multi-Agent Systems";
+    style="rounded,dashed";
+    color="#475569";
+    fontcolor="#38bdf8";
+    fontsize=12;
+    penwidth=1.2;
+
+    "repo_a2a_cli" [label="a2a-cli", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_pandemonium" [label="pandemonium", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_a2acli" [label="a2acli", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_a2a_experiments" [label="a2a-experiments", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+  }
+
+  subgraph "cluster_domain_voice_audio" {
+    label="Speech Intelligence & Voice Interfaces";
+    style="rounded,dashed";
+    color="#475569";
+    fontcolor="#38bdf8";
+    fontsize=12;
+    penwidth=1.2;
+
+    "repo_scream_ui" [label="scream-ui", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_moonshine_go" [label="moonshine-go", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_moonshine_rs" [label="moonshine-rs", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_take3bounce" [label="take3bounce", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+  }
+
+  subgraph "cluster_domain_mcp_agent_skills" {
+    label="MCP Servers, Tools & Agent Skills";
+    style="rounded,dashed";
+    color="#475569";
+    fontcolor="#38bdf8";
+    fontsize=12;
+    penwidth=1.2;
+
+    "repo_docstats" [label="docstats", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_agent_skills" [label="agent-skills", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_binder" [label="binder", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_agentskills" [label="agentskills", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_spark_agent_tools" [label="spark-agent-tools", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_eldamoapi" [label="eldamoapi", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+  }
+
+  subgraph "cluster_domain_genai_apps_tooling" {
+    label="GenAI Applications, SDKs & Developer Tools";
+    style="rounded,dashed";
+    color="#475569";
+    fontcolor="#38bdf8";
+    fontsize=12;
+    penwidth=1.2;
+
+    "repo_repotographer" [label="repotographer", shape=box, style="filled,rounded,dashed", fillcolor="#0f172a", color="#64748b", fontcolor="#94a3b8", penwidth=1.0];
+    "repo_homebrew_tap" [label="homebrew-tap", shape=box, style="filled,rounded,dashed", fillcolor="#0f172a", color="#64748b", fontcolor="#94a3b8", penwidth=1.0];
+    "repo_editorial_look" [label="editorial-look", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_banana_weather" [label="banana-weather", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_cloud_interactions_go" [label="cloud-interactions-go", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+    "repo_riptide" [label="riptide", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8", fontcolor="#f8fafc", penwidth=1.6];
+  }
+
+  // Graph Edges
+  "repo_docstats" -> "tech_mcp" [color="#38bdf8", label="implements"];
+  "repo_docstats" -> "tech_python" [color="#38bdf8", label="implements"];
+  "repo_docstats" -> "tech_typescript" [color="#38bdf8", label="implements"];
+  "repo_agent_skills" -> "tech_ai" [color="#38bdf8", label="implements"];
+  "repo_agent_skills" -> "tech_typescript" [color="#38bdf8", label="implements"];
+  "repo_binder" -> "tech_mcp" [color="#38bdf8", label="implements"];
+  "repo_binder" -> "tech_ai" [color="#38bdf8", label="implements"];
+  "repo_binder" -> "tech_cli" [color="#38bdf8", label="implements"];
+  "repo_binder" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_scream_ui" -> "tech_audio" [color="#38bdf8", label="implements"];
+  "repo_scream_ui" -> "tech_typescript" [color="#38bdf8", label="implements"];
+  "repo_agentskills" -> "tech_ai" [color="#38bdf8", label="implements"];
+  "repo_agentskills" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_editorial_look" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_moonshine_go" -> "tech_ai" [color="#38bdf8", label="implements"];
+  "repo_moonshine_go" -> "tech_audio" [color="#38bdf8", label="implements"];
+  "repo_moonshine_go" -> "tech_cli" [color="#38bdf8", label="implements"];
+  "repo_moonshine_go" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_moonshine_rs" -> "tech_audio" [color="#38bdf8", label="implements"];
+  "repo_moonshine_rs" -> "tech_rust" [color="#38bdf8", label="implements"];
+  "repo_take3bounce" -> "tech_ai" [color="#38bdf8", label="implements"];
+  "repo_take3bounce" -> "tech_audio" [color="#38bdf8", label="implements"];
+  "repo_take3bounce" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_take3bounce" -> "tech_typescript" [color="#38bdf8", label="implements"];
+  "repo_banana_weather" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_cloud_interactions_go" -> "tech_ai" [color="#38bdf8", label="implements"];
+  "repo_cloud_interactions_go" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_riptide" -> "tech_ai" [color="#38bdf8", label="implements"];
+  "repo_riptide" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_spark_agent_tools" -> "tech_mcp" [color="#38bdf8", label="implements"];
+  "repo_spark_agent_tools" -> "tech_ai" [color="#38bdf8", label="implements"];
+  "repo_spark_agent_tools" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_a2a_cli" -> "tech_a2a" [color="#38bdf8", label="implements"];
+  "repo_a2a_cli" -> "tech_ai" [color="#38bdf8", label="implements"];
+  "repo_a2a_cli" -> "tech_cli" [color="#38bdf8", label="implements"];
+  "repo_a2a_cli" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_pandemonium" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_a2acli" -> "tech_a2a" [color="#38bdf8", label="implements"];
+  "repo_a2acli" -> "tech_cli" [color="#38bdf8", label="implements"];
+  "repo_a2acli" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_a2a_experiments" -> "tech_a2a" [color="#38bdf8", label="implements"];
+  "repo_a2a_experiments" -> "tech_ai" [color="#38bdf8", label="implements"];
+  "repo_a2a_experiments" -> "tech_go" [color="#38bdf8", label="implements"];
+  "repo_eldamoapi" -> "tech_ai" [color="#38bdf8", label="implements"];
+  "repo_eldamoapi" -> "tech_go" [color="#38bdf8", label="implements"];
+}

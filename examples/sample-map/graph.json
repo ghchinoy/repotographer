@@ -1,0 +1,915 @@
+{
+  "generated": "2026-08-22T17:50:02Z",
+  "topic": "repos",
+  "account": "ghchinoy",
+  "accountType": "auto",
+  "stats": {
+    "totalGithubRepos": 20,
+    "includedRepos": 20,
+    "domainCount": 4,
+    "techCount": 9,
+    "edgeCount": 45,
+    "connectedCount": 18,
+    "standaloneCount": 2,
+    "bareCount": 0
+  },
+  "domains": [
+    {
+      "id": "domain_agent_protocols",
+      "label": "Agent Protocols \u0026 Multi-Agent Systems",
+      "blurb": "Protocols, CLI clients, and runtime environments facilitating autonomous Agent-to-Agent (A2A) communication and social simulation."
+    },
+    {
+      "id": "domain_voice_audio",
+      "label": "Speech Intelligence \u0026 Voice Interfaces",
+      "blurb": "On-device speech-to-text engines, expressive text-to-speech experimentation, and modern audio UI component libraries."
+    },
+    {
+      "id": "domain_mcp_agent_skills",
+      "label": "MCP Servers, Tools \u0026 Agent Skills",
+      "blurb": "Model Context Protocol (MCP) servers, knowledge ingestion tooling, and extensible skill frameworks for autonomous agents."
+    },
+    {
+      "id": "domain_genai_apps_tooling",
+      "label": "GenAI Applications, SDKs \u0026 Developer Tools",
+      "blurb": "Exploratory generative AI applications, client SDKs, computer-use agents, and developer distribution utilities."
+    }
+  ],
+  "tech": [
+    {
+      "id": "tech_mcp",
+      "label": "Model Context Protocol (MCP)",
+      "kind": "protocol",
+      "stack": [
+        "ai",
+        "mcp"
+      ]
+    },
+    {
+      "id": "tech_a2a",
+      "label": "A2A Protocol",
+      "kind": "protocol",
+      "stack": [
+        "ai",
+        "a2a"
+      ]
+    },
+    {
+      "id": "tech_ai",
+      "label": "AI \u0026 LLM Runtimes",
+      "kind": "framework",
+      "stack": [
+        "ai"
+      ]
+    },
+    {
+      "id": "tech_audio",
+      "label": "Voice \u0026 Speech Audio",
+      "kind": "domain",
+      "stack": [
+        "audio"
+      ]
+    },
+    {
+      "id": "tech_cli",
+      "label": "CLIs \u0026 TUIs",
+      "kind": "framework",
+      "stack": [
+        "cli"
+      ]
+    },
+    {
+      "id": "tech_go",
+      "label": "Go",
+      "kind": "language",
+      "stack": [
+        "go"
+      ]
+    },
+    {
+      "id": "tech_rust",
+      "label": "Rust",
+      "kind": "language",
+      "stack": [
+        "rust"
+      ]
+    },
+    {
+      "id": "tech_python",
+      "label": "Python",
+      "kind": "language",
+      "stack": [
+        "python"
+      ]
+    },
+    {
+      "id": "tech_typescript",
+      "label": "TypeScript / JavaScript",
+      "kind": "language",
+      "stack": [
+        "frontend",
+        "javascript"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "tech_mcp",
+      "label": "Model Context Protocol (MCP)",
+      "type": "tech",
+      "kind": "protocol",
+      "stack": [
+        "ai",
+        "mcp"
+      ],
+      "source": "system"
+    },
+    {
+      "id": "tech_a2a",
+      "label": "A2A Protocol",
+      "type": "tech",
+      "kind": "protocol",
+      "stack": [
+        "ai",
+        "a2a"
+      ],
+      "source": "system"
+    },
+    {
+      "id": "tech_ai",
+      "label": "AI \u0026 LLM Runtimes",
+      "type": "tech",
+      "kind": "framework",
+      "stack": [
+        "ai"
+      ],
+      "source": "system"
+    },
+    {
+      "id": "tech_audio",
+      "label": "Voice \u0026 Speech Audio",
+      "type": "tech",
+      "kind": "domain",
+      "stack": [
+        "audio"
+      ],
+      "source": "system"
+    },
+    {
+      "id": "tech_cli",
+      "label": "CLIs \u0026 TUIs",
+      "type": "tech",
+      "kind": "framework",
+      "stack": [
+        "cli"
+      ],
+      "source": "system"
+    },
+    {
+      "id": "tech_go",
+      "label": "Go",
+      "type": "tech",
+      "kind": "language",
+      "stack": [
+        "go"
+      ],
+      "source": "system"
+    },
+    {
+      "id": "tech_rust",
+      "label": "Rust",
+      "type": "tech",
+      "kind": "language",
+      "stack": [
+        "rust"
+      ],
+      "source": "system"
+    },
+    {
+      "id": "tech_python",
+      "label": "Python",
+      "type": "tech",
+      "kind": "language",
+      "stack": [
+        "python"
+      ],
+      "source": "system"
+    },
+    {
+      "id": "tech_typescript",
+      "label": "TypeScript / JavaScript",
+      "type": "tech",
+      "kind": "language",
+      "stack": [
+        "frontend",
+        "javascript"
+      ],
+      "source": "system"
+    },
+    {
+      "id": "repo_docstats",
+      "label": "docstats",
+      "parent": "domain_mcp_agent_skills",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/docstats",
+      "homepage": "https://ghchinoy.github.io/docstats/",
+      "desc": "Readability assessment API and MCP Server",
+      "language": "Python",
+      "stack": [
+        "ai",
+        "frontend",
+        "javascript",
+        "mcp",
+        "python"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-22T17:48:40Z",
+      "createdAt": "2025-06-06T00:35:31Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_repotographer",
+      "label": "repotographer",
+      "parent": "domain_genai_apps_tooling",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/repotographer",
+      "desc": "A concept map for your repositories",
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-22T17:42:45Z",
+      "createdAt": "2026-08-22T17:42:45Z",
+      "connectivity": "standalone"
+    },
+    {
+      "id": "repo_agent_skills",
+      "label": "agent-skills",
+      "parent": "domain_mcp_agent_skills",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/agent-skills",
+      "homepage": "https://ghchinoy.github.io/agent-skills/",
+      "desc": "Agent skills",
+      "language": "JavaScript",
+      "stack": [
+        "ai",
+        "frontend",
+        "javascript"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-22T17:41:31Z",
+      "createdAt": "2026-04-17T04:16:51Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_homebrew_tap",
+      "label": "homebrew-tap",
+      "parent": "domain_genai_apps_tooling",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/homebrew-tap",
+      "language": "Ruby",
+      "stack": [
+        "ruby"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-21T20:22:48Z",
+      "createdAt": "2026-06-27T14:39:58Z",
+      "connectivity": "standalone"
+    },
+    {
+      "id": "repo_binder",
+      "label": "binder",
+      "parent": "domain_mcp_agent_skills",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/binder",
+      "homepage": "https://ghchinoy.github.io/binder/",
+      "desc": "OKF ingestion and validation - cli, skills, mcp",
+      "language": "Go",
+      "topics": [
+        "okf",
+        "agent-first",
+        "cli",
+        "go",
+        "golang",
+        "markdown",
+        "open-knowledge-format"
+      ],
+      "stack": [
+        "ai",
+        "cli",
+        "go",
+        "mcp"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-21T20:19:41Z",
+      "createdAt": "2026-08-15T05:13:46Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_scream_ui",
+      "label": "scream-ui",
+      "parent": "domain_voice_audio",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/scream-ui",
+      "homepage": "https://ghchinoy.github.io/scream-ui/",
+      "desc": "Audio components for Lit",
+      "language": "TypeScript",
+      "stack": [
+        "audio",
+        "frontend",
+        "javascript",
+        "typescript"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-20T02:38:57Z",
+      "createdAt": "2026-02-13T15:58:44Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_agentskills",
+      "label": "agentskills",
+      "parent": "domain_mcp_agent_skills",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/agentskills",
+      "desc": "Turn your agent rules into skills.",
+      "stars": 1,
+      "language": "Go",
+      "topics": [
+        "skills"
+      ],
+      "stack": [
+        "ai",
+        "go"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-22T17:48:13Z",
+      "createdAt": "2026-06-12T04:09:47Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_editorial_look",
+      "label": "editorial-look",
+      "parent": "domain_genai_apps_tooling",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/editorial-look",
+      "desc": "Google Generative AI powered editorial looks",
+      "stars": 1,
+      "language": "Dart",
+      "stack": [
+        "dart",
+        "go"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-19T04:38:55Z",
+      "createdAt": "2025-08-16T20:38:25Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_moonshine_go",
+      "label": "moonshine-go",
+      "parent": "domain_voice_audio",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/moonshine-go",
+      "desc": "Build voice agents in Go with Moonshine Voice - a Go client, cli, and bindings for the Moonshine Voice library ",
+      "language": "Go",
+      "topics": [
+        "go",
+        "golang",
+        "moonshine",
+        "stt",
+        "voice-assistant"
+      ],
+      "stack": [
+        "ai",
+        "audio",
+        "cli",
+        "go"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-15T19:32:56Z",
+      "createdAt": "2026-07-13T02:23:21Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_moonshine_rs",
+      "label": "moonshine-rs",
+      "parent": "domain_voice_audio",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/moonshine-rs",
+      "desc": "Idiomatic Rust bindings for Moonshine Voice STT — static-linked, on-device transcription with built-in MP3/WAV/FLAC decoding.",
+      "language": "Rust",
+      "topics": [
+        "moonshine",
+        "rust",
+        "stt",
+        "onnx",
+        "speech-to-text"
+      ],
+      "stack": [
+        "audio",
+        "rust"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-14T04:34:16Z",
+      "createdAt": "2026-07-25T18:21:11Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_take3bounce",
+      "label": "take3bounce",
+      "parent": "domain_voice_audio",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/take3bounce",
+      "homepage": "https://take3bounce.app/",
+      "desc": "Take 3 on the bounce gives three expressive voice readings - experience Gemini 3.1 Flash TTS and experiment with speech expressivity, pacing and delivery.",
+      "stars": 14,
+      "language": "TypeScript",
+      "topics": [
+        "gemini",
+        "gemini-tts",
+        "gemini-3-flash-tts",
+        "google-cloud"
+      ],
+      "stack": [
+        "ai",
+        "audio",
+        "frontend",
+        "go",
+        "javascript",
+        "typescript"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-14T03:04:53Z",
+      "createdAt": "2026-04-08T06:02:21Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_banana_weather",
+      "label": "banana-weather",
+      "parent": "domain_genai_apps_tooling",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/banana-weather",
+      "desc": "Banana Weather: AI-Powered Atmospheric Art",
+      "stars": 91,
+      "language": "Go",
+      "stack": [
+        "go"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-14T01:54:44Z",
+      "createdAt": "2025-11-28T19:42:40Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_cloud_interactions_go",
+      "label": "cloud-interactions-go",
+      "parent": "domain_genai_apps_tooling",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/cloud-interactions-go",
+      "desc": "Google GenAI Interactions Go SDK - unofficial",
+      "language": "Go",
+      "stack": [
+        "ai",
+        "go"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-10T23:05:51Z",
+      "createdAt": "2026-05-27T03:49:33Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_riptide",
+      "label": "riptide",
+      "parent": "domain_genai_apps_tooling",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/riptide",
+      "desc": "Surf the web with confidence - a Gemini Computer Use example",
+      "stars": 1,
+      "language": "Go",
+      "stack": [
+        "ai",
+        "go"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-08T23:52:40Z",
+      "createdAt": "2025-12-16T01:25:49Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_spark_agent_tools",
+      "label": "spark-agent-tools",
+      "parent": "domain_mcp_agent_skills",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/spark-agent-tools",
+      "homepage": "https://github.com/ghchinoy/spark-agent-tools",
+      "desc": "Hello-world MCP servers for Gemini Spark: full OAuth 2.1 scaffolding (RFC 9728 + 8414 + 7591 + 7636 PKCE) in self-contained Go binaries, deployable to Cloud Run in one command.",
+      "language": "Go",
+      "topics": [
+        "cloud-run",
+        "gemini",
+        "golang",
+        "mcp",
+        "mcp-server",
+        "oauth2",
+        "spark",
+        "tutorial"
+      ],
+      "stack": [
+        "ai",
+        "go",
+        "mcp"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-08T18:47:19Z",
+      "createdAt": "2026-07-02T05:48:08Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_a2a_cli",
+      "label": "a2a-cli",
+      "parent": "domain_agent_protocols",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/a2a-cli",
+      "desc": "a terminal client for the Agent2Agent (A2A) Protocol",
+      "stars": 1,
+      "language": "Go",
+      "topics": [
+        "a2a",
+        "a2a-cli",
+        "a2a-client",
+        "cli"
+      ],
+      "stack": [
+        "a2a",
+        "ai",
+        "cli",
+        "go"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-07T22:50:40Z",
+      "createdAt": "2026-08-07T12:50:53Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_pandemonium",
+      "label": "pandemonium",
+      "parent": "domain_agent_protocols",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/pandemonium",
+      "desc": "An updated Go port of GDM's Concordia",
+      "language": "Go",
+      "stack": [
+        "go"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-05T05:57:30Z",
+      "createdAt": "2026-02-04T23:14:33Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_a2acli",
+      "label": "a2acli",
+      "parent": "domain_agent_protocols",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/a2acli",
+      "desc": "A2A command-line tool",
+      "stars": 4,
+      "language": "Go",
+      "stack": [
+        "a2a",
+        "ai",
+        "cli",
+        "go"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-05T03:25:54Z",
+      "createdAt": "2026-02-20T20:54:44Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_a2a_experiments",
+      "label": "a2a-experiments",
+      "parent": "domain_agent_protocols",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/a2a-experiments",
+      "desc": "Agent 2 Agent (A2A) with the Gemini Interactions API",
+      "language": "Go",
+      "stack": [
+        "a2a",
+        "ai",
+        "go"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-04T17:22:20Z",
+      "createdAt": "2026-01-25T19:07:23Z",
+      "connectivity": "connected"
+    },
+    {
+      "id": "repo_eldamoapi",
+      "label": "eldamoapi",
+      "parent": "domain_mcp_agent_skills",
+      "type": "repo",
+      "url": "https://github.com/ghchinoy/eldamoapi",
+      "homepage": "https://www.mithlond.com/",
+      "desc": "Agent tools for Eldamo Tolkien Language Lexicon (Paul Strack, eldamo.org)",
+      "language": "Go",
+      "stack": [
+        "ai",
+        "go"
+      ],
+      "status": "active",
+      "source": "auto",
+      "pushedAt": "2026-08-01T05:33:44Z",
+      "createdAt": "2015-07-25T15:30:14Z",
+      "connectivity": "connected"
+    }
+  ],
+  "edges": [
+    {
+      "id": "repo_docstats-\u003etech_mcp",
+      "source": "repo_docstats",
+      "target": "tech_mcp",
+      "label": "implements"
+    },
+    {
+      "id": "repo_docstats-\u003etech_python",
+      "source": "repo_docstats",
+      "target": "tech_python",
+      "label": "implements"
+    },
+    {
+      "id": "repo_docstats-\u003etech_typescript",
+      "source": "repo_docstats",
+      "target": "tech_typescript",
+      "label": "implements"
+    },
+    {
+      "id": "repo_agent_skills-\u003etech_ai",
+      "source": "repo_agent_skills",
+      "target": "tech_ai",
+      "label": "implements"
+    },
+    {
+      "id": "repo_agent_skills-\u003etech_typescript",
+      "source": "repo_agent_skills",
+      "target": "tech_typescript",
+      "label": "implements"
+    },
+    {
+      "id": "repo_binder-\u003etech_mcp",
+      "source": "repo_binder",
+      "target": "tech_mcp",
+      "label": "implements"
+    },
+    {
+      "id": "repo_binder-\u003etech_ai",
+      "source": "repo_binder",
+      "target": "tech_ai",
+      "label": "implements"
+    },
+    {
+      "id": "repo_binder-\u003etech_cli",
+      "source": "repo_binder",
+      "target": "tech_cli",
+      "label": "implements"
+    },
+    {
+      "id": "repo_binder-\u003etech_go",
+      "source": "repo_binder",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_scream_ui-\u003etech_audio",
+      "source": "repo_scream_ui",
+      "target": "tech_audio",
+      "label": "implements"
+    },
+    {
+      "id": "repo_scream_ui-\u003etech_typescript",
+      "source": "repo_scream_ui",
+      "target": "tech_typescript",
+      "label": "implements"
+    },
+    {
+      "id": "repo_agentskills-\u003etech_ai",
+      "source": "repo_agentskills",
+      "target": "tech_ai",
+      "label": "implements"
+    },
+    {
+      "id": "repo_agentskills-\u003etech_go",
+      "source": "repo_agentskills",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_editorial_look-\u003etech_go",
+      "source": "repo_editorial_look",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_moonshine_go-\u003etech_ai",
+      "source": "repo_moonshine_go",
+      "target": "tech_ai",
+      "label": "implements"
+    },
+    {
+      "id": "repo_moonshine_go-\u003etech_audio",
+      "source": "repo_moonshine_go",
+      "target": "tech_audio",
+      "label": "implements"
+    },
+    {
+      "id": "repo_moonshine_go-\u003etech_cli",
+      "source": "repo_moonshine_go",
+      "target": "tech_cli",
+      "label": "implements"
+    },
+    {
+      "id": "repo_moonshine_go-\u003etech_go",
+      "source": "repo_moonshine_go",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_moonshine_rs-\u003etech_audio",
+      "source": "repo_moonshine_rs",
+      "target": "tech_audio",
+      "label": "implements"
+    },
+    {
+      "id": "repo_moonshine_rs-\u003etech_rust",
+      "source": "repo_moonshine_rs",
+      "target": "tech_rust",
+      "label": "implements"
+    },
+    {
+      "id": "repo_take3bounce-\u003etech_ai",
+      "source": "repo_take3bounce",
+      "target": "tech_ai",
+      "label": "implements"
+    },
+    {
+      "id": "repo_take3bounce-\u003etech_audio",
+      "source": "repo_take3bounce",
+      "target": "tech_audio",
+      "label": "implements"
+    },
+    {
+      "id": "repo_take3bounce-\u003etech_go",
+      "source": "repo_take3bounce",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_take3bounce-\u003etech_typescript",
+      "source": "repo_take3bounce",
+      "target": "tech_typescript",
+      "label": "implements"
+    },
+    {
+      "id": "repo_banana_weather-\u003etech_go",
+      "source": "repo_banana_weather",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_cloud_interactions_go-\u003etech_ai",
+      "source": "repo_cloud_interactions_go",
+      "target": "tech_ai",
+      "label": "implements"
+    },
+    {
+      "id": "repo_cloud_interactions_go-\u003etech_go",
+      "source": "repo_cloud_interactions_go",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_riptide-\u003etech_ai",
+      "source": "repo_riptide",
+      "target": "tech_ai",
+      "label": "implements"
+    },
+    {
+      "id": "repo_riptide-\u003etech_go",
+      "source": "repo_riptide",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_spark_agent_tools-\u003etech_mcp",
+      "source": "repo_spark_agent_tools",
+      "target": "tech_mcp",
+      "label": "implements"
+    },
+    {
+      "id": "repo_spark_agent_tools-\u003etech_ai",
+      "source": "repo_spark_agent_tools",
+      "target": "tech_ai",
+      "label": "implements"
+    },
+    {
+      "id": "repo_spark_agent_tools-\u003etech_go",
+      "source": "repo_spark_agent_tools",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_a2a_cli-\u003etech_a2a",
+      "source": "repo_a2a_cli",
+      "target": "tech_a2a",
+      "label": "implements"
+    },
+    {
+      "id": "repo_a2a_cli-\u003etech_ai",
+      "source": "repo_a2a_cli",
+      "target": "tech_ai",
+      "label": "implements"
+    },
+    {
+      "id": "repo_a2a_cli-\u003etech_cli",
+      "source": "repo_a2a_cli",
+      "target": "tech_cli",
+      "label": "implements"
+    },
+    {
+      "id": "repo_a2a_cli-\u003etech_go",
+      "source": "repo_a2a_cli",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_pandemonium-\u003etech_go",
+      "source": "repo_pandemonium",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_a2acli-\u003etech_a2a",
+      "source": "repo_a2acli",
+      "target": "tech_a2a",
+      "label": "implements"
+    },
+    {
+      "id": "repo_a2acli-\u003etech_cli",
+      "source": "repo_a2acli",
+      "target": "tech_cli",
+      "label": "implements"
+    },
+    {
+      "id": "repo_a2acli-\u003etech_go",
+      "source": "repo_a2acli",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_a2a_experiments-\u003etech_a2a",
+      "source": "repo_a2a_experiments",
+      "target": "tech_a2a",
+      "label": "implements"
+    },
+    {
+      "id": "repo_a2a_experiments-\u003etech_ai",
+      "source": "repo_a2a_experiments",
+      "target": "tech_ai",
+      "label": "implements"
+    },
+    {
+      "id": "repo_a2a_experiments-\u003etech_go",
+      "source": "repo_a2a_experiments",
+      "target": "tech_go",
+      "label": "implements"
+    },
+    {
+      "id": "repo_eldamoapi-\u003etech_ai",
+      "source": "repo_eldamoapi",
+      "target": "tech_ai",
+      "label": "implements"
+    },
+    {
+      "id": "repo_eldamoapi-\u003etech_go",
+      "source": "repo_eldamoapi",
+      "target": "tech_go",
+      "label": "implements"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+# Binaries
+bin/
+repotographer
+
+# OS / Editor artifacts
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Output directories from runs
+out/
+dist/
+*.tmp
+
+# Test coverage
+coverage.out

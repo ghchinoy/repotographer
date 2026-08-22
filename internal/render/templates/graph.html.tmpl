@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Account }} - Concept Graph & Repository Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --bg-canvas: #0f172a;
+      --bg-surface: #1e293b;
+      --bg-surface-elevated: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+      --brand-primary: #38bdf8;
+      --brand-glow: rgba(56, 189, 248, 0.2);
+      --accent-tech: #f59e0b;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      padding: 1rem 1.5rem;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .title-group h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .title-group h1 span.badge {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      background: var(--brand-glow);
+      color: var(--brand-primary);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--brand-primary);
+    }
+
+    .stats-bar {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .filter-bar {
+      padding: 0.6rem 1.5rem;
+      background: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      z-index: 15;
+    }
+
+    .filter-chip {
+      background: var(--bg-surface-elevated);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .filter-chip:hover {
+      color: var(--text-main);
+      border-color: var(--brand-primary);
+    }
+
+    .filter-chip.active {
+      background: var(--brand-primary);
+      color: #0f172a;
+      border-color: var(--brand-primary);
+      font-weight: 600;
+    }
+
+    .filter-chip-toggle.active {
+      background: #e0f2fe;
+      color: #0284c7;
+      border-color: #38bdf8;
+    }
+
+    .main-viewport {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    #cy {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .controls-overlay {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      z-index: 25;
+      background: var(--bg-surface);
+      padding: 0.4rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .ctrl-btn {
+      width: 32px;
+      height: 32px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.15s ease;
+    }
+
+    .ctrl-btn:hover {
+      background: var(--brand-primary);
+      color: #0f172a;
+    }
+
+    /* Inspector slide-out drawer */
+    .inspector {
+      position: absolute;
+      top: 0;
+      right: -380px;
+      width: 360px;
+      height: 100%;
+      background: var(--bg-surface);
+      border-left: 1px solid var(--border-color);
+      box-shadow: -4px 0 24px rgba(0,0,0,0.4);
+      z-index: 30;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: right 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-y: auto;
+    }
+
+    .inspector.open {
+      right: 0;
+    }
+
+    .inspector-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.75rem;
+    }
+
+    .inspector-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      word-break: break-word;
+    }
+
+    .inspector-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .inspector-close:hover { color: var(--text-main); }
+
+    .inspector-domain {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--brand-primary);
+      font-weight: 600;
+    }
+
+    .conn-badge {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .conn-connected { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid #38bdf8; }
+    .conn-standalone { background: rgba(148, 163, 184, 0.2); color: #94a3b8; border: 1px dashed #94a3b8; }
+    .conn-bare { background: rgba(148, 163, 184, 0.1); color: #64748b; border: 1px dotted #64748b; }
+
+    .inspector-desc {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    .inspector-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .tag-badge {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      background: var(--bg-surface-elevated);
+      color: var(--text-main);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    .inspector-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--brand-primary);
+      color: #0f172a;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      transition: opacity 0.15s ease;
+    }
+    .inspector-links a:hover { opacity: 0.9; }
+
+    .interaction-hint {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(4px);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      pointer-events: none;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title-group">
+      <h1>
+        {{ .Account }}
+        <span class="badge">{{ .AccountType }}</span>
+      </h1>
+    </div>
+    <div class="stats-bar">
+      <span>{{ .Stats.IncludedRepos }} Repositories</span>
+      <span>•</span>
+      <span>{{ .Stats.DomainCount }} Domains</span>
+      <span>•</span>
+      <span>{{ .Stats.ConnectedCount }} Connected</span>
+    </div>
+  </header>
+
+  <div class="filter-bar" id="filterBar">
+    <!-- Filter chips rendered dynamically -->
+  </div>
+
+  <div class="main-viewport">
+    <div class="interaction-hint">Tap domain to expand/collapse • Drag nodes • Zoom/Pan freely</div>
+    <div id="cy"></div>
+
+    <div class="controls-overlay">
+      <button class="ctrl-btn" id="btnExpandAll" title="Expand / Collapse All">⊞</button>
+      <button class="ctrl-btn" id="btnFit" title="Fit to Screen">⛶</button>
+      <button class="ctrl-btn" id="btnZoomIn" title="Zoom In">+</button>
+      <button class="ctrl-btn" id="btnZoomOut" title="Zoom Out">−</button>
+      <button class="ctrl-btn" id="btnReset" title="Reset View">⟲</button>
+    </div>
+
+    <div class="inspector" id="inspector">
+      <div class="inspector-header">
+        <h2 class="inspector-title" id="inspTitle">Repo Title</h2>
+        <button class="inspector-close" id="inspClose">×</button>
+      </div>
+      <div class="inspector-domain" id="inspDomain">
+        <span>Domain Name</span>
+      </div>
+      <p class="inspector-desc" id="inspDesc">Description</p>
+      <div class="inspector-tags" id="inspTags"></div>
+      <div class="inspector-links" id="inspLinks"></div>
+    </div>
+  </div>
+
+  <script id="graph-data" type="application/json">
+{{ .GraphJSON }}
+  </script>
+
+  <!-- Load Cytoscape and fcose from esm.sh -->
+  <script type="module">
+    import cytoscape from 'https://esm.sh/cytoscape@3.30.4';
+    import fcose from 'https://esm.sh/cytoscape-fcose@2.2.0';
+
+    try { cytoscape.use(fcose); } catch(e) {}
+
+    const rawData = JSON.parse(document.getElementById('graph-data').textContent);
+
+    let cy;
+    let collapsedDomains = new Set((rawData.domains || []).map(d => d.id));
+    let expandedSubBuckets = new Set();
+    let hideStandalone = false;
+    let activeFilter = 'all';
+    let allExpanded = false;
+    let selectedNode = null;
+
+    const colors = {
+      bg: '#0f172a',
+      parentBg: 'rgba(30, 41, 59, 0.45)',
+      parentBorder: '#475569',
+      collapsedBg: '#1e293b',
+      collapsedBorder: '#38bdf8',
+      repoBg: '#334155',
+      repoBorder: '#64748b',
+      subBucketBg: '#1e293b',
+      subBucketBorder: '#64748b',
+      techBg: '#f59e0b',
+      techBorder: '#fbbf24',
+      techText: '#0f172a',
+      textMain: '#f8fafc',
+      textMuted: '#94a3b8',
+      edgeColor: '#475569',
+      edgeActive: '#38bdf8',
+      brandPrimary: '#38bdf8'
+    };
+
+    function buildStyles() {
+      return [
+        {
+          selector: 'node[?isDomain][!isCollapsed]',
+          style: {
+            'background-color': colors.parentBg,
+            'border-color': colors.parentBorder,
+            'border-width': 1.5,
+            'border-style': 'dashed',
+            'shape': 'roundrectangle',
+            'corner-radius': '12px',
+            'label': 'data(displayLabel)',
+            'font-family': 'Inter, system-ui, sans-serif',
+            'font-size': '11px',
+            'font-weight': '700',
+            'text-valign': 'top',
+            'text-halign': 'center',
+            'text-margin-y': 10,
+            'color': colors.textMuted,
+            'text-transform': 'uppercase',
+            'letter-spacing': '0.05em',
+            'padding': '26px',
+            'cursor': 'pointer'
+          }
+        },
+        {
+          selector: 'node[?isDomain][?isCollapsed]',
+          style: {
+            'shape': 'round-rectangle',
+            'corner-radius': '8px',
+            'width': 'label',
+            'height': 'label',
+            'padding': '14px',
+            'text-wrap': 'wrap',
+            'text-max-width': '160px',
+            'background-color': colors.collapsedBg,
+            'border-width': 2,
+            'border-color': colors.collapsedBorder,
+            'border-style': 'solid',
+            'label': 'data(displayLabel)',
+            'font-family': 'Inter, system-ui, sans-serif',
+            'font-size': '11px',
+            'font-weight': '700',
+            'color': colors.textMain,
+            'text-valign': 'center',
+            'text-halign': 'center',
+            'cursor': 'pointer',
+            'z-index': 15
+          }
+        },
+        {
+          selector: 'node[?isSubBucket]',
+          style: {
+            'shape': 'round-rectangle',
+            'corner-radius': '6px',
+            'width': 'label',
+            'height': 'label',
+            'padding': '8px',
+            'text-wrap': 'wrap',
+            'text-max-width': '130px',
+            'background-color': colors.subBucketBg,
+            'border-width': 1.5,
+            'border-style': 'dashed',
+            'border-color': colors.subBucketBorder,
+            'label': 'data(label)',
+            'font-family': 'Inter, system-ui, sans-serif',
+            'font-size': '10px',
+            'font-weight': '600',
+            'color': colors.textMuted,
+            'text-valign': 'center',
+            'text-halign': 'center',
+            'cursor': 'pointer',
+            'z-index': 10
+          }
+        },
+        {
+          selector: 'node[type = "repo"]',
+          style: {
+            'shape': 'round-rectangle',
+            'corner-radius': '6px',
+            'width': 'label',
+            'height': 'label',
+            'padding': '10px',
+            'text-wrap': 'wrap',
+            'text-max-width': '140px',
+            'background-color': colors.repoBg,
+            'border-width': 1.5,
+            'border-color': colors.repoBorder,
+            'label': 'data(label)',
+            'font-family': 'Inter, system-ui, sans-serif',
+            'font-size': '11px',
+            'font-weight': '500',
+            'color': colors.textMain,
+            'text-valign': 'center',
+            'text-halign': 'center',
+            'cursor': 'pointer'
+          }
+        },
+        {
+          selector: '.node-connected',
+          style: { 'border-width': 1.8, 'border-style': 'solid', 'opacity': 1.0 }
+        },
+        {
+          selector: '.node-standalone',
+          style: { 'border-style': 'dashed', 'border-width': 1.2, 'opacity': 0.85 }
+        },
+        {
+          selector: '.node-bare',
+          style: { 'border-style': 'dotted', 'border-width': 1.0, 'opacity': 0.55 }
+        },
+        {
+          selector: 'node[type = "tech"]',
+          style: {
+            'shape': 'round-diamond',
+            'width': 'label',
+            'height': 'label',
+            'padding': '12px',
+            'text-wrap': 'wrap',
+            'text-max-width': '110px',
+            'background-color': colors.techBg,
+            'border-width': 2,
+            'border-color': colors.techBorder,
+            'label': 'data(label)',
+            'font-family': 'Inter, system-ui, sans-serif',
+            'font-size': '11px',
+            'font-weight': '600',
+            'color': colors.techText,
+            'text-valign': 'center',
+            'text-halign': 'center',
+            'cursor': 'pointer',
+            'z-index': 20
+          }
+        },
+        {
+          selector: 'edge',
+          style: {
+            'width': 1.2,
+            'line-color': colors.edgeColor,
+            'target-arrow-color': colors.edgeColor,
+            'target-arrow-shape': 'triangle',
+            'curve-style': 'bezier',
+            'arrow-scale': 0.7,
+            'opacity': 0.6,
+            'label': 'data(label)',
+            'font-size': '9px',
+            'font-family': 'Inter, system-ui, sans-serif',
+            'color': colors.textMuted,
+            'text-rotation': 'autorotate',
+            'text-margin-y': -6
+          }
+        },
+        {
+          selector: 'edge.virtual-summary-edge',
+          style: {
+            'line-style': 'dashed',
+            'width': 1.5,
+            'opacity': 0.75,
+            'line-color': colors.brandPrimary,
+            'target-arrow-color': colors.brandPrimary
+          }
+        },
+        {
+          selector: '.highlighted',
+          style: { 'border-color': colors.brandPrimary, 'border-width': 2.5, 'opacity': 1, 'z-index': 99 }
+        },
+        {
+          selector: 'edge.highlighted',
+          style: { 'line-color': colors.edgeActive, 'target-arrow-color': colors.edgeActive, 'width': 2.2, 'opacity': 1, 'z-index': 98 }
+        },
+        { selector: '.faded', style: { 'opacity': 0.12 } },
+        { selector: 'edge.faded', style: { 'opacity': 0.04 } },
+        { selector: '.hidden', style: { 'display': 'none' } }
+      ];
+    }
+
+    function initGraph() {
+      cy = cytoscape({
+        container: document.getElementById('cy'),
+        style: buildStyles(),
+        wheelSensitivity: 0.25,
+        minZoom: 0.2,
+        maxZoom: 3.0
+      });
+
+      cy.on('tap', (evt) => {
+        if (evt.target === cy) {
+          clearHighlighting();
+          closeInspector();
+        }
+      });
+
+      cy.on('tap', 'node', (evt) => {
+        const node = evt.target;
+        if (node.data('isSubBucket')) {
+          const domainId = node.data('domainId');
+          if (expandedSubBuckets.has(domainId)) expandedSubBuckets.delete(domainId);
+          else expandedSubBuckets.add(domainId);
+          loadData();
+          return;
+        }
+        if (node.data('isDomain') || node.isParent()) {
+          const id = node.id();
+          if (collapsedDomains.has(id)) collapsedDomains.delete(id);
+          else { collapsedDomains.add(id); expandedSubBuckets.delete(id); }
+          allExpanded = collapsedDomains.size === 0;
+          document.getElementById('btnExpandAll').textContent = allExpanded ? '⊟' : '⊞';
+          loadData();
+          return;
+        }
+        selectNode(node);
+      });
+
+      loadData();
+      renderFilters();
+    }
+
+    function loadData() {
+      cy.elements().remove();
+      const elements = [];
+      const domainItemCounts = {};
+      const domainConnectedCounts = {};
+      const domainStandaloneCounts = {};
+      const childToDomainMap = {};
+
+      (rawData.nodes || []).forEach(n => {
+        if (n.parent) {
+          domainItemCounts[n.parent] = (domainItemCounts[n.parent] || 0) + 1;
+          childToDomainMap[n.id] = n.parent;
+          if ((n.connectivity || 'connected') === 'connected') domainConnectedCounts[n.parent] = (domainConnectedCounts[n.parent] || 0) + 1;
+          else domainStandaloneCounts[n.parent] = (domainStandaloneCounts[n.parent] || 0) + 1;
+        }
+      });
+
+      (rawData.domains || []).forEach(d => {
+        const isCollapsed = collapsedDomains.has(d.id);
+        const count = domainItemCounts[d.id] || 0;
+        elements.push({
+          group: 'nodes',
+          data: {
+            id: d.id,
+            label: d.label,
+            displayLabel: isCollapsed ? `⊞ ${d.label} (${count})` : `⊟ ${d.label}`,
+            isDomain: true,
+            isCollapsed: isCollapsed,
+            childCount: count
+          }
+        });
+
+        if (!isCollapsed) {
+          const standaloneCount = domainStandaloneCounts[d.id] || 0;
+          if (standaloneCount > 0) {
+            const isSubExpanded = expandedSubBuckets.has(d.id);
+            elements.push({
+              group: 'nodes',
+              data: {
+                id: `subbucket_${d.id}`,
+                parent: d.id,
+                domainId: d.id,
+                label: isSubExpanded ? `⊟ Standalone (${standaloneCount})` : `⊕ Standalone · ${standaloneCount}`,
+                isSubBucket: true,
+                isSubExpanded: isSubExpanded
+              }
+            });
+          }
+        }
+      });
+
+      (rawData.nodes || []).forEach(n => {
+        const isDomainChild = !!n.parent;
+        const isInsideCollapsed = isDomainChild && collapsedDomains.has(n.parent);
+        const isConn = (n.connectivity || 'connected') === 'connected';
+        const isSubExpanded = isDomainChild && expandedSubBuckets.has(n.parent);
+
+        let classes = '';
+        if (n.connectivity) classes += ` node-${n.connectivity}`;
+        if (isInsideCollapsed) classes += ' hidden';
+        else if (isDomainChild && !isConn && !isSubExpanded) classes += ' hidden';
+
+        elements.push({
+          group: 'nodes',
+          data: { ...n, parent: isInsideCollapsed ? undefined : n.parent },
+          classes: classes.trim()
+        });
+      });
+
+      const virtualEdgeSet = new Set();
+      (rawData.edges || []).forEach(e => {
+        const srcDomain = childToDomainMap[e.source];
+        const tgtDomain = childToDomainMap[e.target];
+        const srcCollapsed = srcDomain && collapsedDomains.has(srcDomain);
+        const tgtCollapsed = tgtDomain && collapsedDomains.has(tgtDomain);
+
+        if (srcCollapsed || tgtCollapsed) {
+          const effSrc = srcCollapsed ? srcDomain : e.source;
+          const effTgt = tgtCollapsed ? tgtDomain : e.target;
+          if (effSrc !== effTgt) {
+            const vKey = `${effSrc}->${effTgt}`;
+            if (!virtualEdgeSet.has(vKey)) {
+              virtualEdgeSet.add(vKey);
+              elements.push({
+                group: 'edges',
+                data: { id: `virt_${vKey}`, source: effSrc, target: effTgt, label: e.label || '' },
+                classes: 'virtual-summary-edge'
+              });
+            }
+          }
+        } else {
+          elements.push({ group: 'edges', data: { ...e } });
+        }
+      });
+
+      cy.add(elements);
+      applyFilter();
+      runLayout();
+    }
+
+    function runLayout() {
+      const visibleCount = cy.nodes(':visible').length;
+      const visibleEdges = cy.edges(':visible').length;
+      const density = visibleEdges / Math.max(1, visibleCount);
+
+      let idealEdgeLength, nodeSeparation, edgeElasticity, gravity, numIter, quality;
+
+      if (visibleCount < 30) {
+        if (density > 1.2) {
+          idealEdgeLength = 240; nodeSeparation = 150; edgeElasticity = 0.05; gravity = 0.05; numIter = 2500; quality = 'proof';
+        } else {
+          idealEdgeLength = 180; nodeSeparation = 120; edgeElasticity = 0.09; gravity = 0.08; numIter = 2000; quality = 'proof';
+        }
+      } else if (visibleCount < 60) {
+        idealEdgeLength = 140; nodeSeparation = 90; edgeElasticity = 0.18; gravity = 0.15; numIter = 1500; quality = 'default';
+      } else {
+        idealEdgeLength = 95; nodeSeparation = 65; edgeElasticity = 0.35; gravity = 0.20; numIter = 1000; quality = 'default';
+      }
+
+      try {
+        cy.layout({
+          name: 'fcose',
+          quality: quality,
+          randomize: false,
+          animate: true,
+          animationDuration: 300,
+          nodeDimensionsIncludeLabels: true,
+          uniformNodeDimensions: false,
+          packComponents: false,
+          nodeSeparation: nodeSeparation,
+          idealEdgeLength: idealEdgeLength,
+          edgeElasticity: edgeElasticity,
+          nestingFactor: 0.1,
+          gravity: gravity,
+          gravityRange: 4.0,
+          numIter: numIter,
+          tile: true,
+          tilingPaddingVertical: 20,
+          tilingPaddingHorizontal: 20,
+          fit: true,
+          padding: 40
+        }).run();
+      } catch (err) {
+        cy.layout({ name: 'cose', fit: true, padding: 40, animate: false }).run();
+      }
+    }
+
+    function applyFilter() {
+      cy.batch(() => {
+        cy.nodes().forEach(node => {
+          if (node.data('isDomain')) { node.removeClass('hidden'); return; }
+          if (node.data('isSubBucket')) {
+            if (hideStandalone) node.addClass('hidden');
+            else node.removeClass('hidden');
+            return;
+          }
+
+          const isInsideCollapsed = node.data('parent') && collapsedDomains.has(node.data('parent'));
+          if (isInsideCollapsed) { node.addClass('hidden'); return; }
+
+          const isConn = (node.data('connectivity') || 'connected') === 'connected';
+          const isSubExpanded = node.data('parent') && expandedSubBuckets.has(node.data('parent'));
+
+          if (!isConn && !isSubExpanded) { node.addClass('hidden'); return; }
+          if (hideStandalone && !isConn) { node.addClass('hidden'); return; }
+
+          if (!activeFilter || activeFilter === 'all') node.removeClass('hidden');
+          else {
+            const stack = node.data('stack') || [];
+            if (stack.includes(activeFilter)) node.removeClass('hidden');
+            else node.addClass('hidden');
+          }
+        });
+
+        cy.edges().forEach(edge => {
+          const src = edge.source();
+          const tgt = edge.target();
+          if (src.hasClass('hidden') || tgt.hasClass('hidden')) edge.addClass('hidden');
+          else edge.removeClass('hidden');
+        });
+      });
+    }
+
+    function renderFilters() {
+      const container = document.getElementById('filterBar');
+      container.innerHTML = '';
+
+      const tags = new Set(['all']);
+      (rawData.nodes || []).forEach(n => {
+        (n.stack || []).forEach(s => tags.add(s));
+      });
+
+      tags.forEach(tag => {
+        const btn = document.createElement('button');
+        btn.className = `filter-chip ${tag === activeFilter ? 'active' : ''}`;
+        btn.textContent = tag.toUpperCase();
+        btn.onclick = () => {
+          container.querySelectorAll('.filter-chip:not(.filter-chip-toggle)').forEach(c => c.classList.remove('active'));
+          btn.classList.add('active');
+          activeFilter = tag;
+          applyFilter();
+          runLayout();
+        };
+        container.appendChild(btn);
+      });
+
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = `filter-chip filter-chip-toggle ${hideStandalone ? 'active' : ''}`;
+      toggleBtn.innerHTML = '<span>⚡ Connected Only</span>';
+      toggleBtn.onclick = () => {
+        hideStandalone = !hideStandalone;
+        toggleBtn.classList.toggle('active', hideStandalone);
+        applyFilter();
+        runLayout();
+      };
+      container.appendChild(toggleBtn);
+    }
+
+    function selectNode(node) {
+      selectedNode = node.data();
+      cy.batch(() => {
+        cy.elements().removeClass('highlighted faded');
+        node.addClass('highlighted');
+        const nh = node.neighborhood();
+        nh.addClass('highlighted');
+        cy.elements().not(node).not(nh).addClass('faded');
+      });
+      openInspector(selectedNode);
+    }
+
+    function clearHighlighting() {
+      selectedNode = null;
+      cy.elements().removeClass('highlighted faded');
+    }
+
+    function openInspector(data) {
+      const insp = document.getElementById('inspector');
+      document.getElementById('inspTitle').textContent = data.label;
+      document.getElementById('inspDesc').textContent = data.desc || '(No description provided)';
+
+      const domainEl = document.getElementById('inspDomain');
+      const domain = (rawData.domains || []).find(d => d.id === data.parent);
+      domainEl.innerHTML = `<span>${domain ? domain.label : (data.type === 'tech' ? 'Core Technology' : '')}</span>`;
+      if (data.connectivity && data.type !== 'tech') {
+        const badge = document.createElement('span');
+        badge.className = `conn-badge conn-${data.connectivity}`;
+        badge.textContent = data.connectivity.toUpperCase();
+        domainEl.appendChild(badge);
+      }
+
+      const tagsEl = document.getElementById('inspTags');
+      tagsEl.innerHTML = '';
+      (data.stack || []).forEach(s => {
+        const badge = document.createElement('span');
+        badge.className = 'tag-badge';
+        badge.textContent = s;
+        tagsEl.appendChild(badge);
+      });
+
+      const linksEl = document.getElementById('inspLinks');
+      linksEl.innerHTML = '';
+      if (data.url) {
+        linksEl.innerHTML = `<a href="${data.url}" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>`;
+      }
+
+      insp.classList.add('open');
+    }
+
+    function closeInspector() {
+      document.getElementById('inspector').classList.remove('open');
+      clearHighlighting();
+    }
+
+    document.getElementById('inspClose').onclick = closeInspector;
+    document.getElementById('btnFit').onclick = () => cy.fit(undefined, 35);
+    document.getElementById('btnZoomIn').onclick = () => cy.zoom(cy.zoom() * 1.25);
+    document.getElementById('btnZoomOut').onclick = () => cy.zoom(cy.zoom() * 0.8);
+    document.getElementById('btnExpandAll').onclick = () => {
+      if (allExpanded) {
+        collapsedDomains = new Set((rawData.domains || []).map(d => d.id));
+        expandedSubBuckets.clear();
+        allExpanded = false;
+      } else {
+        collapsedDomains.clear();
+        allExpanded = true;
+      }
+      document.getElementById('btnExpandAll').textContent = allExpanded ? '⊟' : '⊞';
+      loadData();
+    };
+    document.getElementById('btnReset').onclick = () => {
+      collapsedDomains = new Set((rawData.domains || []).map(d => d.id));
+      expandedSubBuckets.clear();
+      allExpanded = false;
+      activeFilter = 'all';
+      hideStandalone = false;
+      document.getElementById('btnExpandAll').textContent = '⊞';
+      renderFilters();
+      loadData();
+      closeInspector();
+    };
+
+    window.addEventListener('DOMContentLoaded', initGraph);
+  </script>
+</body>
+</html>
