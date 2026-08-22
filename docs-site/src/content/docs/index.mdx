@@ -1,0 +1,39 @@
+---
+title: repotographer
+description: Map and explore public GitHub repositories with intelligent concept graphs and AI-suggested domain taxonomies.
+template: splash
+hero:
+  tagline: Transform public GitHub repositories into structured concept graphs, domain pillars, and interactive visual maps.
+  image:
+    file: ../../assets/logo.svg
+  actions:
+    - text: Start the Tutorial
+      link: /getting-started/your-first-map/
+      icon: right-arrow
+      variant: primary
+    - text: Install CLI & MCP
+      link: /getting-started/installation/
+      icon: rocket
+      variant: secondary
+    - text: View on GitHub
+      link: https://github.com/ghchinoy/repotographer
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid stagger>
+  <Card title="GitHub Repository Analysis" icon="github">
+    Connects to the GitHub CLI (`gh`) to inspect public repositories, filter forks and archived projects, and extract stack metadata.
+  </Card>
+  <Card title="AI-Assisted Domain Taxonomy" icon="star">
+    Clusters repositories into thematic pillars using Gemini 3.7 Flash or Google Cloud Vertex AI, with offline fallback.
+  </Card>
+  <Card title="Interactive & Static Visuals" icon="document">
+    Emits self-contained Cytoscape.js HTML visualizers, Graphviz DOT files, PNG diagrams, and portable JSON datasets.
+  </Card>
+  <Card title="MCP Server Included" icon="puzzle">
+    Runs over stdio as an official Model Context Protocol server for coding assistants like Claude Desktop, Cursor, and OpenCode.
+  </Card>
+</CardGrid>

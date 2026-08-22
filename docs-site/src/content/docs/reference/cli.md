@@ -1,0 +1,88 @@
+---
+title: CLI Reference
+description: Complete command and flag reference for the repotographer command-line interface.
+---
+
+## Command Overview
+
+```bash
+repotographer [command] [flags]
+```
+
+### Core Commands
+
+| Command | Description |
+|---|---|
+| `repotographer map <owner>` | Fetches repositories, builds concept graph, derives taxonomy, and renders outputs. |
+| `repotographer suggest <owner>` | Queries Gemini for a proposed domain taxonomy and writes `taxonomy.json`. |
+| `repotographer render <graph.json>` | Renders visual assets from an existing graph JSON file and optional taxonomy. |
+| `repotographer mcp` | Starts the Model Context Protocol stdio server for AI coding assistants. |
+| `repotographer version` | Prints the installed repotographer version. |
+
+---
+
+## `repotographer map`
+
+```bash
+repotographer map <owner> [flags]
+```
+
+### Flags
+
+| Flag | Type | Default | Description |
+|---|---|---|---|
+| `-o, --out` | string | `"./out"` | Output directory for all generated files. |
+| `--format` | string | `"html,dot,png,json"` | Comma-separated list of formats to generate. |
+| `--llm` | boolean | `true` | Refine domain taxonomy with Gemini. Pass `--llm=false` for offline heuristics. |
+| `--model` | string | `"gemini-3.7-flash"` | Gemini model ID used for taxonomy clustering. |
+| `--vertex` | boolean | `false` | Use Google Cloud Vertex AI instead of standard Gemini API keys. |
+| `-n, --limit` | integer | `500` | Maximum number of repositories to fetch from GitHub CLI. |
+| `--type` | string | `"auto"` | Account type hint: `"user"`, `"org"`, or `"auto"`. |
+| `--include-forks` | boolean | `false` | Include forked repositories in mapping. |
+| `--include-archived` | boolean | `false` | Include archived repositories in mapping. |
+| `--min-signal` | boolean | `true` | Exclude empty repositories lacking descriptions, topics, languages, and stars. |
+| `--taxonomy` | string | `""` | Path to a custom `taxonomy.json` to apply instead of generating one. |
+
+---
+
+## `repotographer suggest`
+
+```bash
+repotographer suggest <owner> [flags]
+```
+
+### Flags
+
+| Flag | Type | Default | Description |
+|---|---|---|---|
+| `-o, --out` | string | `"taxonomy.json"` | Output path for the generated taxonomy JSON. |
+| `--model` | string | `"gemini-3.7-flash"` | Gemini model ID used for taxonomy suggestions. |
+| `--vertex` | boolean | `false` | Use Google Cloud Vertex AI backend. |
+| `-n, --limit` | integer | `500` | Maximum number of repositories to fetch. |
+| `--type` | string | `"auto"` | Account type hint (`"user"` or `"org"`). |
+
+---
+
+## `repotographer render`
+
+```bash
+repotographer render <graph.json> [flags]
+```
+
+### Flags
+
+| Flag | Type | Default | Description |
+|---|---|---|---|
+| `-o, --out` | string | `"./out"` | Directory where rendered assets will be placed. |
+| `--format` | string | `"html,dot,png"` | Formats to generate (`"html"`, `"dot"`, `"png"`). |
+| `--taxonomy` | string | `""` | Path to a custom `taxonomy.json` to apply before rendering. |
+
+---
+
+## `repotographer mcp`
+
+```bash
+repotographer mcp
+```
+
+Starts the Model Context Protocol stdio server. Communicates via JSON-RPC on standard I/O.

@@ -1,0 +1,139 @@
+---
+title: Your First Concept Map
+description: Step-by-step guide to mapping a GitHub portfolio with repotographer.
+---
+
+import { Steps, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+This tutorial walks you through mapping a GitHub portfolio, reviewing the generated concept graph, and tailoring the domain taxonomy to your project narrative.
+
+We will map the repositories of GitHub user `ghchinoy`.
+
+## What You Will Need
+
+- The `repotographer` binary installed on your PATH.
+- GitHub CLI (`gh`) logged in to GitHub.
+- A `GEMINI_API_KEY` exported in your terminal (or `--llm=false` for offline mode).
+
+---
+
+## 1. Run the Map Command
+
+<Steps>
+
+1. **Execute the one-step mapping command**
+
+   Run `repotographer map` targeting `ghchinoy` and specify an output folder:
+
+   ```bash
+   repotographer map ghchinoy --out ./out
+   ```
+
+2. **Observe the pipeline steps**
+
+   The terminal shows each stage of the analysis:
+
+   ```text
+   🔍 Fetching public repositories for 'ghchinoy' via `gh`...
+   ✓ Retrieved 139 repositories from GitHub.
+   🧩 Building concept graph and detecting technology hubs...
+   ✓ Concept graph initialized: 137 repos included across 9 tech hubs.
+   ✨ Proposing domain taxonomy with Gemini (gemini-3.7-flash)...
+   ✓ Gemini proposed 5 thematic domains.
+   📄 Graph JSON: out/graph.json
+   📝 Taxonomy Curation File: out/taxonomy.json
+   🌐 Interactive HTML Visualizer: out/graph.html
+   📊 Graphviz DOT: out/graph.dot
+   🖼️  Static Graph Image: out/graph.png
+
+   🎉 Success! Concept map created in ./out
+   ```
+
+</Steps>
+
+---
+
+## 2. Explore the Interactive Visualizer
+
+Open the generated visualizer in your default browser:
+
+<Tabs>
+  <TabItem label="macOS">
+    ```bash
+    open ./out/graph.html
+    ```
+  </TabItem>
+  <TabItem label="Linux">
+    ```bash
+    xdg-open ./out/graph.html
+    ```
+  </TabItem>
+  <TabItem label="Windows">
+    ```powershell
+    start ./out/graph.html
+    ```
+  </TabItem>
+</Tabs>
+
+The interactive viewer provides several exploration controls:
+
+- **Collapsed Domain Pillars:** Domains start collapsed (for example, `⊞ AI Agents, A2A & MCP Systems (14)`). Dashed virtual edges connect domain boxes to external technology hubs.
+- **Expanding Domains:** Click any domain node to expand its boundary box and view its member projects.
+- **Standalone Sub-Buckets:** Projects without external connections are grouped inside an interactive `⊕ Standalone · N` sub-bucket pill to keep the initial view clear. Click the pill to expand these projects.
+- **Connected Only Toggle:** Click the `⚡ Connected Only` chip in the top filter bar to focus purely on interconnected projects and technology hubs.
+- **Inspector Drawer:** Click any repository node to open the right-hand inspector. It displays the project description, language, detected stack tags, connectivity tier, and a direct link to the GitHub repository.
+
+---
+
+## 3. Review the Static Artifacts
+
+Inside the `./out` directory, `repotographer` generated three additional files:
+
+1. **`graph.png`:** A high-resolution Graphviz rendering suitable for READMEs and presentations.
+2. **`graph.dot`:** The raw Graphviz source script with cluster subgraphs and styled node definitions.
+3. **`graph.json`:** A portable JSON representation compatible with web components and automated documentation systems.
+
+---
+
+## 4. Customize the Domain Taxonomy
+
+Gemini proposes a baseline taxonomy, but you retain full control over the narrative structure.
+
+<Steps>
+
+1. **Open `taxonomy.json` in your editor**
+
+   ```json
+   {
+     "domains": [
+       {
+         "id": "domain_agentic_ai_protocols",
+         "label": "AI Agents, A2A & MCP Systems",
+         "blurb": "Architectures, protocols, skills, and tooling for autonomous agents."
+       }
+     ],
+     "assignments": {
+       "repo_a2acli": "domain_agentic_ai_protocols"
+     }
+   }
+   ```
+
+2. **Adjust labels, blurbs, or assignments**
+
+   You can rename domains, update descriptions, add new domain objects, or reassign a repository ID to a different domain.
+
+3. **Re-render your updated visual assets**
+
+   Run `repotographer render` with your edited taxonomy file:
+
+   ```bash
+   repotographer render ./out/graph.json --taxonomy ./out/taxonomy.json --out ./out
+   ```
+
+   The tool updates `graph.html`, `graph.dot`, and `graph.png` immediately without re-fetching from GitHub or making new LLM calls.
+
+</Steps>
+
+<Aside type="tip">
+  For team review workflows, commit `taxonomy.json` to your repository so teammates can track and curate portfolio groupings over time.
+</Aside>

@@ -1,0 +1,86 @@
+---
+title: Curating Domain Taxonomies
+description: Human-in-the-loop workflows for tailoring AI-suggested project taxonomies.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Automated clustering offers a quick starting point, but portfolio presentations often require deliberate narrative choices. `repotographer` separates taxonomy generation from graph rendering so you can curate domain groupings before publishing.
+
+## The Curation Workflow
+
+```
+┌─────────────────────────┐
+│ 1. Suggest Taxonomy     │  repotographer suggest <owner> --out taxonomy.json
+└────────────┬────────────┘
+             │
+┌────────────▼────────────┐
+│ 2. Edit Taxonomy        │  Hand-edit domain labels, descriptions, and assignments
+└────────────┬────────────┘
+             │
+┌────────────▼────────────┐
+│ 3. Render Outputs       │  repotographer render graph.json --taxonomy taxonomy.json
+└─────────────────────────┘
+```
+
+---
+
+## Step-by-Step Curation
+
+<Steps>
+
+1. **Generate the taxonomy proposal**
+
+   Run `repotographer suggest` to query Gemini and emit `taxonomy.json`:
+
+   ```bash
+   repotographer suggest ghchinoy --out ./taxonomy.json
+   ```
+
+2. **Understand the taxonomy schema**
+
+   `taxonomy.json` contains two top-level fields:
+
+   ```json
+   {
+     "generated": "2026-08-22T17:48:26Z",
+     "account": "ghchinoy",
+     "domains": [
+       {
+         "id": "domain_agentic_ai_protocols",
+         "label": "AI Agents, A2A & MCP Systems",
+         "blurb": "Architectures, protocols, skills, and tooling for autonomous agents."
+       },
+       {
+         "id": "domain_cloud_api_platform",
+         "label": "Cloud Infrastructure, Security & API Platforms",
+         "blurb": "Cloud integration middleware, enterprise API tooling, and microservices."
+       }
+     ],
+     "assignments": {
+       "repo_a2acli": "domain_agentic_ai_protocols",
+       "repo_apikeyscan": "domain_cloud_api_platform"
+     }
+   }
+   ```
+
+3. **Apply manual adjustments**
+
+   - **Rename Domains:** Change the `label` string to match your team terminology.
+   - **Update Descriptions:** Adjust the `blurb` string to clarify the focus of each pillar.
+   - **Move Repositories:** Change the target domain ID in `assignments` to reassign a project.
+   - **Add New Domains:** Append a new object to `domains` and assign repositories to its `id`.
+
+4. **Render your visual assets**
+
+   Apply the curated taxonomy to your base graph:
+
+   ```bash
+   repotographer render ./out/graph.json --taxonomy ./taxonomy.json --out ./dist
+   ```
+
+</Steps>
+
+<Aside type="note">
+  If a repository is assigned to a domain ID that does not exist in the `domains` array, `repotographer` falls back to the first available domain.
+</Aside>

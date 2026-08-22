@@ -1,0 +1,110 @@
+---
+title: Model Context Protocol (MCP) Server
+description: Connect repotographer to AI coding assistants using the official MCP Go SDK.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+`repotographer` includes an official Model Context Protocol (MCP) server over `stdio`. This allows coding assistants like Claude Desktop, Cursor, and OpenCode to query your GitHub ecosystem, propose domain groupings, and render diagrams on demand.
+
+## Starting the Server Manually
+
+Run the server directly on the command line:
+
+```bash
+repotographer mcp
+```
+
+The process listens for JSON-RPC messages on standard input and outputs responses to standard output.
+
+---
+
+## Client Configurations
+
+Add `repotographer` to your MCP client configuration file:
+
+<Tabs>
+  <TabItem label="OpenCode (opencode.json)">
+    ```json
+    {
+      "mcpServers": {
+        "repotographer": {
+          "command": "repotographer",
+          "args": ["mcp"],
+          "env": {
+            "GEMINI_API_KEY": "your-gemini-api-key"
+          }
+        }
+      }
+    }
+    ```
+  </TabItem>
+  <TabItem label="Claude Desktop (claude_desktop_config.json)">
+    ```json
+    {
+      "mcpServers": {
+        "repotographer": {
+          "command": "/usr/local/bin/repotographer",
+          "args": ["mcp"],
+          "env": {
+            "GEMINI_API_KEY": "your-gemini-api-key"
+          }
+        }
+      }
+    }
+    ```
+  </TabItem>
+  <TabItem label="Cursor (~/.cursor/mcp.json)">
+    ```json
+    {
+      "mcpServers": {
+        "repotographer": {
+          "command": "repotographer",
+          "args": ["mcp"],
+          "env": {
+            "GEMINI_API_KEY": "your-gemini-api-key"
+          }
+        }
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+---
+
+## Available MCP Tools
+
+The server exposes three tools implementing typed JSON schemas:
+
+### 1. `map_github_account`
+
+Fetches public repositories, detects technology connections, derives a domain taxonomy, and returns the complete graph structure.
+
+**Arguments:**
+- `owner` (string, required): GitHub username or organization name.
+- `account_type` (string, optional): `"user"` or `"org"`.
+- `limit` (integer, optional): Maximum repositories to analyze (default `500`).
+- `use_llm` (boolean, optional): Refine taxonomy with Gemini (default `true`).
+- `model` (string, optional): Gemini model name (default `"gemini-3.7-flash"`).
+- `use_vertex` (boolean, optional): Use Google Cloud Vertex AI backend.
+
+### 2. `suggest_taxonomy`
+
+Analyzes repositories and returns a proposed domain pillar taxonomy with project assignments without building full graph geometry.
+
+**Arguments:**
+- `owner` (string, required): GitHub username or organization.
+- `account_type` (string, optional): `"user"` or `"org"`.
+- `limit` (integer, optional): Maximum repositories to analyze.
+- `model` (string, optional): Gemini model name.
+- `use_vertex` (boolean, optional): Use Google Cloud Vertex AI backend.
+
+### 3. `render_graph`
+
+Accepts a concept graph object and writes the requested formats (HTML, DOT, PNG, JSON) to disk.
+
+**Arguments:**
+- `graph` (object, required): The complete concept graph data structure.
+- `out_dir` (string, optional): Directory path where files should be written.
+- `formats` (array of strings, optional): `["html", "dot", "png", "json"]`.

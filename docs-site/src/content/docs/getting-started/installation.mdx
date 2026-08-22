@@ -1,0 +1,120 @@
+---
+title: Installation & Setup
+description: Install prerequisites, configure authentication, and build the repotographer binary.
+---
+
+import { Steps, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
+
+Follow these steps to install the `repotographer` CLI and configure your environment.
+
+## 1. Prerequisites
+
+<Steps>
+
+1. **Install and authenticate GitHub CLI (`gh`)**
+
+   `repotographer` invokes `gh` to retrieve public repository metadata from GitHub.
+
+   <Tabs>
+     <TabItem label="macOS (Homebrew)">
+       ```bash
+       brew install gh
+       gh auth login
+       ```
+     </TabItem>
+     <TabItem label="Linux (apt)">
+       ```bash
+       sudo apt install gh
+       gh auth login
+       ```
+     </TabItem>
+     <TabItem label="Windows (winget)">
+       ```powershell
+       winget install --id GitHub.cli
+       gh auth login
+       ```
+     </TabItem>
+   </Tabs>
+
+   Verify authentication before running repotographer:
+
+   ```bash
+   gh auth status
+   ```
+
+2. **Install Graphviz (Optional, for PNG rendering)**
+
+   `repotographer` renders static `.png` diagrams when the `dot` command is present on your PATH. When Graphviz is missing, the tool generates `.dot` and interactive `.html` files without halting.
+
+   <Tabs>
+     <TabItem label="macOS (Homebrew)">
+       ```bash
+       brew install graphviz
+       ```
+     </TabItem>
+     <TabItem label="Linux (apt)">
+       ```bash
+       sudo apt install graphviz
+       ```
+     </TabItem>
+   </Tabs>
+
+3. **Configure Gemini or Vertex AI (Optional, for AI taxonomy)**
+
+   `repotographer` uses `gemini-3.7-flash` to organize repositories into high-level domain pillars.
+
+   <Tabs>
+     <TabItem label="Gemini Developer API (Default)">
+       Obtain an API key from Google AI Studio and export it:
+       ```bash
+       export GEMINI_API_KEY="your-gemini-api-key"
+       ```
+     </TabItem>
+     <TabItem label="Google Cloud Vertex AI">
+       Authenticate with Google Cloud and specify your project:
+       ```bash
+       export GOOGLE_GENAI_USE_VERTEXAI="true"
+       export GOOGLE_CLOUD_PROJECT="your-project-id"
+       export GOOGLE_CLOUD_LOCATION="global"
+       ```
+     </TabItem>
+   </Tabs>
+
+   <Aside type="tip">
+     You can run `repotographer` completely offline without an API key by passing `--llm=false`. It will use deterministic keyword heuristics.
+   </Aside>
+
+</Steps>
+
+---
+
+## 2. Install repotographer
+
+Install directly with Go 1.23+ or clone the source repository:
+
+<Tabs>
+  <TabItem label="Go Install">
+    ```bash
+    go install github.com/ghchinoy/repotographer@latest
+    ```
+  </TabItem>
+  <TabItem label="From Source">
+    ```bash
+    git clone https://github.com/ghchinoy/repotographer.git
+    cd repotographer
+    make build
+    # Binary is created in ./bin/repotographer
+    ```
+  </TabItem>
+</Tabs>
+
+Verify the binary is available:
+
+```bash
+repotographer version
+```
+
+Output:
+```text
+repotographer v0.1.0
+```

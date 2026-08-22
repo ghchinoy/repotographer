@@ -54,13 +54,25 @@ Available as both a **standalone CLI tool** and an **MCP (Model Context Protocol
 
 ---
 
-## 🚀 Installation
+## 🚀 Installation & Local Development
 
-### From Source (Go 1.23+)
+### Install via Go
+```bash
+go install github.com/ghchinoy/repotographer@latest
+```
+
+### Build from Source
 ```bash
 git clone https://github.com/ghchinoy/repotographer.git
 cd repotographer
-go install .
+make build
+# Binary is placed in ./bin/repotographer
+```
+
+### Run Tests and Code Quality
+```bash
+make test
+make vet
 ```
 
 ---
@@ -162,6 +174,28 @@ Add to your MCP configuration (e.g. `claude_desktop_config.json` or `opencode.js
 1. **`connected`** (Solid border, primary glow): Repositories that link to at least one detected technology hub.
 2. **`standalone`** (Dashed border, muted): Standalone repositories with descriptive signal (topics, description, or stack tags). In the interactive HTML visualizer, these are isolated into interactive `⊕ Standalone · N` sub-buckets to prevent initial clutter.
 3. **`bare`** (Dotted border, subtle): Minimal repositories with no descriptions or topics.
+
+---
+
+## 📖 Documentation
+
+Full documentation, interactive guides, and reference material are published at **[ghchinoy.github.io/repotographer](https://ghchinoy.github.io/repotographer/)**.
+
+- [Getting Started & Tutorial](https://ghchinoy.github.io/repotographer/getting-started/your-first-map/)
+- [Curating Domain Taxonomies](https://ghchinoy.github.io/repotographer/guides/curating-taxonomy/)
+- [Output Formats](https://ghchinoy.github.io/repotographer/guides/output-formats/)
+- [MCP Server Setup](https://ghchinoy.github.io/repotographer/guides/mcp-server/)
+- [CLI Reference](https://ghchinoy.github.io/repotographer/reference/cli/)
+- [Connectivity Model](https://ghchinoy.github.io/repotographer/reference/connectivity-model/)
+
+---
+
+## 🤝 Contributing
+
+Contributions, bug reports, and suggestions are welcome.
+1. Open an issue on GitHub to discuss proposed enhancements.
+2. Submit a pull request with unit tests covering changes.
+3. Ensure `make test` and `make vet` pass before submitting.
 
 ---
 

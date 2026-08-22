@@ -1,0 +1,110 @@
+---
+title: Output Formats
+description: Understand and configure the visual and data formats produced by repotographer.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+`repotographer` produces four primary artifact types during a mapping run:
+
+| Format | File | Purpose |
+|---|---|---|
+| **HTML** | `graph.html` | Self-contained, interactive web visualizer |
+| **PNG** | `graph.png` | Static diagram for READMEs and presentations |
+| **DOT** | `graph.dot` | Graphviz script with domain clustering |
+| **JSON** | `graph.json` | Machine-readable graph dataset |
+
+---
+
+## 1. Interactive HTML Visualizer (`graph.html`)
+
+The HTML visualizer embeds Cytoscape.js and the `cytoscape-fcose` layout engine directly from CDN. It requires no local web server or build pipeline.
+
+Key features:
+- **Compound Domain Boxes:** Renders collapsible domains with item count indicators.
+- **Standalone Sub-Buckets:** Isolates unlinked repositories in a single clickable node (`⊕ Standalone · N`) to keep the initial view clear.
+- **Density-Aware Physics:** Adapts spring tension and node separation according to graph density, preventing overlapping labels.
+- **Filter Bar:** Toggles technology filters (Go, Rust, WASM, MCP, Audio) and provides a `⚡ Connected Only` mode.
+- **Slide-Out Inspector:** Displays repository details, stack badges, and GitHub links upon selection.
+
+---
+
+## 2. Static PNG Diagram (`graph.png`)
+
+When the Graphviz `dot` command is present on your system, `repotographer` invokes it to generate a high-resolution PNG image.
+
+Styling conventions in the PNG diagram:
+- **Gold Diamonds:** Technology hubs (MCP, WASM, Go, Rust, Audio).
+- **Solid Blue Rectangles:** Interconnected repositories.
+- **Dashed Gray Rectangles:** Standalone repositories.
+- **Dotted Muted Rectangles:** Repositories with minimal metadata.
+- **Dashed Subgraphs:** Domain pillar containers.
+
+---
+
+## 3. Graphviz Source (`graph.dot`)
+
+The DOT file provides a complete script for customizing diagram geometry with Graphviz:
+
+```text
+digraph ConceptGraph {
+  graph [rankdir=LR, bgcolor="#0f172a", nodesep="0.6", ranksep="0.8"];
+  node [fontname="Helvetica", fontsize=10];
+  
+  // Core Technology Hubs
+  "tech_mcp" [label="Model Context Protocol (MCP)", shape=diamond, style=filled, fillcolor="#f59e0b"];
+
+  // Domain Subgraphs
+  subgraph "cluster_domain_agents" {
+    label="AI Agents & Protocols";
+    style="rounded,dashed";
+    "repo_a2acli" [label="a2acli", shape=box, style="filled,rounded", fillcolor="#1e293b", color="#38bdf8"];
+  }
+
+  // Edges
+  "repo_a2acli" -> "tech_mcp" [color="#38bdf8", label="implements"];
+}
+```
+
+---
+
+## 4. Graph Dataset (`graph.json`)
+
+The JSON dataset uses the standard format consumed by the `ghc.wtf` website explorer and custom web components:
+
+```json
+{
+  "generated": "2026-08-22T17:48:26Z",
+  "account": "ghchinoy",
+  "stats": {
+    "totalGithubRepos": 139,
+    "includedRepos": 137,
+    "domainCount": 5,
+    "techCount": 9,
+    "edgeCount": 42
+  },
+  "domains": [],
+  "tech": [],
+  "nodes": [],
+  "edges": []
+}
+```
+
+---
+
+## Selecting Specific Formats
+
+Use the `--format` flag to restrict generated files during `map` or `render`:
+
+<Tabs>
+  <TabItem label="HTML & JSON Only">
+    ```bash
+    repotographer map ghchinoy --format html,json --out ./web-assets
+    ```
+  </TabItem>
+  <TabItem label="DOT & PNG Only">
+    ```bash
+    repotographer map ghchinoy --format dot,png --out ./diagrams
+    ```
+  </TabItem>
+</Tabs>
