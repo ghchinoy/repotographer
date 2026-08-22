@@ -3,7 +3,8 @@ import starlight from '@astrojs/starlight';
 import catppuccin from '@catppuccin/starlight';
 
 export default defineConfig({
-  site: 'https://ghchinoy.github.io/repotographer',
+  site: 'https://ghchinoy.github.io',
+  base: '/repotographer',
   integrations: [
     starlight({
       title: 'repotographer',
