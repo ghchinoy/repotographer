@@ -56,6 +56,9 @@ Available as both a **standalone CLI tool** and an **MCP (Model Context Protocol
 
 ## 🚀 Installation & Local Development
 
+### Download Pre-built Binary
+Download the pre-compiled binary for macOS (Apple Silicon & Intel), Linux, or Windows from the [GitHub Releases](https://github.com/ghchinoy/repotographer/releases) page.
+
 ### Install via Go
 ```bash
 go install github.com/ghchinoy/repotographer@latest
