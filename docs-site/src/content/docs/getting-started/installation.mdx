@@ -74,14 +74,14 @@ Follow these steps to install the `repotographer` CLI and configure your environ
        Authenticate with Google Cloud and specify your project:
        ```bash
        export GOOGLE_GENAI_USE_VERTEXAI="true"
-       export GOOGLE_CLOUD_PROJECT="your-project-id"
+       export GOOGLE_CLOUD_PROJECT="your-project-id"  # Or PROJECT_ID / GCP_PROJECT
        export GOOGLE_CLOUD_LOCATION="global"
        ```
      </TabItem>
    </Tabs>
 
    <Aside type="tip">
-     You can run `repotographer` completely offline without an API key by passing `--llm=false`. It will use deterministic keyword heuristics.
+     If `GEMINI_API_KEY` is not set, but a GCP project is present in your ambient environment (`GOOGLE_CLOUD_PROJECT`, `PROJECT_ID`, or `GCP_PROJECT`), `repotographer` automatically detects and uses Vertex AI with Application Default Credentials. If no credentials are configured, it falls back cleanly to deterministic keyword heuristics.
    </Aside>
 
 </Steps>
@@ -116,5 +116,5 @@ repotographer version
 
 Output:
 ```text
-repotographer v0.1.0
+repotographer v0.2.0
 ```

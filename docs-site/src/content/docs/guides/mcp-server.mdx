@@ -19,6 +19,23 @@ The process listens for JSON-RPC messages on standard input and outputs response
 
 ---
 
+## Generating Client Configurations
+
+You can generate ready-to-use configuration blocks for your specific client with `repotographer mcp config`:
+
+```bash
+# Print configurations for all supported clients
+repotographer mcp config
+
+# Print configuration for OpenCode
+repotographer mcp config --client opencode
+
+# Print configuration for Claude Desktop with ambient environment variables
+repotographer mcp config --client claude --env
+```
+
+---
+
 ## Client Configurations
 
 Add `repotographer` to your MCP client configuration file:
@@ -27,13 +44,14 @@ Add `repotographer` to your MCP client configuration file:
   <TabItem label="OpenCode (opencode.json)">
     ```json
     {
-      "mcpServers": {
+      "mcp": {
         "repotographer": {
-          "command": "repotographer",
-          "args": ["mcp"],
-          "env": {
+          "type": "local",
+          "command": ["repotographer", "mcp"],
+          "environment": {
             "GEMINI_API_KEY": "your-gemini-api-key"
-          }
+          },
+          "enabled": true
         }
       }
     }
@@ -69,7 +87,34 @@ Add `repotographer` to your MCP client configuration file:
     }
     ```
   </TabItem>
+  <TabItem label="Antigravity (.antigravity/mcp_config.json)">
+    ```json
+    {
+      "mcpServers": {
+        "repotographer": {
+          "command": "repotographer",
+          "args": ["mcp"],
+          "env": {
+            "GEMINI_API_KEY": "your-gemini-api-key"
+          }
+        }
+      }
+    }
+    ```
+  </TabItem>
 </Tabs>
+
+---
+
+## Agent Plugin & Skills
+
+`repotographer` includes an official bundle adhering to the [Agent Plugins Specification](https://github.com/agentplugins/agent-plugins-spec):
+
+- **Plugin Manifest:** [`plugins/repotographer/plugin.json`](https://github.com/ghchinoy/repotographer/blob/main/plugins/repotographer/plugin.json)
+- **MCP Declaration:** [`plugins/repotographer/mcp.json`](https://github.com/ghchinoy/repotographer/blob/main/plugins/repotographer/mcp.json)
+- **Skill Workflow:** [`plugins/repotographer/skills/repotographer/SKILL.md`](https://github.com/ghchinoy/repotographer/blob/main/plugins/repotographer/skills/repotographer/SKILL.md)
+
+Agent runtimes automatically discover these files to guide users through mapping, taxonomy curation, and rendering.
 
 ---
 

@@ -86,3 +86,20 @@ repotographer mcp
 ```
 
 Starts the Model Context Protocol stdio server. Communicates via JSON-RPC on standard I/O.
+
+---
+
+## `repotographer mcp config`
+
+```bash
+repotographer mcp config [flags]
+```
+
+Prints formatted JSON configuration blocks for integrating `repotographer` into popular MCP clients (Claude Desktop, Cursor, OpenCode, and Antigravity).
+
+### Flags
+
+| Flag | Type | Default | Description |
+|---|---|---|---|
+| `-c, --client` | string | `"all"` | Target client: `"all"`, `"claude"`, `"cursor"`, `"opencode"`, or `"antigravity"`. |
+| `--env` | boolean | `false` | Populate JSON config with detected ambient environment variables instead of placeholders. |
