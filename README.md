@@ -166,6 +166,33 @@ Add to your MCP configuration (e.g. `claude_desktop_config.json` or `opencode.js
 | `suggest_taxonomy` | `owner` (string, required)<br>`account_type` ("user" \| "org")<br>`model` (string)<br>`use_vertex` (bool) | Analyzes repositories and returns a proposed domain pillar taxonomy with project assignments. |
 | `render_graph` | `graph` (object, required)<br>`out_dir` (string)<br>`formats` (array: "html", "dot", "png", "json") | Renders a concept graph to disk and returns the generated file paths. |
 
+### Generate Client Configurations
+
+Use the built-in `mcp config` helper to print formatted configuration snippets for Claude Desktop, Cursor, OpenCode, or Antigravity:
+
+```bash
+# Print configs for all supported clients
+repotographer mcp config
+
+# Print configuration for a specific client
+repotographer mcp config --client opencode
+
+# Populate configuration with detected ambient environment variables
+repotographer mcp config --client claude --env
+```
+
+---
+
+## 🧩 Agent Plugin & Skills Integration
+
+`repotographer` packages an official plugin adhering to the [Agent Plugins Specification](https://github.com/agentplugins/agent-plugins-spec). Agent runtimes (such as Antigravity, OpenCode, and Claude) discover the plugin manifest, MCP server definition, and workflow skills automatically.
+
+| File | Purpose |
+|---|---|
+| [`plugins/repotographer/plugin.json`](./plugins/repotographer/plugin.json) | Plugin metadata and version declaration |
+| [`plugins/repotographer/mcp.json`](./plugins/repotographer/mcp.json) | MCP stdio server definition |
+| [`plugins/repotographer/skills/repotographer/SKILL.md`](./plugins/repotographer/skills/repotographer/SKILL.md) | Step-by-step workflow guidance for coding agents |
+
 ---
 
 ## 🏛️ Architecture & Connectivity Model

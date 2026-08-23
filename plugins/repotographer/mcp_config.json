@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "repotographer": {
+      "command": "repotographer",
+      "args": ["mcp"],
+      "env": {
+        "GEMINI_API_KEY": "your-gemini-api-key"
+      }
+    }
+  }
+}

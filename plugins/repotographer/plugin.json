@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "repotographer",
+  "version": "0.2.0",
+  "description": "Map public GitHub repositories into structured concept graphs and AI-suggested domain taxonomies.",
+  "author": {
+    "name": "ghchinoy",
+    "url": "https://github.com/ghchinoy"
+  },
+  "homepage": "https://ghchinoy.github.io/repotographer",
+  "repository": "https://github.com/ghchinoy/repotographer",
+  "license": "Apache-2.0",
+  "keywords": [
+    "github",
+    "concept-graph",
+    "taxonomy",
+    "graphviz",
+    "cytoscape",
+    "mcp",
+    "developer-tooling"
+  ]
+}

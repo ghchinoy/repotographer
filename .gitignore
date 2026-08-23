@@ -1,6 +1,6 @@
 # Binaries
 bin/
-repotographer
+/repotographer
 
 # OS / Editor artifacts
 .DS_Store
