@@ -211,19 +211,22 @@ var suggestCmd = &cobra.Command{
 			return err
 		}
 
-		graph, _ := cluster.BuildDeterministicGraph(owner, accType, repos, true)
+		graph, detTax := cluster.BuildDeterministicGraph(owner, accType, repos, true)
+		tax := detTax
 
 		fmt.Printf("✨ Asking Gemini (%s) to propose domain taxonomy...\n", modelName)
-		tax, usedLLM, err := taxonomy.SuggestTaxonomy(context.Background(), graph, taxonomy.LLMOptions{
+		llmTax, usedLLM, err := taxonomy.SuggestTaxonomy(context.Background(), graph, taxonomy.LLMOptions{
 			Enabled:   true,
 			Model:     modelName,
 			UseVertex: useVertex,
 		})
 		if err != nil {
-			return fmt.Errorf("failed to generate taxonomy: %w", err)
-		}
-		if !usedLLM {
-			fmt.Println("⚠️  LLM was unavailable; generated heuristic taxonomy.")
+			fmt.Printf("⚠️  LLM taxonomy generation notice: %v\n", err)
+			fmt.Println("   Generated deterministic heuristic taxonomy.")
+		} else if usedLLM && llmTax != nil {
+			tax = llmTax
+		} else {
+			fmt.Println("ℹ️  Using deterministic heuristic taxonomy.")
 		}
 
 		if err := taxonomy.SaveTaxonomy(outPath, tax); err != nil {

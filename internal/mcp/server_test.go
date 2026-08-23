@@ -134,3 +134,22 @@ func TestRenderGraphToolExecution(t *testing.T) {
 		t.Fatalf("expected non-empty content response from render_graph")
 	}
 }
+
+func TestMapAccountResultStructure(t *testing.T) {
+	graph := &model.Graph{Account: "test"}
+	tax := &model.Taxonomy{Account: "test"}
+
+	res := MapAccountResult{
+		Graph:    graph,
+		Taxonomy: tax,
+		LLMUsed:  false,
+		LLMNote:  "Deterministic heuristic taxonomy used",
+	}
+
+	if res.LLMUsed {
+		t.Errorf("expected LLMUsed to be false")
+	}
+	if res.LLMNote == "" {
+		t.Errorf("expected LLMNote to be populated")
+	}
+}

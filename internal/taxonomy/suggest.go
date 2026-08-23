@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/ghchinoy/repotographer/internal/model"
@@ -84,6 +85,9 @@ func SaveTaxonomy(filePath string, tax *model.Taxonomy) error {
 	data, err := json.MarshalIndent(tax, "", "  ")
 	if err != nil {
 		return fmt.Errorf("failed to serialize taxonomy JSON: %w", err)
+	}
+	if err := os.MkdirAll(filepath.Dir(filePath), 0755); err != nil {
+		return fmt.Errorf("failed to create directory for taxonomy file: %w", err)
 	}
 	if err := os.WriteFile(filePath, data, 0644); err != nil {
 		return fmt.Errorf("failed to write taxonomy file: %w", err)

@@ -43,6 +43,8 @@ type MapAccountParams struct {
 type MapAccountResult struct {
 	Graph    *model.Graph    `json:"graph"`
 	Taxonomy *model.Taxonomy `json:"taxonomy"`
+	LLMUsed  bool            `json:"llm_used"`
+	LLMNote  string          `json:"llm_note,omitempty"`
 }
 
 // SuggestTaxonomyParams defines the input for the suggest_taxonomy MCP tool.
@@ -52,6 +54,13 @@ type SuggestTaxonomyParams struct {
 	Limit       int    `json:"limit,omitempty" jsonschema:"Maximum number of repositories to analyze"`
 	Model       string `json:"model,omitempty" jsonschema:"Gemini model ID to use"`
 	UseVertex   bool   `json:"use_vertex,omitempty" jsonschema:"Whether to use Google Cloud Vertex AI"`
+}
+
+// SuggestTaxonomyResult defines the output of the suggest_taxonomy MCP tool.
+type SuggestTaxonomyResult struct {
+	Taxonomy *model.Taxonomy `json:"taxonomy"`
+	LLMUsed  bool            `json:"llm_used"`
+	LLMNote  string          `json:"llm_note,omitempty"`
 }
 
 // RenderGraphParams defines the input for the render_graph MCP tool.
@@ -101,21 +110,32 @@ func RunMCPServer(ctx context.Context) error {
 
 		graph, tax := cluster.BuildDeterministicGraph(args.Owner, args.AccountType, repos, true)
 
+		llmUsed := false
+		llmNote := ""
 		if args.UseLLM {
-			llmTax, usedLLM, _ := taxonomy.SuggestTaxonomy(ctx, graph, taxonomy.LLMOptions{
+			llmTax, usedLLM, err := taxonomy.SuggestTaxonomy(ctx, graph, taxonomy.LLMOptions{
 				Enabled:   true,
 				Model:     modelName,
 				UseVertex: args.UseVertex,
 			})
-			if usedLLM && llmTax != nil {
+			if err != nil {
+				llmNote = fmt.Sprintf("LLM taxonomy refinement unavailable: %v (used deterministic taxonomy)", err)
+			} else if usedLLM && llmTax != nil {
 				tax = llmTax
 				taxonomy.ApplyTaxonomy(graph, tax)
+				llmUsed = true
+			} else {
+				llmNote = "Deterministic heuristic taxonomy used"
 			}
+		} else {
+			llmNote = "LLM refinement disabled by parameter"
 		}
 
 		res := MapAccountResult{
 			Graph:    graph,
 			Taxonomy: tax,
+			LLMUsed:  llmUsed,
+			LLMNote:  llmNote,
 		}
 
 		resJSON, _ := json.Marshal(res)
@@ -129,7 +149,7 @@ func RunMCPServer(ctx context.Context) error {
 	// Tool 2: suggest_taxonomy
 	mcp.AddTool(server, &mcp.Tool{
 		Name:        "suggest_taxonomy",
-		Description: "Proposes an intelligent domain pillar taxonomy for a GitHub account's repositories using Gemini.",
+		Description: "Proposes an intelligent domain pillar taxonomy for a GitHub account's repositories using Gemini (with automatic heuristic fallback).",
 	}, func(ctx context.Context, req *mcp.CallToolRequest, args SuggestTaxonomyParams) (*mcp.CallToolResult, any, error) {
 		limit := args.Limit
 		if limit <= 0 {
@@ -149,23 +169,37 @@ func RunMCPServer(ctx context.Context) error {
 			return nil, nil, fmt.Errorf("github fetch error: %w", err)
 		}
 
-		graph, _ := cluster.BuildDeterministicGraph(args.Owner, args.AccountType, repos, true)
+		graph, detTax := cluster.BuildDeterministicGraph(args.Owner, args.AccountType, repos, true)
+		tax := detTax
 
-		tax, _, err := taxonomy.SuggestTaxonomy(ctx, graph, taxonomy.LLMOptions{
+		llmTax, usedLLM, err := taxonomy.SuggestTaxonomy(ctx, graph, taxonomy.LLMOptions{
 			Enabled:   true,
 			Model:     modelName,
 			UseVertex: args.UseVertex,
 		})
+		llmUsed := false
+		llmNote := ""
 		if err != nil {
-			return nil, nil, fmt.Errorf("taxonomy suggestion failed: %w", err)
+			llmNote = fmt.Sprintf("LLM taxonomy refinement unavailable: %v (used deterministic taxonomy)", err)
+		} else if usedLLM && llmTax != nil {
+			tax = llmTax
+			llmUsed = true
+		} else {
+			llmNote = "Deterministic heuristic taxonomy used"
 		}
 
-		taxJSON, _ := json.Marshal(tax)
+		res := SuggestTaxonomyResult{
+			Taxonomy: tax,
+			LLMUsed:  llmUsed,
+			LLMNote:  llmNote,
+		}
+
+		resJSON, _ := json.Marshal(res)
 		return &mcp.CallToolResult{
 			Content: []mcp.Content{
-				&mcp.TextContent{Text: string(taxJSON)},
+				&mcp.TextContent{Text: string(resJSON)},
 			},
-		}, tax, nil
+		}, res, nil
 	})
 
 	// Tool 3: render_graph
