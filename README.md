@@ -177,16 +177,19 @@ Add to your MCP configuration (e.g. `claude_desktop_config.json` or `opencode.js
 
 ---
 
-## 📖 Documentation
+## 📖 Documentation & Live Demo
 
 Full documentation, interactive guides, and reference material are published at **[ghchinoy.github.io/repotographer](https://ghchinoy.github.io/repotographer/)**.
 
+- **[Live Interactive Demo](https://ghchinoy.github.io/repotographer/demo/)**
 - [Getting Started & Tutorial](https://ghchinoy.github.io/repotographer/getting-started/your-first-map/)
 - [Curating Domain Taxonomies](https://ghchinoy.github.io/repotographer/guides/curating-taxonomy/)
 - [Output Formats](https://ghchinoy.github.io/repotographer/guides/output-formats/)
 - [MCP Server Setup](https://ghchinoy.github.io/repotographer/guides/mcp-server/)
 - [CLI Reference](https://ghchinoy.github.io/repotographer/reference/cli/)
 - [Connectivity Model](https://ghchinoy.github.io/repotographer/reference/connectivity-model/)
+
+Sample output files (`graph.html`, `graph.png`, `graph.dot`, `graph.json`, `taxonomy.json`) generated from a real mapping run are committed in [`examples/sample-map/`](./examples/sample-map/).
 
 ---
 
