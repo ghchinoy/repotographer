@@ -892,7 +892,11 @@
       closeInspector();
     };
 
-    window.addEventListener('DOMContentLoaded', initGraph);
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', initGraph);
+    } else {
+      initGraph();
+    }
   </script>
 </body>
 </html>
