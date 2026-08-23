@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"os"
 	"strings"
 
 	"github.com/ghchinoy/repotographer/internal/model"
@@ -36,56 +35,40 @@ type LLMTaxonomyResponse struct {
 
 // ProposeWithGemini sends repository metadata to Gemini to suggest refined domain pillars and assignments.
 func ProposeWithGemini(ctx context.Context, account string, nodes []model.Node, opts LLMOptions) (*model.Taxonomy, error) {
-	modelName := opts.Model
-	if modelName == "" {
-		modelName = "gemini-3.7-flash"
+	cfg, err := ResolveLLMConfig(opts)
+	if err != nil {
+		return nil, err
+	}
+
+	if !cfg.Enabled || cfg.Backend == BackendNone {
+		return nil, fmt.Errorf("no LLM credentials configured (set GEMINI_API_KEY, or GOOGLE_CLOUD_PROJECT / PROJECT_ID / GCP_PROJECT for Vertex AI)")
 	}
 
 	var client *genai.Client
-	var err error
 
-	useVertex := opts.UseVertex || os.Getenv("GOOGLE_GENAI_USE_VERTEXAI") == "true"
-	if useVertex {
-		project := opts.Project
-		if project == "" {
-			project = os.Getenv("GOOGLE_CLOUD_PROJECT")
-		}
-		location := opts.Location
-		if location == "" {
-			location = os.Getenv("GOOGLE_CLOUD_LOCATION")
-		}
-		if location == "" {
-			location = "global"
-		}
-		if project == "" {
-			return nil, fmt.Errorf("Vertex AI selected but GOOGLE_CLOUD_PROJECT is unset")
-		}
-
+	switch cfg.Backend {
+	case BackendVertex:
 		client, err = genai.NewClient(ctx, &genai.ClientConfig{
-			Project:  project,
-			Location: location,
+			Project:  cfg.Project,
+			Location: cfg.Location,
 			Backend:  genai.BackendVertexAI,
 		})
 		if err != nil {
-			return nil, fmt.Errorf("failed to create Vertex AI GenAI client: %w", err)
+			return nil, fmt.Errorf("failed to create Vertex AI GenAI client (project: %s, location: %s): %w", cfg.Project, cfg.Location, err)
 		}
-	} else {
-		apiKey := opts.APIKey
-		if apiKey == "" {
-			apiKey = os.Getenv("GEMINI_API_KEY")
-		}
-		if apiKey == "" {
-			return nil, fmt.Errorf("GEMINI_API_KEY environment variable is not set (and --vertex was not specified)")
-		}
-
+	case BackendGemini:
 		client, err = genai.NewClient(ctx, &genai.ClientConfig{
-			APIKey:  apiKey,
+			APIKey:  cfg.APIKey,
 			Backend: genai.BackendGeminiAPI,
 		})
 		if err != nil {
 			return nil, fmt.Errorf("failed to create Gemini API GenAI client: %w", err)
 		}
+	default:
+		return nil, fmt.Errorf("unsupported LLM backend: %s", cfg.Backend)
 	}
+
+	modelName := cfg.Model
 
 	// Prepare compact repository summaries
 	type RepoSummary struct {
