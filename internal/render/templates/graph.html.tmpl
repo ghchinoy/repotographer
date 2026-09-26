@@ -271,6 +271,185 @@
     }
     .inspector-links a:hover { opacity: 0.9; }
 
+    /* Search Box in Header */
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 260px;
+    }
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      padding: 0.35rem 1.8rem 0.35rem 2rem;
+      font-size: 0.8rem;
+      color: var(--text-main);
+      font-family: inherit;
+      outline: none;
+      transition: all 0.15s ease;
+    }
+    .search-input:focus {
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 2px var(--brand-glow);
+    }
+    .search-clear {
+      position: absolute;
+      right: 8px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+    .search-clear:hover { color: var(--text-main); }
+    .search-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      max-height: 280px;
+      overflow-y: auto;
+      z-index: 50;
+    }
+    .search-result {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.8rem;
+      transition: background 0.1s ease;
+    }
+    .search-result:last-child { border-bottom: none; }
+    .search-result:hover { background: var(--bg-surface-elevated); }
+    .res-badge {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .res-domain { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid #38bdf8; }
+    .res-tech { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid #f59e0b; }
+    .res-repo { background: var(--bg-surface-elevated); color: var(--text-muted); border: 1px solid var(--border-color); }
+    .res-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .search-empty { padding: 0.75rem; text-align: center; font-size: 0.75rem; color: var(--text-muted); }
+
+    /* Inspector Connected Neighbors */
+    .inspector-section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .inspector-neighbors-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .inspector-nbr-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.75rem;
+      color: var(--text-main);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s ease;
+      max-width: 100%;
+    }
+    .inspector-nbr-btn:hover {
+      border-color: var(--brand-primary);
+      color: var(--brand-primary);
+    }
+    .nbr-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand-primary);
+      flex-shrink: 0;
+    }
+    .inspector-nbr-btn.nbr-tech .nbr-indicator {
+      background: #f59e0b;
+      border-radius: 2px;
+    }
+    .nbr-label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 180px;
+    }
+
+    /* Legend Overlay */
+    .legend-container {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      z-index: 25;
+    }
+    .legend-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.35rem 0.65rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.15s ease;
+    }
+    .legend-btn:hover {
+      color: var(--text-main);
+      border-color: var(--brand-primary);
+    }
+    .legend-popover {
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 0;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      width: 175px;
+      font-size: 0.75rem;
+    }
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; }
+    .swatch { width: 10px; height: 10px; flex-shrink: 0; }
+    .sw-domain { background: var(--brand-primary); border-radius: 2px; }
+    .sw-tech { background: #f59e0b; border-radius: 2px; }
+    .sw-connected { background: #38bdf8; border-radius: 50%; }
+    .sw-standalone { background: #94a3b8; border-radius: 50%; }
+    .sw-edge { width: 14px; height: 2px; background: var(--border-color); }
+
     .interaction-hint {
       position: absolute;
       top: 1rem;
@@ -295,6 +474,15 @@
         <span class="badge">{{ .AccountType }}</span>
       </h1>
     </div>
+
+    <!-- Type-Ahead Search -->
+    <div class="search-box">
+      <svg class="search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search repos, domains, tech..." autocomplete="off" />
+      <button class="search-clear" id="searchClear" style="display: none;" title="Clear">✕</button>
+      <div class="search-dropdown" id="searchDropdown" style="display: none;"></div>
+    </div>
+
     <div class="stats-bar">
       <span>{{ .Stats.IncludedRepos }} Repositories</span>
       <span>•</span>
@@ -311,6 +499,18 @@
   <div class="main-viewport">
     <div class="interaction-hint">Tap domain to expand/collapse • Drag nodes • Zoom/Pan freely</div>
     <div id="cy"></div>
+
+    <!-- Legend Overlay (Bottom Left) -->
+    <div class="legend-container">
+      <button class="legend-btn" id="btnLegend" title="Toggle Legend">ℹ Legend</button>
+      <div class="legend-popover" id="legendPopover" style="display: none;">
+        <div class="legend-item"><span class="swatch sw-domain"></span><span>Domain (Group)</span></div>
+        <div class="legend-item"><span class="swatch sw-tech"></span><span>Tech Hub</span></div>
+        <div class="legend-item"><span class="swatch sw-connected"></span><span>Connected Repo</span></div>
+        <div class="legend-item"><span class="swatch sw-standalone"></span><span>Standalone Repo</span></div>
+        <div class="legend-item"><span class="swatch sw-edge"></span><span>Connection Edge</span></div>
+      </div>
+    </div>
 
     <div class="controls-overlay">
       <button class="ctrl-btn" id="btnExpandAll" title="Expand / Collapse All">⊞</button>
@@ -330,6 +530,7 @@
       </div>
       <p class="inspector-desc" id="inspDesc">Description</p>
       <div class="inspector-tags" id="inspTags"></div>
+      <div id="inspConnections"></div>
       <div class="inspector-links" id="inspLinks"></div>
     </div>
   </div>
@@ -404,19 +605,19 @@
           selector: 'node[?isDomain][?isCollapsed]',
           style: {
             'shape': 'round-rectangle',
-            'corner-radius': '8px',
+            'corner-radius': '10px',
             'width': 'label',
             'height': 'label',
-            'padding': '14px',
+            'padding': '18px',
             'text-wrap': 'wrap',
-            'text-max-width': '160px',
+            'text-max-width': '190px',
             'background-color': colors.collapsedBg,
-            'border-width': 2,
+            'border-width': 2.5,
             'border-color': colors.collapsedBorder,
             'border-style': 'solid',
             'label': 'data(displayLabel)',
             'font-family': 'Inter, system-ui, sans-serif',
-            'font-size': '11px',
+            'font-size': '12px',
             'font-weight': '700',
             'color': colors.textMain,
             'text-valign': 'center',
@@ -470,7 +671,8 @@
             'color': colors.textMain,
             'text-valign': 'center',
             'text-halign': 'center',
-            'cursor': 'pointer'
+            'cursor': 'pointer',
+            'min-zoomed-font-size': 6.5
           }
         },
         {
@@ -505,6 +707,7 @@
             'text-valign': 'center',
             'text-halign': 'center',
             'cursor': 'pointer',
+            'min-zoomed-font-size': 6.5,
             'z-index': 20
           }
         },
@@ -550,14 +753,39 @@
       ];
     }
 
+    let currentLayout = null;
+    let lastExpandedDomain = null;
+    let userHasInteracted = false;
+
     function initGraph() {
+      const container = document.getElementById('cy');
       cy = cytoscape({
-        container: document.getElementById('cy'),
+        container: container,
         style: buildStyles(),
         wheelSensitivity: 0.25,
-        minZoom: 0.2,
+        minZoom: 0.25,
         maxZoom: 3.0
       });
+
+      // Track physical user interaction on canvas
+      container.addEventListener('pointerdown', () => {
+        userHasInteracted = true;
+      });
+
+      // Keep canvas viewport and hit-testing synchronized on container resize
+      const cyObserver = new ResizeObserver(() => {
+        if (cy) {
+          cy.resize();
+          if (!userHasInteracted) {
+            safeFit(cy.nodes(), 60);
+          }
+        }
+      });
+      cyObserver.observe(container);
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => { if (cy) cy.resize(); });
+      }
 
       cy.on('tap', (evt) => {
         if (evt.target === cy) {
@@ -568,6 +796,8 @@
 
       cy.on('tap', 'node', (evt) => {
         const node = evt.target;
+        userHasInteracted = true;
+
         if (node.data('isSubBucket')) {
           const domainId = node.data('domainId');
           if (expandedSubBuckets.has(domainId)) expandedSubBuckets.delete(domainId);
@@ -577,8 +807,14 @@
         }
         if (node.data('isDomain') || node.isParent()) {
           const id = node.id();
-          if (collapsedDomains.has(id)) collapsedDomains.delete(id);
-          else { collapsedDomains.add(id); expandedSubBuckets.delete(id); }
+          if (collapsedDomains.has(id)) {
+            collapsedDomains.delete(id);
+            lastExpandedDomain = id;
+          } else {
+            collapsedDomains.add(id);
+            expandedSubBuckets.delete(id);
+            lastExpandedDomain = null;
+          }
           allExpanded = collapsedDomains.size === 0;
           document.getElementById('btnExpandAll').textContent = allExpanded ? '⊟' : '⊞';
           loadData();
@@ -587,8 +823,38 @@
         selectNode(node);
       });
 
+      // Setup legend toggle
+      const btnLegend = document.getElementById('btnLegend');
+      const legendPopover = document.getElementById('legendPopover');
+      if (btnLegend && legendPopover) {
+        btnLegend.onclick = () => {
+          const isClosed = legendPopover.style.display === 'none';
+          legendPopover.style.display = isClosed ? 'flex' : 'none';
+          btnLegend.textContent = isClosed ? '✕ Close' : 'ℹ Legend';
+        };
+      }
+
+      setupSearch();
       loadData();
       renderFilters();
+    }
+
+    function safeFit(eles, padding = 50) {
+      if (!cy) return;
+      const targetEles = (eles && eles.length > 0) ? eles : cy.nodes();
+      if (!targetEles || targetEles.length === 0) return;
+
+      cy.fit(targetEles, padding);
+      cy.center(targetEles);
+
+      const z = cy.zoom();
+      if (z < 0.55) {
+        cy.zoom(0.55);
+        cy.center(targetEles);
+      } else if (z > 1.25) {
+        cy.zoom(1.25);
+        cy.center(targetEles);
+      }
     }
 
     function loadData() {
@@ -607,6 +873,9 @@
           else domainStandaloneCounts[n.parent] = (domainStandaloneCounts[n.parent] || 0) + 1;
         }
       });
+
+      const isAllCollapsed = (rawData.domains || []).length > 0 &&
+        collapsedDomains.size === (rawData.domains || []).length;
 
       (rawData.domains || []).forEach(d => {
         const isCollapsed = collapsedDomains.has(d.id);
@@ -642,76 +911,148 @@
         }
       });
 
-      (rawData.nodes || []).forEach(n => {
-        const isDomainChild = !!n.parent;
-        const isInsideCollapsed = isDomainChild && collapsedDomains.has(n.parent);
-        const isConn = (n.connectivity || 'connected') === 'connected';
-        const isSubExpanded = isDomainChild && expandedSubBuckets.has(n.parent);
+      // Only mount nodes when at least one domain is expanded
+      if (!isAllCollapsed && rawData.nodes) {
+        const activeTechHubs = new Set();
 
-        let classes = '';
-        if (n.connectivity) classes += ` node-${n.connectivity}`;
-        if (isInsideCollapsed) classes += ' hidden';
-        else if (isDomainChild && !isConn && !isSubExpanded) classes += ' hidden';
+        (rawData.nodes || []).forEach(n => {
+          if (n.type === 'tech') return;
 
-        elements.push({
-          group: 'nodes',
-          data: { ...n, parent: isInsideCollapsed ? undefined : n.parent },
-          classes: classes.trim()
+          // Skip items belonging to collapsed domains
+          if (n.parent && collapsedDomains.has(n.parent)) return;
+
+          const isConn = (n.connectivity || 'connected') === 'connected';
+          const isSubExpanded = n.parent && expandedSubBuckets.has(n.parent);
+
+          // If standalone and sub-bucket not open, skip
+          if (!isConn && !isSubExpanded) return;
+
+          // If hideStandalone is active and not connected, skip
+          if (hideStandalone && !isConn) return;
+
+          // If stack filter is active and does not match, skip
+          if (activeFilter && activeFilter !== 'all') {
+            const stack = n.stack || [];
+            if (!stack.includes(activeFilter)) return;
+          }
+
+          elements.push({
+            group: 'nodes',
+            data: { ...n, parent: n.parent },
+            classes: `node-${n.connectivity || 'connected'}`
+          });
+
+          if (n.stack && Array.isArray(n.stack)) {
+            n.stack.forEach(s => activeTechHubs.add(s));
+          }
         });
-      });
 
+        // Add tech hubs that connect to mounted items
+        (rawData.nodes || []).forEach(n => {
+          if (n.type === 'tech') {
+            const techStacks = n.stack || [];
+            const isRelevant = techStacks.some(s => activeTechHubs.has(s)) ||
+              (rawData.edges || []).some(e => {
+                const other = e.source === n.id ? e.target : (e.target === n.id ? e.source : null);
+                return other && elements.some(el => el.data.id === other);
+              });
+
+            if (isRelevant) {
+              elements.push({
+                group: 'nodes',
+                data: { ...n },
+                classes: 'node-tech'
+              });
+            }
+          }
+        });
+      }
+
+      // Add edges
+      const mountedNodeIds = new Set(elements.map(el => el.data.id));
       const virtualEdgeSet = new Set();
-      (rawData.edges || []).forEach(e => {
-        const srcDomain = childToDomainMap[e.source];
-        const tgtDomain = childToDomainMap[e.target];
-        const srcCollapsed = srcDomain && collapsedDomains.has(srcDomain);
-        const tgtCollapsed = tgtDomain && collapsedDomains.has(tgtDomain);
 
-        if (srcCollapsed || tgtCollapsed) {
-          const effSrc = srcCollapsed ? srcDomain : e.source;
-          const effTgt = tgtCollapsed ? tgtDomain : e.target;
-          if (effSrc !== effTgt) {
+      (rawData.edges || []).forEach(e => {
+        const sourceMounted = mountedNodeIds.has(e.source);
+        const targetMounted = mountedNodeIds.has(e.target);
+
+        if (sourceMounted && targetMounted) {
+          elements.push({ group: 'edges', data: { ...e } });
+        } else {
+          const srcDomain = childToDomainMap[e.source];
+          const tgtDomain = childToDomainMap[e.target];
+
+          const effSrc = sourceMounted ? e.source : (srcDomain && mountedNodeIds.has(srcDomain) ? srcDomain : null);
+          const effTgt = targetMounted ? e.target : (tgtDomain && mountedNodeIds.has(tgtDomain) ? tgtDomain : null);
+
+          if (effSrc && effTgt && effSrc !== effTgt) {
+            // In all-collapsed overview, only show edges between two domain nodes
+            if (isAllCollapsed && (!srcDomain || !tgtDomain)) return;
+
             const vKey = `${effSrc}->${effTgt}`;
             if (!virtualEdgeSet.has(vKey)) {
               virtualEdgeSet.add(vKey);
               elements.push({
                 group: 'edges',
-                data: { id: `virt_${vKey}`, source: effSrc, target: effTgt, label: e.label || '' },
+                data: { id: `virt_${vKey}`, source: effSrc, target: effTgt, label: '' },
                 classes: 'virtual-summary-edge'
               });
             }
           }
-        } else {
-          elements.push({ group: 'edges', data: { ...e } });
         }
       });
 
       cy.add(elements);
-      applyFilter();
       runLayout();
     }
 
     function runLayout() {
-      const visibleCount = cy.nodes(':visible').length;
-      const visibleEdges = cy.edges(':visible').length;
+      if (currentLayout) {
+        try { currentLayout.stop(); } catch(e) {}
+      }
+
+      const isAllCollapsed = (rawData.domains || []).length > 0 &&
+        collapsedDomains.size === (rawData.domains || []).length;
+
+      if (isAllCollapsed) {
+        // Clean, symmetrical 2-row grid for collapsed domain bubbles
+        const domainCount = (rawData.domains || []).length;
+        const cols = domainCount <= 4 ? 2 : 3;
+        currentLayout = cy.layout({
+          name: 'grid',
+          rows: 2,
+          cols: cols,
+          fit: true,
+          padding: 80,
+          avoidOverlap: true,
+          animate: true,
+          animationDuration: 280,
+          stop: () => safeFit(cy.nodes(), 80)
+        });
+        currentLayout.run();
+        return;
+      }
+
+      const visibleCount = cy.nodes().length;
+      const visibleEdges = cy.edges().length;
       const density = visibleEdges / Math.max(1, visibleCount);
 
       let idealEdgeLength, nodeSeparation, edgeElasticity, gravity, numIter, quality;
 
       if (visibleCount < 30) {
         if (density > 1.2) {
-          idealEdgeLength = 240; nodeSeparation = 150; edgeElasticity = 0.05; gravity = 0.05; numIter = 2500; quality = 'proof';
+          idealEdgeLength = 220; nodeSeparation = 130; edgeElasticity = 0.06; gravity = 0.06; numIter = 2200; quality = 'proof';
         } else {
-          idealEdgeLength = 180; nodeSeparation = 120; edgeElasticity = 0.09; gravity = 0.08; numIter = 2000; quality = 'proof';
+          idealEdgeLength = 170; nodeSeparation = 110; edgeElasticity = 0.10; gravity = 0.08; numIter = 1800; quality = 'proof';
         }
       } else if (visibleCount < 60) {
-        idealEdgeLength = 140; nodeSeparation = 90; edgeElasticity = 0.18; gravity = 0.15; numIter = 1500; quality = 'default';
+        idealEdgeLength = 130; nodeSeparation = 85; edgeElasticity = 0.20; gravity = 0.15; numIter = 1400; quality = 'default';
       } else {
         idealEdgeLength = 95; nodeSeparation = 65; edgeElasticity = 0.35; gravity = 0.20; numIter = 1000; quality = 'default';
       }
 
       try {
-        cy.layout({
+        currentLayout = cy.layout({
           name: 'fcose',
           quality: quality,
           randomize: false,
@@ -731,47 +1072,32 @@
           tilingPaddingVertical: 20,
           tilingPaddingHorizontal: 20,
           fit: true,
-          padding: 40
-        }).run();
+          padding: 40,
+          stop: () => {
+            if (lastExpandedDomain) {
+              const dNode = cy.getElementById(lastExpandedDomain);
+              const children = cy.nodes(`[parent = "${lastExpandedDomain}"]`);
+              const focusGroup = dNode.add(children);
+              if (focusGroup.length > 0) {
+                safeFit(focusGroup, 50);
+              }
+              lastExpandedDomain = null;
+            } else if (!userHasInteracted) {
+              safeFit(cy.nodes(), 45);
+            }
+          }
+        });
+        currentLayout.run();
       } catch (err) {
-        cy.layout({ name: 'cose', fit: true, padding: 40, animate: false }).run();
+        currentLayout = cy.layout({
+          name: 'cose',
+          fit: true,
+          padding: 40,
+          animate: false,
+          stop: () => safeFit(cy.nodes(), 45)
+        });
+        currentLayout.run();
       }
-    }
-
-    function applyFilter() {
-      cy.batch(() => {
-        cy.nodes().forEach(node => {
-          if (node.data('isDomain')) { node.removeClass('hidden'); return; }
-          if (node.data('isSubBucket')) {
-            if (hideStandalone) node.addClass('hidden');
-            else node.removeClass('hidden');
-            return;
-          }
-
-          const isInsideCollapsed = node.data('parent') && collapsedDomains.has(node.data('parent'));
-          if (isInsideCollapsed) { node.addClass('hidden'); return; }
-
-          const isConn = (node.data('connectivity') || 'connected') === 'connected';
-          const isSubExpanded = node.data('parent') && expandedSubBuckets.has(node.data('parent'));
-
-          if (!isConn && !isSubExpanded) { node.addClass('hidden'); return; }
-          if (hideStandalone && !isConn) { node.addClass('hidden'); return; }
-
-          if (!activeFilter || activeFilter === 'all') node.removeClass('hidden');
-          else {
-            const stack = node.data('stack') || [];
-            if (stack.includes(activeFilter)) node.removeClass('hidden');
-            else node.addClass('hidden');
-          }
-        });
-
-        cy.edges().forEach(edge => {
-          const src = edge.source();
-          const tgt = edge.target();
-          if (src.hasClass('hidden') || tgt.hasClass('hidden')) edge.addClass('hidden');
-          else edge.removeClass('hidden');
-        });
-      });
     }
 
     function renderFilters() {
@@ -791,8 +1117,7 @@
           container.querySelectorAll('.filter-chip:not(.filter-chip-toggle)').forEach(c => c.classList.remove('active'));
           btn.classList.add('active');
           activeFilter = tag;
-          applyFilter();
-          runLayout();
+          loadData();
         };
         container.appendChild(btn);
       });
@@ -803,8 +1128,7 @@
       toggleBtn.onclick = () => {
         hideStandalone = !hideStandalone;
         toggleBtn.classList.toggle('active', hideStandalone);
-        applyFilter();
-        runLayout();
+        loadData();
       };
       container.appendChild(toggleBtn);
     }
@@ -818,6 +1142,14 @@
         nh.addClass('highlighted');
         cy.elements().not(node).not(nh).addClass('faded');
       });
+
+      cy.animate({
+        center: { eles: node },
+        zoom: Math.max(cy.zoom(), 0.88),
+        duration: 350,
+        easing: 'ease-out-cubic'
+      });
+
       openInspector(selectedNode);
     }
 
@@ -850,6 +1182,31 @@
         tagsEl.appendChild(badge);
       });
 
+      // Connected Neighbors
+      const connEl = document.getElementById('inspConnections');
+      if (connEl) {
+        connEl.innerHTML = '';
+        const neighbors = getConnectedNeighbors(data.id);
+        if (neighbors && neighbors.length > 0) {
+          const lbl = document.createElement('div');
+          lbl.className = 'inspector-section-label';
+          lbl.textContent = `Connected Nodes (${neighbors.length})`;
+          connEl.appendChild(lbl);
+
+          const list = document.createElement('div');
+          list.className = 'inspector-neighbors-list';
+          neighbors.forEach(nbr => {
+            const btn = document.createElement('button');
+            btn.className = `inspector-nbr-btn nbr-${nbr.type}`;
+            btn.innerHTML = `<span class="nbr-indicator"></span><span class="nbr-label">${nbr.label}</span>`;
+            btn.title = `Jump to ${nbr.label}`;
+            btn.onclick = () => focusNode(nbr.id);
+            list.appendChild(btn);
+          });
+          connEl.appendChild(list);
+        }
+      }
+
       const linksEl = document.getElementById('inspLinks');
       linksEl.innerHTML = '';
       if (data.url) {
@@ -864,11 +1221,185 @@
       clearHighlighting();
     }
 
+    function getConnectedNeighbors(nodeId) {
+      const neighborMap = new Map();
+      (rawData.edges || []).forEach(e => {
+        let otherId = null;
+        if (e.source === nodeId) otherId = e.target;
+        else if (e.target === nodeId) otherId = e.source;
+
+        if (otherId && !neighborMap.has(otherId)) {
+          const found = (rawData.nodes || []).find(n => n.id === otherId);
+          if (found) {
+            neighborMap.set(otherId, {
+              id: found.id,
+              label: found.label || found.id,
+              type: found.type || 'repo'
+            });
+          }
+        }
+      });
+      return Array.from(neighborMap.values());
+    }
+
+    function focusDomain(domainId) {
+      userHasInteracted = true;
+      if (collapsedDomains.has(domainId)) {
+        collapsedDomains.delete(domainId);
+        lastExpandedDomain = domainId;
+        loadData();
+      } else {
+        const dNode = cy.getElementById(domainId);
+        const children = cy.nodes(`[parent = "${domainId}"]`);
+        safeFit(dNode.add(children), 50);
+      }
+    }
+
+    function focusNode(nodeId) {
+      userHasInteracted = true;
+      const isDomain = (rawData.domains || []).some(d => d.id === nodeId);
+      if (isDomain) {
+        focusDomain(nodeId);
+        return;
+      }
+
+      const nodeInfo = (rawData.nodes || []).find(n => n.id === nodeId);
+      if (!nodeInfo) return;
+
+      let needsReload = false;
+      if (nodeInfo.parent && collapsedDomains.has(nodeInfo.parent)) {
+        collapsedDomains.delete(nodeInfo.parent);
+        lastExpandedDomain = nodeInfo.parent;
+        needsReload = true;
+      }
+
+      const isConn = (nodeInfo.connectivity || 'connected') === 'connected';
+      if (!isConn && nodeInfo.parent && !expandedSubBuckets.has(nodeInfo.parent)) {
+        expandedSubBuckets.add(nodeInfo.parent);
+        needsReload = true;
+      }
+
+      if (needsReload) {
+        loadData();
+      }
+
+      setTimeout(() => {
+        const target = cy.getElementById(nodeId);
+        if (target && target.length > 0) {
+          selectNode(target);
+        }
+      }, needsReload ? 350 : 20);
+    }
+
+    function setupSearch() {
+      const input = document.getElementById('searchInput');
+      const dropdown = document.getElementById('searchDropdown');
+      const clearBtn = document.getElementById('searchClear');
+      if (!input || !dropdown) return;
+
+      input.oninput = () => {
+        const q = input.value.trim().toLowerCase();
+        if (!q) {
+          dropdown.style.display = 'none';
+          dropdown.innerHTML = '';
+          if (clearBtn) clearBtn.style.display = 'none';
+          return;
+        }
+
+        if (clearBtn) clearBtn.style.display = 'block';
+
+        const matchedDomains = (rawData.domains || []).filter(d =>
+          d.label.toLowerCase().includes(q)
+        );
+        const matchedTech = (rawData.nodes || []).filter(n =>
+          n.type === 'tech' && n.label.toLowerCase().includes(q)
+        );
+        const matchedRepos = (rawData.nodes || []).filter(n =>
+          n.type !== 'tech' && (
+            n.label.toLowerCase().includes(q) ||
+            (n.desc || '').toLowerCase().includes(q) ||
+            (n.stack || []).some(s => s.toLowerCase().includes(q))
+          )
+        ).slice(0, 8);
+
+        const total = matchedDomains.length + matchedTech.length + matchedRepos.length;
+        if (total === 0) {
+          dropdown.innerHTML = '<div class="search-empty">No matching repositories or domains</div>';
+          dropdown.style.display = 'block';
+          return;
+        }
+
+        dropdown.innerHTML = '';
+        matchedDomains.forEach(d => {
+          const item = document.createElement('div');
+          item.className = 'search-result';
+          item.innerHTML = `<span class="res-badge res-domain">Domain</span><span class="res-label">${d.label}</span>`;
+          item.onclick = () => {
+            focusDomain(d.id);
+            dropdown.style.display = 'none';
+          };
+          dropdown.appendChild(item);
+        });
+
+        matchedTech.forEach(t => {
+          const item = document.createElement('div');
+          item.className = 'search-result';
+          item.innerHTML = `<span class="res-badge res-tech">Core Tech</span><span class="res-label">${t.label}</span>`;
+          item.onclick = () => {
+            focusNode(t.id);
+            dropdown.style.display = 'none';
+          };
+          dropdown.appendChild(item);
+        });
+
+        matchedRepos.forEach(r => {
+          const item = document.createElement('div');
+          item.className = 'search-result';
+          item.innerHTML = `<span class="res-badge res-repo">Repo</span><span class="res-label">${r.label}</span>`;
+          item.onclick = () => {
+            focusNode(r.id);
+            dropdown.style.display = 'none';
+          };
+          dropdown.appendChild(item);
+        });
+
+        dropdown.style.display = 'block';
+      };
+
+      if (clearBtn) {
+        clearBtn.onclick = () => {
+          input.value = '';
+          dropdown.style.display = 'none';
+          clearBtn.style.display = 'none';
+          input.focus();
+        };
+      }
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-box')) {
+          dropdown.style.display = 'none';
+        }
+      });
+    }
+
     document.getElementById('inspClose').onclick = closeInspector;
-    document.getElementById('btnFit').onclick = () => cy.fit(undefined, 35);
-    document.getElementById('btnZoomIn').onclick = () => cy.zoom(cy.zoom() * 1.25);
-    document.getElementById('btnZoomOut').onclick = () => cy.zoom(cy.zoom() * 0.8);
+    document.getElementById('btnFit').onclick = () => {
+      userHasInteracted = true;
+      safeFit(cy.nodes(), 50);
+    };
+    document.getElementById('btnZoomIn').onclick = () => {
+      userHasInteracted = true;
+      const center = { x: cy.width() / 2, y: cy.height() / 2 };
+      cy.zoom({ level: Math.min(cy.maxZoom(), cy.zoom() * 1.25), renderedPosition: center });
+    };
+    document.getElementById('btnZoomOut').onclick = () => {
+      userHasInteracted = true;
+      const center = { x: cy.width() / 2, y: cy.height() / 2 };
+      cy.zoom({ level: Math.max(cy.minZoom(), cy.zoom() * 0.8), renderedPosition: center });
+    };
     document.getElementById('btnExpandAll').onclick = () => {
+      userHasInteracted = true;
+      lastExpandedDomain = null;
       if (allExpanded) {
         collapsedDomains = new Set((rawData.domains || []).map(d => d.id));
         expandedSubBuckets.clear();
@@ -886,6 +1417,8 @@
       allExpanded = false;
       activeFilter = 'all';
       hideStandalone = false;
+      userHasInteracted = false;
+      lastExpandedDomain = null;
       document.getElementById('btnExpandAll').textContent = '⊞';
       renderFilters();
       loadData();

@@ -3,7 +3,7 @@ name: repotographer
 description: Map public GitHub repositories into structured concept graphs with AI-suggested domain taxonomies, tri-state connectivity analysis, and interactive Cytoscape or Graphviz visual outputs. Use when exploring a user or organization's GitHub portfolio, creating architectural landscape maps, or generating visual repository taxonomies.
 license: Apache-2.0
 metadata:
-  version: "0.2.1"
+  version: "0.2.2"
 ---
 
 # repotographer

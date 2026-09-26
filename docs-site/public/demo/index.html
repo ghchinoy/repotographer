@@ -271,6 +271,185 @@
     }
     .inspector-links a:hover { opacity: 0.9; }
 
+     
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 260px;
+    }
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      padding: 0.35rem 1.8rem 0.35rem 2rem;
+      font-size: 0.8rem;
+      color: var(--text-main);
+      font-family: inherit;
+      outline: none;
+      transition: all 0.15s ease;
+    }
+    .search-input:focus {
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 2px var(--brand-glow);
+    }
+    .search-clear {
+      position: absolute;
+      right: 8px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+    .search-clear:hover { color: var(--text-main); }
+    .search-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      max-height: 280px;
+      overflow-y: auto;
+      z-index: 50;
+    }
+    .search-result {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.8rem;
+      transition: background 0.1s ease;
+    }
+    .search-result:last-child { border-bottom: none; }
+    .search-result:hover { background: var(--bg-surface-elevated); }
+    .res-badge {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .res-domain { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid #38bdf8; }
+    .res-tech { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid #f59e0b; }
+    .res-repo { background: var(--bg-surface-elevated); color: var(--text-muted); border: 1px solid var(--border-color); }
+    .res-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .search-empty { padding: 0.75rem; text-align: center; font-size: 0.75rem; color: var(--text-muted); }
+
+     
+    .inspector-section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .inspector-neighbors-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .inspector-nbr-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.75rem;
+      color: var(--text-main);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s ease;
+      max-width: 100%;
+    }
+    .inspector-nbr-btn:hover {
+      border-color: var(--brand-primary);
+      color: var(--brand-primary);
+    }
+    .nbr-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand-primary);
+      flex-shrink: 0;
+    }
+    .inspector-nbr-btn.nbr-tech .nbr-indicator {
+      background: #f59e0b;
+      border-radius: 2px;
+    }
+    .nbr-label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 180px;
+    }
+
+     
+    .legend-container {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      z-index: 25;
+    }
+    .legend-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.35rem 0.65rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.15s ease;
+    }
+    .legend-btn:hover {
+      color: var(--text-main);
+      border-color: var(--brand-primary);
+    }
+    .legend-popover {
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 0;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      width: 175px;
+      font-size: 0.75rem;
+    }
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; }
+    .swatch { width: 10px; height: 10px; flex-shrink: 0; }
+    .sw-domain { background: var(--brand-primary); border-radius: 2px; }
+    .sw-tech { background: #f59e0b; border-radius: 2px; }
+    .sw-connected { background: #38bdf8; border-radius: 50%; }
+    .sw-standalone { background: #94a3b8; border-radius: 50%; }
+    .sw-edge { width: 14px; height: 2px; background: var(--border-color); }
+
     .interaction-hint {
       position: absolute;
       top: 1rem;
@@ -295,12 +474,21 @@
         <span class="badge">auto</span>
       </h1>
     </div>
+
+    
+    <div class="search-box">
+      <svg class="search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search repos, domains, tech..." autocomplete="off" />
+      <button class="search-clear" id="searchClear" style="display: none;" title="Clear">✕</button>
+      <div class="search-dropdown" id="searchDropdown" style="display: none;"></div>
+    </div>
+
     <div class="stats-bar">
-      <span>20 Repositories</span>
+      <span>155 Repositories</span>
       <span>•</span>
-      <span>4 Domains</span>
+      <span>5 Domains</span>
       <span>•</span>
-      <span>18 Connected</span>
+      <span>129 Connected</span>
     </div>
   </header>
 
@@ -311,6 +499,18 @@
   <div class="main-viewport">
     <div class="interaction-hint">Tap domain to expand/collapse • Drag nodes • Zoom/Pan freely</div>
     <div id="cy"></div>
+
+    
+    <div class="legend-container">
+      <button class="legend-btn" id="btnLegend" title="Toggle Legend">ℹ Legend</button>
+      <div class="legend-popover" id="legendPopover" style="display: none;">
+        <div class="legend-item"><span class="swatch sw-domain"></span><span>Domain (Group)</span></div>
+        <div class="legend-item"><span class="swatch sw-tech"></span><span>Tech Hub</span></div>
+        <div class="legend-item"><span class="swatch sw-connected"></span><span>Connected Repo</span></div>
+        <div class="legend-item"><span class="swatch sw-standalone"></span><span>Standalone Repo</span></div>
+        <div class="legend-item"><span class="swatch sw-edge"></span><span>Connection Edge</span></div>
+      </div>
+    </div>
 
     <div class="controls-overlay">
       <button class="ctrl-btn" id="btnExpandAll" title="Expand / Collapse All">⊞</button>
@@ -330,46 +530,52 @@
       </div>
       <p class="inspector-desc" id="inspDesc">Description</p>
       <div class="inspector-tags" id="inspTags"></div>
+      <div id="inspConnections"></div>
       <div class="inspector-links" id="inspLinks"></div>
     </div>
   </div>
 
   <script id="graph-data" type="application/json">
 {
-      "generated": "2026-08-22T17:50:02Z",
+      "generated": "2026-09-26T21:01:18Z",
       "topic": "repos",
       "account": "ghchinoy",
       "accountType": "auto",
       "stats": {
-        "totalGithubRepos": 20,
-        "includedRepos": 20,
-        "domainCount": 4,
+        "totalGithubRepos": 155,
+        "includedRepos": 155,
+        "domainCount": 5,
         "techCount": 9,
-        "edgeCount": 45,
-        "connectedCount": 18,
-        "standaloneCount": 2,
-        "bareCount": 0
+        "edgeCount": 219,
+        "connectedCount": 129,
+        "standaloneCount": 24,
+        "bareCount": 2
       },
       "domains": [
         {
-          "id": "domain_agent_protocols",
-          "label": "Agent Protocols \u0026 Multi-Agent Systems",
-          "blurb": "Protocols, CLI clients, and runtime environments facilitating autonomous Agent-to-Agent (A2A) communication and social simulation."
+          "id": "domain_agentic_ai_mcp",
+          "label": "Agentic AI, MCP \u0026 Multimodal Systems",
+          "blurb": "Architectures, SDKs, and servers powering autonomous agents, Model Context Protocol (MCP) integrations, and Gemini reasoning pipelines."
         },
         {
-          "id": "domain_voice_audio",
-          "label": "Speech Intelligence \u0026 Voice Interfaces",
-          "blurb": "On-device speech-to-text engines, expressive text-to-speech experimentation, and modern audio UI component libraries."
+          "id": "domain_speech_audio_ai",
+          "label": "Speech, Voice AI \u0026 Audio Processing",
+          "blurb": "Real-time speech-to-text, expressive text-to-speech runtimes, voice assistants, and audio benchmarking tools across Go, Rust, Swift, and Python."
         },
         {
-          "id": "domain_mcp_agent_skills",
-          "label": "MCP Servers, Tools \u0026 Agent Skills",
-          "blurb": "Model Context Protocol (MCP) servers, knowledge ingestion tooling, and extensible skill frameworks for autonomous agents."
+          "id": "domain_creative_content_provenance",
+          "label": "Content Provenance, Creative Media \u0026 Linguistics",
+          "blurb": "Tools for C2PA content authenticity, generative visual media, and specialized Tolkien linguistic parsing and dictionary interfaces."
         },
         {
-          "id": "domain_genai_apps_tooling",
-          "label": "GenAI Applications, SDKs \u0026 Developer Tools",
-          "blurb": "Exploratory generative AI applications, client SDKs, computer-use agents, and developer distribution utilities."
+          "id": "domain_cloud_apis_integration",
+          "label": "Cloud Platforms \u0026 Enterprise API Integration",
+          "blurb": "Command-line tools, client SDKs, security scanners, and middleware for Google Cloud, AWS, API platforms, and enterprise services."
+        },
+        {
+          "id": "domain_developer_tools_systems",
+          "label": "Developer Tooling, Web Frameworks \u0026 System Utilities",
+          "blurb": "Frontend UI component libraries, server primitives, container configurations, algorithm implementations, and developer package taps."
         }
       ],
       "tech": [
@@ -544,48 +750,71 @@
           "source": "system"
         },
         {
-          "id": "repo_docstats",
-          "label": "docstats",
-          "parent": "domain_mcp_agent_skills",
+          "id": "repo_moonshine_go",
+          "label": "moonshine-go",
+          "parent": "domain_speech_audio_ai",
           "type": "repo",
-          "url": "https://github.com/ghchinoy/docstats",
-          "homepage": "https://ghchinoy.github.io/docstats/",
-          "desc": "Readability assessment API and MCP Server",
-          "language": "Python",
+          "url": "https://github.com/ghchinoy/moonshine-go",
+          "homepage": "https://ghchinoy.github.io/moonshine-go/",
+          "desc": "Build voice agents in Go with Moonshine Voice - a Go client, cli, and bindings for the Moonshine Voice library ",
+          "stars": 1,
+          "language": "Go",
+          "topics": [
+            "go",
+            "golang",
+            "moonshine",
+            "stt",
+            "voice-assistant"
+          ],
           "stack": [
             "ai",
-            "frontend",
-            "javascript",
-            "mcp",
-            "python"
+            "audio",
+            "cli",
+            "go"
           ],
           "status": "active",
           "source": "auto",
-          "pushedAt": "2026-08-22T17:48:40Z",
-          "createdAt": "2025-06-06T00:35:31Z",
+          "pushedAt": "2026-09-26T20:59:07Z",
+          "createdAt": "2026-07-13T02:23:21Z",
           "connectivity": "connected"
         },
         {
-          "id": "repo_repotographer",
-          "label": "repotographer",
-          "parent": "domain_genai_apps_tooling",
+          "id": "repo_SonosFlow",
+          "label": "SonosFlow",
+          "parent": "domain_agentic_ai_mcp",
           "type": "repo",
-          "url": "https://github.com/ghchinoy/repotographer",
-          "desc": "A concept map for your repositories",
+          "url": "https://github.com/ghchinoy/SonosFlow",
+          "homepage": "https://ghchinoy.github.io/SonosFlow/",
+          "desc": "Sonos MacOS swift app using the homectl sonos MCP",
+          "language": "Swift",
+          "topics": [
+            "macos",
+            "mcp",
+            "sonos",
+            "swift",
+            "swiftui"
+          ],
+          "stack": [
+            "ai",
+            "cli",
+            "mcp",
+            "swift"
+          ],
           "status": "active",
           "source": "auto",
-          "pushedAt": "2026-08-22T17:42:45Z",
-          "createdAt": "2026-08-22T17:42:45Z",
-          "connectivity": "standalone"
+          "pushedAt": "2026-09-26T20:22:59Z",
+          "createdAt": "2026-09-06T20:14:31Z",
+          "connectivity": "connected"
         },
         {
           "id": "repo_agent_skills",
           "label": "agent-skills",
-          "parent": "domain_mcp_agent_skills",
+          "parent": "domain_agentic_ai_mcp",
           "type": "repo",
           "url": "https://github.com/ghchinoy/agent-skills",
           "homepage": "https://ghchinoy.github.io/agent-skills/",
           "desc": "Agent skills",
+          "stars": 1,
           "language": "JavaScript",
           "stack": [
             "ai",
@@ -594,34 +823,187 @@
           ],
           "status": "active",
           "source": "auto",
-          "pushedAt": "2026-08-22T17:41:31Z",
+          "pushedAt": "2026-09-26T13:45:46Z",
           "createdAt": "2026-04-17T04:16:51Z",
           "connectivity": "connected"
         },
         {
+          "id": "repo_dgem",
+          "label": "dgem",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/dgem",
+          "homepage": "https://ghchinoy.github.io/dgem/",
+          "desc": "gdem Decision Model - Calibrated DiffusionGemma template evaluation cli, mcp, web app for fast, confident zero-shot decision making.",
+          "language": "Go",
+          "topics": [
+            "diffusion-models",
+            "diffusiongemma",
+            "evaluation",
+            "go",
+            "golang"
+          ],
+          "stack": [
+            "ai",
+            "cli",
+            "go",
+            "mcp"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-26T00:23:47Z",
+          "createdAt": "2026-09-19T18:18:33Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_steamer",
+          "label": "steamer",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/steamer",
+          "desc": "a Porkbun domain management command-line tool  🐷✨",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "cli",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-22T03:27:28Z",
+          "createdAt": "2026-01-14T21:44:09Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_docs_latex_addon",
+          "label": "docs-latex-addon",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/docs-latex-addon",
+          "desc": "Convert LaTeX natively - render Markdown LaTeX/Math in Google Docs via an Add On",
+          "language": "JavaScript",
+          "topics": [
+            "docs",
+            "google-apps-script",
+            "google-docs",
+            "latex",
+            "markdown",
+            "math"
+          ],
+          "stack": [
+            "frontend",
+            "go",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-21T05:14:51Z",
+          "createdAt": "2026-09-19T16:18:11Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_mizan",
+          "label": "mizan",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/mizan",
+          "homepage": "https://ghchinoy.github.io/mizan/",
+          "desc": "A system of measurements and balances based on the Google Cloud Gen AI Evaluation SDK",
+          "stars": 1,
+          "language": "Go",
+          "topics": [
+            "evals",
+            "genai-evaluation"
+          ],
+          "stack": [
+            "ai",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-20T22:17:48Z",
+          "createdAt": "2026-08-07T22:22:48Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_omi_pixel",
+          "label": "omi-pixel",
+          "parent": "domain_speech_audio_ai",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/omi-pixel",
+          "desc": "Omi for Pixel with Gemini 3.5 Transcribe",
+          "language": "Dart",
+          "stack": [
+            "ai",
+            "dart"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-20T21:22:33Z",
+          "createdAt": "2026-08-29T23:16:21Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_mizan_templates",
+          "label": "mizan-templates",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/mizan-templates",
+          "desc": "Evaluation templates repository",
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-20T20:33:21Z",
+          "createdAt": "2026-08-09T15:04:08Z",
+          "connectivity": "standalone"
+        },
+        {
           "id": "repo_homebrew_tap",
           "label": "homebrew-tap",
-          "parent": "domain_genai_apps_tooling",
+          "parent": "domain_developer_tools_systems",
           "type": "repo",
           "url": "https://github.com/ghchinoy/homebrew-tap",
+          "stars": 1,
           "language": "Ruby",
           "stack": [
             "ruby"
           ],
           "status": "active",
           "source": "auto",
-          "pushedAt": "2026-08-21T20:22:48Z",
+          "pushedAt": "2026-09-20T16:12:28Z",
           "createdAt": "2026-06-27T14:39:58Z",
           "connectivity": "standalone"
         },
         {
+          "id": "repo_a2acli",
+          "label": "a2acli",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/a2acli",
+          "homepage": "https://ghchinoy.github.io/a2acli/",
+          "desc": "A2A command-line tool",
+          "stars": 5,
+          "language": "Go",
+          "stack": [
+            "a2a",
+            "ai",
+            "cli",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-20T16:10:17Z",
+          "createdAt": "2026-02-20T20:54:44Z",
+          "connectivity": "connected"
+        },
+        {
           "id": "repo_binder",
           "label": "binder",
-          "parent": "domain_mcp_agent_skills",
+          "parent": "domain_agentic_ai_mcp",
           "type": "repo",
           "url": "https://github.com/ghchinoy/binder",
           "homepage": "https://ghchinoy.github.io/binder/",
           "desc": "OKF ingestion and validation - cli, skills, mcp",
+          "stars": 2,
           "language": "Go",
           "topics": [
             "okf",
@@ -640,18 +1022,53 @@
           ],
           "status": "active",
           "source": "auto",
-          "pushedAt": "2026-08-21T20:19:41Z",
+          "pushedAt": "2026-09-20T04:43:44Z",
           "createdAt": "2026-08-15T05:13:46Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_flutter_edge",
+          "label": "flutter-edge",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/flutter-edge",
+          "language": "Dart",
+          "stack": [
+            "dart"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-19T21:10:30Z",
+          "createdAt": "2026-09-19T21:07:56Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_montage",
+          "label": "montage",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/montage",
+          "homepage": "https://ghchinoy.github.io/montage/",
+          "desc": "Develop skills from any repo. Even Rocky had a montage.",
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-13T15:25:22Z",
+          "createdAt": "2026-09-05T02:04:02Z",
           "connectivity": "connected"
         },
         {
           "id": "repo_scream_ui",
           "label": "scream-ui",
-          "parent": "domain_voice_audio",
+          "parent": "domain_speech_audio_ai",
           "type": "repo",
           "url": "https://github.com/ghchinoy/scream-ui",
           "homepage": "https://ghchinoy.github.io/scream-ui/",
           "desc": "Audio components for Lit",
+          "stars": 1,
           "language": "TypeScript",
           "stack": [
             "audio",
@@ -661,21 +1078,44 @@
           ],
           "status": "active",
           "source": "auto",
-          "pushedAt": "2026-08-20T02:38:57Z",
+          "pushedAt": "2026-09-09T05:40:18Z",
           "createdAt": "2026-02-13T15:58:44Z",
           "connectivity": "connected"
         },
         {
-          "id": "repo_agentskills",
-          "label": "agentskills",
-          "parent": "domain_mcp_agent_skills",
+          "id": "repo_griffintts",
+          "label": "griffintts",
+          "parent": "domain_speech_audio_ai",
           "type": "repo",
-          "url": "https://github.com/ghchinoy/agentskills",
-          "desc": "Turn your agent rules into skills.",
+          "url": "https://github.com/ghchinoy/griffintts",
+          "desc": "The TTS system for Jibo",
           "stars": 1,
           "language": "Go",
+          "stack": [
+            "audio",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-09T04:46:13Z",
+          "createdAt": "2026-07-05T17:15:16Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_gemini_agentic_video_go",
+          "label": "gemini-agentic-video-go",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/gemini-agentic-video-go",
+          "desc": "Agentic video analysis with Gemini ... in Go!",
+          "stars": 2,
+          "language": "Go",
           "topics": [
-            "skills"
+            "gemini",
+            "gemini-multimodal",
+            "gemini-video",
+            "go",
+            "golang"
           ],
           "stack": [
             "ai",
@@ -683,63 +1123,199 @@
           ],
           "status": "active",
           "source": "auto",
-          "pushedAt": "2026-08-22T17:48:13Z",
-          "createdAt": "2026-06-12T04:09:47Z",
+          "pushedAt": "2026-09-08T16:44:10Z",
+          "createdAt": "2026-09-02T01:50:46Z",
           "connectivity": "connected"
         },
         {
-          "id": "repo_editorial_look",
-          "label": "editorial-look",
-          "parent": "domain_genai_apps_tooling",
+          "id": "repo_homectl",
+          "label": "homectl",
+          "parent": "domain_agentic_ai_mcp",
           "type": "repo",
-          "url": "https://github.com/ghchinoy/editorial-look",
-          "desc": "Google Generative AI powered editorial looks",
-          "stars": 1,
-          "language": "Dart",
+          "url": "https://github.com/ghchinoy/homectl",
+          "homepage": "https://ghchinoy.github.io/homectl/",
+          "desc": "Go-powered local smart home hub and Agent Plugins (MCP + Skills) for Lutron Caséta, Sonos, Google Cast, and RTSP security cameras",
+          "language": "Go",
+          "topics": [
+            "agent-plugin",
+            "bubbletea",
+            "golang",
+            "lutron",
+            "mcp",
+            "model-context-protocol",
+            "opencode",
+            "smart-home",
+            "sonos",
+            "starlight"
+          ],
           "stack": [
-            "dart",
-            "go"
+            "ai",
+            "cli",
+            "go",
+            "mcp"
           ],
           "status": "active",
           "source": "auto",
-          "pushedAt": "2026-08-19T04:38:55Z",
-          "createdAt": "2025-08-16T20:38:25Z",
+          "pushedAt": "2026-09-06T23:28:42Z",
+          "createdAt": "2025-12-28T15:34:18Z",
           "connectivity": "connected"
         },
         {
-          "id": "repo_moonshine_go",
-          "label": "moonshine-go",
-          "parent": "domain_voice_audio",
+          "id": "repo_audio_tools_for_agents",
+          "label": "audio-tools-for-agents",
+          "parent": "domain_speech_audio_ai",
           "type": "repo",
-          "url": "https://github.com/ghchinoy/moonshine-go",
-          "desc": "Build voice agents in Go with Moonshine Voice - a Go client, cli, and bindings for the Moonshine Voice library ",
-          "language": "Go",
-          "topics": [
-            "go",
-            "golang",
-            "moonshine",
-            "stt",
-            "voice-assistant"
-          ],
+          "url": "https://github.com/ghchinoy/audio-tools-for-agents",
+          "homepage": "https://ghchinoy.github.io/audio-tools-for-agents/",
+          "stars": 1,
+          "language": "Python",
           "stack": [
             "ai",
             "audio",
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-04T23:20:27Z",
+          "createdAt": "2026-09-04T21:30:48Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_credentio_contributions",
+          "label": "credentio-contributions",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/credentio-contributions",
+          "homepage": "https://ghchinoy.github.io/credentio-contributions/",
+          "desc": "Language bindings for Google's Credentio C2PA Content Credentials transparency tools",
+          "stars": 1,
+          "language": "TypeScript",
+          "topics": [
+            "c2pa",
+            "credentio",
+            "go",
+            "python",
+            "swift"
+          ],
+          "stack": [
+            "frontend",
+            "go",
+            "javascript",
+            "python",
+            "typescript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-02T04:38:27Z",
+          "createdAt": "2026-08-22T18:09:42Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_LyriaFlow",
+          "label": "LyriaFlow",
+          "parent": "domain_speech_audio_ai",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/LyriaFlow",
+          "desc": "Continual play royalty free tracks with Lyria",
+          "stars": 1,
+          "language": "Swift",
+          "stack": [
+            "swift"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-09-01T04:40:48Z",
+          "createdAt": "2026-08-29T23:00:54Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_credentio_validator_web",
+          "label": "credentio-validator-web",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/credentio-validator-web",
+          "stars": 1,
+          "language": "TypeScript",
+          "stack": [
+            "frontend",
+            "javascript",
+            "typescript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-08-31T01:56:47Z",
+          "createdAt": "2026-08-30T23:39:33Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_ai_paper_reproductions",
+          "label": "ai-paper-reproductions",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/ai-paper-reproductions",
+          "desc": "Reproductions of various AI paper techniques",
+          "stars": 1,
+          "language": "Python",
+          "stack": [
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-08-31T01:26:11Z",
+          "createdAt": "2026-08-30T01:58:31Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_credentialctl",
+          "label": "credentialctl",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/credentialctl",
+          "homepage": "https://ghchinoy.github.io/credentialctl/",
+          "desc": "A rich command-line TUI to inspect C2PA provenance on folders of assets or individual assets, written in Go",
+          "stars": 1,
+          "language": "Go",
+          "topics": [
+            "c2pa",
+            "command-line",
+            "go"
+          ],
+          "stack": [
             "cli",
             "go"
           ],
           "status": "active",
           "source": "auto",
-          "pushedAt": "2026-08-15T19:32:56Z",
-          "createdAt": "2026-07-13T02:23:21Z",
+          "pushedAt": "2026-08-30T16:23:10Z",
+          "createdAt": "2026-08-23T17:09:58Z",
           "connectivity": "connected"
+        },
+        {
+          "id": "repo_media_browser_app",
+          "label": "media_browser_app",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/media_browser_app",
+          "desc": "A desktop media browser",
+          "stars": 1,
+          "language": "HTML",
+          "stack": [
+            "html"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-08-29T19:24:12Z",
+          "createdAt": "2025-06-01T19:09:16Z",
+          "connectivity": "standalone"
         },
         {
           "id": "repo_moonshine_rs",
           "label": "moonshine-rs",
-          "parent": "domain_voice_audio",
+          "parent": "domain_speech_audio_ai",
           "type": "repo",
           "url": "https://github.com/ghchinoy/moonshine-rs",
           "desc": "Idiomatic Rust bindings for Moonshine Voice STT — static-linked, on-device transcription with built-in MP3/WAV/FLAC decoding.",
+          "stars": 1,
           "language": "Rust",
           "topics": [
             "moonshine",
@@ -754,19 +1330,144 @@
           ],
           "status": "active",
           "source": "auto",
-          "pushedAt": "2026-08-14T04:34:16Z",
+          "pushedAt": "2026-08-27T01:16:27Z",
           "createdAt": "2026-07-25T18:21:11Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_mcp_server_go_template",
+          "label": "mcp-server-go-template",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/mcp-server-go-template",
+          "homepage": "https://ghchinoy.github.io/mcp-server-go-template/",
+          "desc": "A template for a secure MCP server in Go, with an agent skill to assist",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "ai",
+            "go",
+            "mcp"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-08-24T04:28:41Z",
+          "createdAt": "2026-08-23T22:15:41Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_eldamoapi",
+          "label": "eldamoapi",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/eldamoapi",
+          "homepage": "https://www.mithlond.com/agenttools/",
+          "desc": "Agent tools for Eldamo Tolkien Language Lexicon (Paul Strack, eldamo.org)",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "ai",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-08-24T00:50:43Z",
+          "createdAt": "2015-07-25T15:30:14Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_agentskills",
+          "label": "agentskills",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/agentskills",
+          "desc": "Turn your agent rules into skills.",
+          "stars": 2,
+          "language": "JavaScript",
+          "topics": [
+            "skills"
+          ],
+          "stack": [
+            "ai",
+            "frontend",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-08-23T01:16:53Z",
+          "createdAt": "2026-06-12T04:09:47Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_repotographer",
+          "label": "repotographer",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/repotographer",
+          "homepage": "https://ghchinoy.github.io/repotographer/",
+          "desc": "A concept map for your repositories",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-08-23T00:31:19Z",
+          "createdAt": "2026-08-22T17:42:45Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_docstats",
+          "label": "docstats",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/docstats",
+          "homepage": "https://ghchinoy.github.io/docstats/",
+          "desc": "Readability assessment API and MCP Server",
+          "stars": 1,
+          "language": "Python",
+          "stack": [
+            "ai",
+            "frontend",
+            "javascript",
+            "mcp",
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-08-22T17:48:40Z",
+          "createdAt": "2025-06-06T00:35:31Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_editorial_look",
+          "label": "editorial-look",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/editorial-look",
+          "desc": "Google Generative AI powered editorial looks",
+          "stars": 2,
+          "language": "Dart",
+          "stack": [
+            "dart",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-08-19T04:38:55Z",
+          "createdAt": "2025-08-16T20:38:25Z",
           "connectivity": "connected"
         },
         {
           "id": "repo_take3bounce",
           "label": "take3bounce",
-          "parent": "domain_voice_audio",
+          "parent": "domain_speech_audio_ai",
           "type": "repo",
           "url": "https://github.com/ghchinoy/take3bounce",
           "homepage": "https://take3bounce.app/",
           "desc": "Take 3 on the bounce gives three expressive voice readings - experience Gemini 3.1 Flash TTS and experiment with speech expressivity, pacing and delivery.",
-          "stars": 14,
+          "stars": 15,
           "language": "TypeScript",
           "topics": [
             "gemini",
@@ -791,11 +1492,11 @@
         {
           "id": "repo_banana_weather",
           "label": "banana-weather",
-          "parent": "domain_genai_apps_tooling",
+          "parent": "domain_creative_content_provenance",
           "type": "repo",
           "url": "https://github.com/ghchinoy/banana-weather",
           "desc": "Banana Weather: AI-Powered Atmospheric Art",
-          "stars": 91,
+          "stars": 93,
           "language": "Go",
           "stack": [
             "go"
@@ -809,10 +1510,11 @@
         {
           "id": "repo_cloud_interactions_go",
           "label": "cloud-interactions-go",
-          "parent": "domain_genai_apps_tooling",
+          "parent": "domain_agentic_ai_mcp",
           "type": "repo",
           "url": "https://github.com/ghchinoy/cloud-interactions-go",
           "desc": "Google GenAI Interactions Go SDK - unofficial",
+          "stars": 1,
           "language": "Go",
           "stack": [
             "ai",
@@ -827,11 +1529,11 @@
         {
           "id": "repo_riptide",
           "label": "riptide",
-          "parent": "domain_genai_apps_tooling",
+          "parent": "domain_agentic_ai_mcp",
           "type": "repo",
           "url": "https://github.com/ghchinoy/riptide",
           "desc": "Surf the web with confidence - a Gemini Computer Use example",
-          "stars": 1,
+          "stars": 2,
           "language": "Go",
           "stack": [
             "ai",
@@ -846,11 +1548,12 @@
         {
           "id": "repo_spark_agent_tools",
           "label": "spark-agent-tools",
-          "parent": "domain_mcp_agent_skills",
+          "parent": "domain_agentic_ai_mcp",
           "type": "repo",
           "url": "https://github.com/ghchinoy/spark-agent-tools",
-          "homepage": "https://github.com/ghchinoy/spark-agent-tools",
+          "homepage": "https://github.com/ghchinoy/spark-agent-tools/blob/main/docs/blog-post.md",
           "desc": "Hello-world MCP servers for Gemini Spark: full OAuth 2.1 scaffolding (RFC 9728 + 8414 + 7591 + 7636 PKCE) in self-contained Go binaries, deployable to Cloud Run in one command.",
+          "stars": 2,
           "language": "Go",
           "topics": [
             "cloud-run",
@@ -874,39 +1577,13 @@
           "connectivity": "connected"
         },
         {
-          "id": "repo_a2a_cli",
-          "label": "a2a-cli",
-          "parent": "domain_agent_protocols",
-          "type": "repo",
-          "url": "https://github.com/ghchinoy/a2a-cli",
-          "desc": "a terminal client for the Agent2Agent (A2A) Protocol",
-          "stars": 1,
-          "language": "Go",
-          "topics": [
-            "a2a",
-            "a2a-cli",
-            "a2a-client",
-            "cli"
-          ],
-          "stack": [
-            "a2a",
-            "ai",
-            "cli",
-            "go"
-          ],
-          "status": "active",
-          "source": "auto",
-          "pushedAt": "2026-08-07T22:50:40Z",
-          "createdAt": "2026-08-07T12:50:53Z",
-          "connectivity": "connected"
-        },
-        {
           "id": "repo_pandemonium",
           "label": "pandemonium",
-          "parent": "domain_agent_protocols",
+          "parent": "domain_agentic_ai_mcp",
           "type": "repo",
           "url": "https://github.com/ghchinoy/pandemonium",
           "desc": "An updated Go port of GDM's Concordia",
+          "stars": 1,
           "language": "Go",
           "stack": [
             "go"
@@ -918,33 +1595,13 @@
           "connectivity": "connected"
         },
         {
-          "id": "repo_a2acli",
-          "label": "a2acli",
-          "parent": "domain_agent_protocols",
-          "type": "repo",
-          "url": "https://github.com/ghchinoy/a2acli",
-          "desc": "A2A command-line tool",
-          "stars": 4,
-          "language": "Go",
-          "stack": [
-            "a2a",
-            "ai",
-            "cli",
-            "go"
-          ],
-          "status": "active",
-          "source": "auto",
-          "pushedAt": "2026-08-05T03:25:54Z",
-          "createdAt": "2026-02-20T20:54:44Z",
-          "connectivity": "connected"
-        },
-        {
           "id": "repo_a2a_experiments",
           "label": "a2a-experiments",
-          "parent": "domain_agent_protocols",
+          "parent": "domain_agentic_ai_mcp",
           "type": "repo",
           "url": "https://github.com/ghchinoy/a2a-experiments",
           "desc": "Agent 2 Agent (A2A) with the Gemini Interactions API",
+          "stars": 1,
           "language": "Go",
           "stack": [
             "a2a",
@@ -958,13 +1615,341 @@
           "connectivity": "connected"
         },
         {
-          "id": "repo_eldamoapi",
-          "label": "eldamoapi",
-          "parent": "domain_mcp_agent_skills",
+          "id": "repo_watcher",
+          "label": "watcher",
+          "parent": "domain_agentic_ai_mcp",
           "type": "repo",
-          "url": "https://github.com/ghchinoy/eldamoapi",
-          "homepage": "https://www.mithlond.com/",
-          "desc": "Agent tools for Eldamo Tolkien Language Lexicon (Paul Strack, eldamo.org)",
+          "url": "https://github.com/ghchinoy/watcher",
+          "desc": "agent task desktop app",
+          "stars": 3,
+          "language": "Dart",
+          "stack": [
+            "ai",
+            "dart"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-07-28T18:41:10Z",
+          "createdAt": "2026-03-08T19:53:47Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_jibotool",
+          "label": "jibotool",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/jibotool",
+          "desc": "Go cli for unlocking Jibo",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "cli",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-07-26T20:03:40Z",
+          "createdAt": "2026-07-05T17:14:29Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_eldamo_app",
+          "label": "eldamo-app",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/eldamo-app",
+          "desc": "A desktop dictionary and semantic concept search engine for J.R.R. Tolkien's constructed languages",
+          "stars": 1,
+          "language": "TypeScript",
+          "topics": [
+            "desktop-app",
+            "tolkien",
+            "eldamo"
+          ],
+          "stack": [
+            "frontend",
+            "javascript",
+            "typescript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-07-26T17:46:19Z",
+          "createdAt": "2026-07-25T22:54:33Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_localmgr",
+          "label": "localmgr",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/localmgr",
+          "desc": "Run and manage local models easily - a native GUI for existing tools",
+          "stars": 2,
+          "language": "Swift",
+          "stack": [
+            "swift"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-07-22T03:39:08Z",
+          "createdAt": "2026-07-03T14:56:33Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_kokoro_rs",
+          "label": "kokoro-rs",
+          "parent": "domain_speech_audio_ai",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/kokoro-rs",
+          "desc": "Kokoro TTS command-line tool, in Rust",
+          "stars": 6,
+          "language": "Rust",
+          "stack": [
+            "audio",
+            "cli",
+            "rust"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-07-20T04:25:50Z",
+          "createdAt": "2026-04-11T21:03:13Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_httpserver",
+          "label": "httpserver",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/httpserver",
+          "desc": "simple golang httpserver",
+          "stars": 3,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-07-19T01:54:43Z",
+          "createdAt": "2015-03-13T15:46:17Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_gemma_stt",
+          "label": "gemma-stt",
+          "parent": "domain_speech_audio_ai",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/gemma-stt",
+          "desc": "Gemma 4 STT cli",
+          "stars": 1,
+          "language": "Python",
+          "stack": [
+            "ai",
+            "audio",
+            "cli",
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-07-15T02:27:40Z",
+          "createdAt": "2026-07-13T05:23:48Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_jiborelay",
+          "label": "jiborelay",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/jiborelay",
+          "desc": "Jibo communication relay, TCP, any protocol.",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-07-10T03:24:28Z",
+          "createdAt": "2026-07-08T04:49:11Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_fishaudio",
+          "label": "fishaudio",
+          "parent": "domain_speech_audio_ai",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/fishaudio",
+          "desc": "Fishaudio S2 MLX client",
+          "stars": 2,
+          "language": "Python",
+          "stack": [
+            "ai",
+            "audio",
+            "cli",
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-07-06T00:36:59Z",
+          "createdAt": "2026-07-06T00:29:19Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_magenta_player",
+          "label": "magenta-player",
+          "parent": "domain_speech_audio_ai",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/magenta-player",
+          "desc": "Experiments with DeepMind's Magenta RealTime2",
+          "stars": 1,
+          "language": "Swift",
+          "stack": [
+            "ai",
+            "swift"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-07-03T02:27:00Z",
+          "createdAt": "2026-07-02T22:20:30Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_magnifica_epub",
+          "label": "magnifica-epub",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/magnifica-epub",
+          "desc": "HTML-to-epub",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-06-22T16:12:24Z",
+          "createdAt": "2026-06-22T15:49:27Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_pdf2epub",
+          "label": "pdf2epub",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/pdf2epub",
+          "desc": "Convert PDF files to epub for your ereader",
+          "stars": 1,
+          "language": "Python",
+          "stack": [
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-06-22T06:36:24Z",
+          "createdAt": "2026-06-22T01:41:28Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_gemma4_tuning",
+          "label": "gemma4-tuning",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/gemma4-tuning",
+          "stars": 3,
+          "language": "Python",
+          "stack": [
+            "ai",
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-06-15T05:43:54Z",
+          "createdAt": "2026-04-10T23:45:10Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_misotts_mlx",
+          "label": "misotts-mlx",
+          "parent": "domain_speech_audio_ai",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/misotts-mlx",
+          "desc": "MisoTTS on MacOS MLX",
+          "stars": 1,
+          "language": "Python",
+          "stack": [
+            "ai",
+            "audio",
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-06-15T00:03:23Z",
+          "createdAt": "2026-06-14T17:30:11Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_pixie_anim",
+          "label": "pixie-anim",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/pixie-anim",
+          "homepage": "https://ghchinoy.github.io/pixie-anim/",
+          "desc": "High-performance animation compression library written in Rust.",
+          "stars": 6,
+          "language": "Rust",
+          "stack": [
+            "rust"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-06-02T19:49:02Z",
+          "createdAt": "2025-12-31T00:33:50Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_screener",
+          "label": "screener",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/screener",
+          "desc": "Screen your videos with a Swift desktop app",
+          "stars": 2,
+          "language": "Swift",
+          "stack": [
+            "swift"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-05-23T05:51:56Z",
+          "createdAt": "2026-05-17T18:17:55Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_drivectl",
+          "label": "drivectl",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/drivectl",
+          "desc": "Command-line tool for Google Drive",
+          "stars": 4,
+          "language": "Go",
+          "stack": [
+            "cli",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-05-18T05:52:53Z",
+          "createdAt": "2025-08-10T20:12:32Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_pirate_weather",
+          "label": "pirate-weather",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/pirate-weather",
+          "desc": "Gemini's a pirate that knows the weather",
+          "stars": 1,
           "language": "Go",
           "stack": [
             "ai",
@@ -972,28 +1957,1879 @@
           ],
           "status": "active",
           "source": "auto",
-          "pushedAt": "2026-08-01T05:33:44Z",
-          "createdAt": "2015-07-25T15:30:14Z",
+          "pushedAt": "2026-04-29T04:27:14Z",
+          "createdAt": "2026-04-29T00:57:23Z",
           "connectivity": "connected"
+        },
+        {
+          "id": "repo_AudioVoxBench",
+          "label": "AudioVoxBench",
+          "parent": "domain_speech_audio_ai",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/AudioVoxBench",
+          "desc": "Benchmarking muiltimodal embeddings for audio search",
+          "stars": 1,
+          "language": "C",
+          "topics": [
+            "gemini-embedding-2",
+            "nano-banana-2",
+            "lyria-3"
+          ],
+          "stack": [
+            "ai",
+            "audio",
+            "c"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-04-09T18:31:55Z",
+          "createdAt": "2026-04-04T21:40:56Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_yt_cli",
+          "label": "yt-cli",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/yt-cli",
+          "desc": "YouTube command-line, agent + human ready",
+          "stars": 16,
+          "language": "Go",
+          "stack": [
+            "ai",
+            "cli",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-03-30T20:49:17Z",
+          "createdAt": "2026-03-30T20:28:42Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_cloud_status",
+          "label": "cloud-status",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/cloud-status",
+          "desc": "Google Cloud Service Health cli and MCP server",
+          "stars": 2,
+          "language": "Go",
+          "stack": [
+            "ai",
+            "cli",
+            "go",
+            "mcp"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-03-29T03:45:49Z",
+          "createdAt": "2025-08-27T17:27:18Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_apikeyscan",
+          "label": "apikeyscan",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/apikeyscan",
+          "desc": "Review your Google Cloud API keys",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-03-17T02:03:37Z",
+          "createdAt": "2026-02-26T14:42:28Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_gemini_on_rails",
+          "label": "gemini-on-rails",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/gemini-on-rails",
+          "desc": "minimal rails example with gemini",
+          "stars": 1,
+          "language": "Ruby",
+          "stack": [
+            "ai",
+            "ruby"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-02-27T15:07:01Z",
+          "createdAt": "2025-10-17T20:56:12Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_mattey_banana",
+          "label": "mattey-banana",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/mattey-banana",
+          "homepage": "https://ghchinoy.github.io/mattey-banana/",
+          "desc": "Create vectors from images",
+          "stars": 1,
+          "language": "TypeScript",
+          "stack": [
+            "frontend",
+            "javascript",
+            "typescript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-02-22T22:59:29Z",
+          "createdAt": "2026-02-08T02:57:34Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_morphlab",
+          "label": "morphlab",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/morphlab",
+          "desc": "Morph your SVGs with Gemini",
+          "stars": 1,
+          "language": "TypeScript",
+          "stack": [
+            "ai",
+            "frontend",
+            "javascript",
+            "typescript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-02-22T20:58:33Z",
+          "createdAt": "2026-02-22T19:43:07Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_litflow",
+          "label": "litflow",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/litflow",
+          "homepage": "https://litflow.dev/",
+          "desc": "open source library for building node-based UI with Lit Web components, based on xyflow",
+          "stars": 2,
+          "language": "TypeScript",
+          "stack": [
+            "frontend",
+            "javascript",
+            "typescript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-02-14T15:23:40Z",
+          "createdAt": "2025-12-26T17:14:16Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_filterjson",
+          "label": "filterjson",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/filterjson",
+          "desc": "small service to filter json",
+          "stars": 1,
+          "language": "JavaScript",
+          "stack": [
+            "frontend",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2026-02-13T15:45:48Z",
+          "createdAt": "2018-07-18T04:35:16Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_dot_to_xyflow",
+          "label": "dot-to-xyflow",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/dot-to-xyflow",
+          "desc": "Graphviz dot files to xyflow JSON",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-12-30T17:47:17Z",
+          "createdAt": "2025-12-27T00:36:29Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_echo_storyteller",
+          "label": "echo-storyteller",
+          "parent": "domain_speech_audio_ai",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/echo-storyteller",
+          "desc": "Gemini TTS streaming Flutter storyteller reference app",
+          "stars": 8,
+          "language": "Dart",
+          "stack": [
+            "ai",
+            "audio",
+            "dart"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-12-02T04:24:04Z",
+          "createdAt": "2025-11-30T17:24:23Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_adk_go_tutorial",
+          "label": "adk-go-tutorial",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/adk-go-tutorial",
+          "desc": "A tutorial repository for Google's Go Agent Development Kit",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "ai",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-11-11T19:33:42Z",
+          "createdAt": "2025-11-11T00:06:09Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_learning_a2a",
+          "label": "learning-a2a",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/learning-a2a",
+          "desc": "Learning Agent2Agent - Go, JS, and Dart",
+          "stars": 1,
+          "language": "Dart",
+          "stack": [
+            "a2a",
+            "ai",
+            "dart",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-10-13T02:33:20Z",
+          "createdAt": "2025-10-12T20:13:31Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_image_generation",
+          "label": "image-generation",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/image-generation",
+          "desc": "🍌 with Go",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-08-29T17:02:52Z",
+          "createdAt": "2025-08-29T16:42:04Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_calctl",
+          "label": "calctl",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/calctl",
+          "desc": "Google Calendar MCP server",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "ai",
+            "go",
+            "mcp"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-08-22T13:09:24Z",
+          "createdAt": "2025-08-20T05:40:52Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_youtubectl",
+          "label": "youtubectl",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/youtubectl",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-08-12T03:17:15Z",
+          "createdAt": "2025-08-07T00:57:38Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_mcp_google_drive",
+          "label": "mcp-google-drive",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/mcp-google-drive",
+          "desc": "MCP servers for Google Drive (unofficial)",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "ai",
+            "go",
+            "mcp"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-07-11T23:10:51Z",
+          "createdAt": "2025-06-24T04:36:04Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_html2pdf",
+          "label": "html2pdf",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/html2pdf",
+          "desc": "given an html url, generate a pdf",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-07-09T05:36:32Z",
+          "createdAt": "2024-12-05T06:09:36Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_internet_clock",
+          "label": "internet-clock",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/internet-clock",
+          "desc": "web-based clock and internet radio player in Mesop with a minimalist design",
+          "stars": 1,
+          "language": "Python",
+          "stack": [
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-06-29T19:44:19Z",
+          "createdAt": "2025-06-29T18:56:54Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_gen",
+          "label": "gen",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/gen",
+          "desc": "generative AI from the command-line",
+          "stars": 5,
+          "language": "Go",
+          "topics": [
+            "gemini",
+            "generative-ai",
+            "google-cloud"
+          ],
+          "stack": [
+            "ai",
+            "cli",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-06-19T03:12:51Z",
+          "createdAt": "2024-03-29T23:40:20Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_gemini_mcp",
+          "label": "gemini-mcp",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/gemini-mcp",
+          "desc": "Gemini with Veo, Imagen, and Lyria MCP Servers",
+          "stars": 1,
+          "language": "Python",
+          "stack": [
+            "ai",
+            "mcp",
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-05-22T15:32:03Z",
+          "createdAt": "2025-05-22T04:11:57Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_fabulae",
+          "label": "fabulae",
+          "parent": "domain_speech_audio_ai",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/fabulae",
+          "desc": "create audio stories from PDFs or existing transcripts",
+          "stars": 3,
+          "language": "Go",
+          "topics": [
+            "gemini",
+            "speech-synthesis"
+          ],
+          "stack": [
+            "ai",
+            "audio",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-04-17T03:21:45Z",
+          "createdAt": "2024-09-21T23:03:29Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_studio_scaffold",
+          "label": "studio-scaffold",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/studio-scaffold",
+          "desc": "Mesop app scaffold for studio apps",
+          "stars": 12,
+          "language": "Python",
+          "stack": [
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-04-13T20:36:20Z",
+          "createdAt": "2024-12-17T04:27:01Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_mesop_arena",
+          "label": "mesop-arena",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/mesop-arena",
+          "desc": "Compare image generation models with Mesop arena",
+          "stars": 4,
+          "language": "Python",
+          "stack": [
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-04-09T14:22:17Z",
+          "createdAt": "2024-12-23T16:45:03Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_drivetogcs",
+          "label": "drivetogcs",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/drivetogcs",
+          "desc": "Copy files from Drive to Google Cloud Storage",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "ai",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2025-04-02T00:20:53Z",
+          "createdAt": "2025-03-22T20:24:02Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_gemini_websockets_proxy",
+          "label": "gemini-websockets-proxy",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/gemini-websockets-proxy",
+          "desc": "Gemini Multimodal Live proxy for various languages",
+          "stars": 4,
+          "language": "Python",
+          "stack": [
+            "ai",
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2024-12-31T16:34:15Z",
+          "createdAt": "2024-12-28T16:31:38Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_go_gemini_mm_live",
+          "label": "go-gemini-mm-live",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/go-gemini-mm-live",
+          "stars": 1,
+          "language": "HTML",
+          "stack": [
+            "ai",
+            "go",
+            "html"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2024-12-13T06:09:30Z",
+          "createdAt": "2024-12-13T06:08:17Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_gecko_agent",
+          "label": "gecko-agent",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/gecko-agent",
+          "desc": "Implementation of the Gecko (arXiv:2404.16820 [cs.CV]) explainable multimodal evaluations",
+          "stars": 1,
+          "language": "Smarty",
+          "stack": [
+            "ai",
+            "smarty"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2024-12-12T06:38:52Z",
+          "createdAt": "2024-12-12T06:36:41Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_soapgen_cli",
+          "label": "soapgen-cli",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/soapgen-cli",
+          "desc": "cli to generate request/responses from a wsdl",
+          "stars": 2,
+          "language": "Java",
+          "stack": [
+            "cli",
+            "java"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2024-10-04T09:54:44Z",
+          "createdAt": "2017-02-01T18:15:24Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_robotreadme_podcast",
+          "label": "robotreadme-podcast",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/robotreadme-podcast",
+          "desc": "robotread.me's podcast publishing process",
+          "stars": 1,
+          "language": "HTML",
+          "stack": [
+            "html"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2024-09-30T03:58:15Z",
+          "createdAt": "2024-09-29T22:26:20Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_mesop_svg_icon",
+          "label": "mesop-svg-icon",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/mesop-svg-icon",
+          "desc": "SVG web component for Mesop",
+          "stars": 1,
+          "language": "Python",
+          "stack": [
+            "frontend",
+            "javascript",
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2024-07-01T23:42:39Z",
+          "createdAt": "2024-06-29T18:56:00Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_openapi_from_grpc",
+          "label": "openapi-from-grpc",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/openapi-from-grpc",
+          "desc": "gRPC service with autogenerated OpenAPI spec via gRPC Gateway for REST/HTTP",
+          "stars": 1,
+          "language": "Go",
+          "topics": [
+            "grpc-gateway",
+            "openapi"
+          ],
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2024-04-04T17:35:46Z",
+          "createdAt": "2024-03-15T04:19:58Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_rss2mp3s",
+          "label": "rss2mp3s",
+          "parent": "domain_speech_audio_ai",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/rss2mp3s",
+          "desc": "Download all of a podcasts mp3s from the RSS feed",
+          "stars": 7,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2023-12-11T00:21:49Z",
+          "createdAt": "2021-08-07T18:10:03Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_bqgeo_examples",
+          "label": "bqgeo-examples",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/bqgeo-examples",
+          "desc": "BigQuery geospatial examples",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2022-11-30T01:22:25Z",
+          "createdAt": "2022-11-30T00:02:26Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_twitterage",
+          "label": "twitterage",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/twitterage",
+          "stars": 1,
+          "language": "JavaScript",
+          "stack": [
+            "ai",
+            "frontend",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2022-07-08T01:54:17Z",
+          "createdAt": "2018-11-19T07:53:36Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_hello_container_py",
+          "label": "hello-container-py",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/hello-container-py",
+          "stars": 1,
+          "language": "Python",
+          "stack": [
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2022-01-30T01:04:25Z",
+          "createdAt": "2022-01-30T00:53:45Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_contentrouter",
+          "label": "contentrouter",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/contentrouter",
+          "desc": "Protect static content via Firebase Hosting with Cloud Run and Google Cloud Storage",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "ai",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2022-01-02T16:33:52Z",
+          "createdAt": "2021-12-31T01:39:43Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_clever_gcp",
+          "label": "clever-gcp",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/clever-gcp",
+          "desc": "clever usages of cli (bash, gcloud) for GCP",
+          "stars": 2,
+          "language": "Shell",
+          "topics": [
+            "gcp",
+            "gcloud",
+            "bash",
+            "cli"
+          ],
+          "stack": [
+            "cli",
+            "shell"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-12-28T16:56:19Z",
+          "createdAt": "2019-10-07T18:30:17Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_httplifx_sample",
+          "label": "httplifx-sample",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/httplifx-sample",
+          "desc": "Sample client app to test LIFX HTTP API",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "cli",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-12-18T15:31:03Z",
+          "createdAt": "2016-05-17T20:56:39Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_eldamo_build",
+          "label": "eldamo-build",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/eldamo-build",
+          "desc": "Building Paul Strack's Eldamo with Docker",
+          "stars": 1,
+          "language": "Dockerfile",
+          "stack": [
+            "dockerfile"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-10-21T03:03:01Z",
+          "createdAt": "2019-08-05T05:13:06Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_graphql_apollo_run",
+          "label": "graphql-apollo-run",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/graphql-apollo-run",
+          "desc": "Cloud Run GraphQL server",
+          "stars": 1,
+          "language": "JavaScript",
+          "stack": [
+            "frontend",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-10-18T00:27:02Z",
+          "createdAt": "2021-10-18T00:19:45Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_cx_messenger_studio",
+          "label": "cx-messenger-studio",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/cx-messenger-studio",
+          "desc": "Experiment with rendering Dialogflow Messenger CX rich response cards",
+          "stars": 2,
+          "language": "HTML",
+          "stack": [
+            "html"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-10-15T05:45:13Z",
+          "createdAt": "2021-10-15T05:32:46Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_thumbor_container",
+          "label": "thumbor-container",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/thumbor-container",
+          "desc": "thumbor in a container, via gcp cloud build and cloud run",
+          "stars": 2,
+          "language": "Dockerfile",
+          "topics": [
+            "thumbor",
+            "thumbor-docker",
+            "cloud-run",
+            "cloud-build"
+          ],
+          "stack": [
+            "dockerfile"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-09-11T20:15:03Z",
+          "createdAt": "2019-10-30T03:36:00Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_goweb",
+          "label": "goweb",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/goweb",
+          "desc": "Go webserver, embedding all assets",
+          "stars": 1,
+          "language": "HTML",
+          "stack": [
+            "go",
+            "html"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-08-12T21:40:07Z",
+          "createdAt": "2021-08-02T15:21:09Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_go_cx_examples",
+          "label": "go-cx-examples",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/go-cx-examples",
+          "desc": "Dialogflow CX examples using Go",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-07-04T22:30:06Z",
+          "createdAt": "2021-06-26T08:15:30Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_es_intentmgmt",
+          "label": "es-intentmgmt",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/es-intentmgmt",
+          "desc": "Dialogflow ES Intent training phrase import/export",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-07-04T19:04:37Z",
+          "createdAt": "2021-07-02T20:28:41Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_whereami_go",
+          "label": "whereami-go",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/whereami-go",
+          "desc": "go version of whereami app",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-06-06T18:58:52Z",
+          "createdAt": "2020-09-10T23:23:01Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_perl_containers",
+          "label": "perl-containers",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/perl-containers",
+          "desc": "Yeah, let's do this",
+          "stars": 1,
+          "language": "Perl",
+          "stack": [
+            "perl"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-05-04T00:34:37Z",
+          "createdAt": "2021-05-03T23:05:08Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_gcloud_iterm2_statusbarcomponent",
+          "label": "gcloud-iterm2-statusbarcomponent",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/gcloud-iterm2-statusbarcomponent",
+          "desc": "Shows Google Cloud Project in iTerm2 status bar",
+          "stars": 1,
+          "language": "Python",
+          "stack": [
+            "go",
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-03-03T23:34:12Z",
+          "createdAt": "2021-03-03T06:21:31Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_bucket_review",
+          "label": "bucket-review",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/bucket-review",
+          "desc": "GCS bucket review tool checks for allUsers and allAuthenticatedUsers public exposure",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2021-01-28T06:58:59Z",
+          "createdAt": "2021-01-28T06:53:48Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_monorepo",
+          "label": "monorepo",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/monorepo",
+          "desc": "monorepo go test",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2020-11-25T20:31:42Z",
+          "createdAt": "2020-11-25T20:28:48Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_aoc2019",
+          "label": "aoc2019",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/aoc2019",
+          "stars": 1,
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2019-12-07T16:42:18Z",
+          "createdAt": "2019-12-07T16:41:47Z",
+          "connectivity": "bare"
+        },
+        {
+          "id": "repo_kind_examples",
+          "label": "kind-examples",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/kind-examples",
+          "desc": "notes on using kind",
+          "stars": 1,
+          "topics": [
+            "kind",
+            "contour",
+            "kubernetes"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2019-11-19T02:42:12Z",
+          "createdAt": "2019-11-05T23:26:45Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_mitreidconnect_docker",
+          "label": "mitreidconnect-docker",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/mitreidconnect-docker",
+          "desc": "Dockerfile for MITREid Connect",
+          "stars": 6,
+          "language": "Shell",
+          "stack": [
+            "shell"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2019-10-17T18:07:00Z",
+          "createdAt": "2015-08-22T17:59:47Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_octane_extension",
+          "label": "octane-extension",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/octane-extension",
+          "desc": "Octane JavaScript benchmark in a Chrome Extension",
+          "stars": 1,
+          "language": "JavaScript",
+          "stack": [
+            "frontend",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2019-06-07T22:20:31Z",
+          "createdAt": "2012-08-22T01:03:59Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_ml_notebooks",
+          "label": "ml-notebooks",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/ml-notebooks",
+          "desc": "notebooks for exploring ml",
+          "stars": 1,
+          "language": "Jupyter Notebook",
+          "stack": [
+            "jupyter notebook"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2019-05-29T04:29:06Z",
+          "createdAt": "2019-05-13T19:36:49Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_aoc2018",
+          "label": "aoc2018",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/aoc2018",
+          "desc": "Advent of Code",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-12-16T01:28:06Z",
+          "createdAt": "2018-12-02T06:30:46Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_scoop_ce",
+          "label": "scoop-ce",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/scoop-ce",
+          "desc": "scoop bucket for CE tools",
+          "stars": 1,
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-11-19T02:20:18Z",
+          "createdAt": "2017-07-10T16:42:33Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_cectl",
+          "label": "cectl",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/cectl",
+          "desc": "Cloud Elements platform command-line interface",
+          "stars": 9,
+          "language": "Go",
+          "stack": [
+            "cli",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-11-19T02:07:27Z",
+          "createdAt": "2017-05-19T19:32:12Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_homebrew_ce",
+          "label": "homebrew-ce",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/homebrew-ce",
+          "desc": "homebrew repo for Cloud Elements Command Line tool",
+          "stars": 1,
+          "language": "Ruby",
+          "stack": [
+            "ruby"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-11-19T02:07:17Z",
+          "createdAt": "2017-07-10T16:34:05Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_ce_go",
+          "label": "ce-go",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/ce-go",
+          "desc": "Cloud Elements Platform Library",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-11-18T18:26:56Z",
+          "createdAt": "2018-01-21T03:42:55Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_twilioapps",
+          "label": "twilioapps",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/twilioapps",
+          "desc": "twilio apps for the twilio quest",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-10-21T18:37:11Z",
+          "createdAt": "2018-10-21T18:35:58Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_gotwilio",
+          "label": "gotwilio",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/gotwilio",
+          "desc": "simple twilio client in Go",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "cli",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-10-21T17:16:48Z",
+          "createdAt": "2018-10-21T17:15:02Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_workday_analysis",
+          "label": "workday-analysis",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/workday-analysis",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-10-17T01:21:15Z",
+          "createdAt": "2018-08-24T03:48:04Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_echoserver",
+          "label": "echoserver",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/echoserver",
+          "desc": "a server that echoes what's sent",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-08-22T03:44:30Z",
+          "createdAt": "2018-08-22T01:28:55Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_ce_examples",
+          "label": "ce-examples",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/ce-examples",
+          "desc": "examples using the CE API libraries",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-08-07T19:11:44Z",
+          "createdAt": "2018-03-06T14:39:25Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_slowstartserver",
+          "label": "slowstartserver",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/slowstartserver",
+          "desc": "simple slow starting server for demo purposes",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-08-05T16:37:19Z",
+          "createdAt": "2018-08-05T16:36:06Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_mock_soap",
+          "label": "mock-soap",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/mock-soap",
+          "desc": "Using SoapUI to mock SOAP webservices",
+          "stars": 1,
+          "language": "CSS",
+          "stack": [
+            "css"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-07-31T18:47:15Z",
+          "createdAt": "2018-07-31T18:40:10Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_github_pr",
+          "label": "github-pr",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/github-pr",
+          "desc": "PR stats",
+          "stars": 1,
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2018-05-07T04:54:19Z",
+          "createdAt": "2018-05-07T04:53:29Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_intermittentfailure",
+          "label": "intermittentfailure",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/intermittentfailure",
+          "desc": "a small service that intermittently returns 5xx errors",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-07-28T19:46:55Z",
+          "createdAt": "2017-07-28T19:46:28Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_slowendpoint",
+          "label": "slowendpoint",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/slowendpoint",
+          "desc": "service, with a delay!",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-05-09T16:19:42Z",
+          "createdAt": "2017-05-09T16:19:00Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_cloudelements_flogo",
+          "label": "cloudelements-flogo",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/cloudelements-flogo",
+          "desc": "flogo activity",
+          "stars": 2,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-04-25T16:08:56Z",
+          "createdAt": "2017-04-25T04:19:37Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo__rwctl",
+          "label": "-rwctl",
+          "parent": "domain_agentic_ai_mcp",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/-rwctl",
+          "desc": "Unofficial command-line interface (cli) for the Rogue Wave API Platform",
+          "stars": 2,
+          "language": "Go",
+          "stack": [
+            "cli",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-04-04T19:48:30Z",
+          "createdAt": "2017-01-09T00:27:08Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_zillowcomparables",
+          "label": "zillowcomparables",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/zillowcomparables",
+          "desc": "simple comparables query from zillow api",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-04-04T19:47:28Z",
+          "createdAt": "2017-04-04T19:47:03Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_faaload",
+          "label": "faaload",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/faaload",
+          "desc": "a simple sequential API caller",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-04-04T19:16:35Z",
+          "createdAt": "2017-03-15T22:51:12Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_go_serverless",
+          "label": "go-serverless",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/go-serverless",
+          "homepage": "https://medium.com/@ghchinoy/building-a-serverless-go-app-on-google-cloud-90240fba9845",
+          "desc": "Go serverless app on Google Cloud, inspired by Laurent Picard's _Building a serverless Python app in minutes with GCP_ (https://goo.gl/igZoqy)",
+          "stars": 5,
+          "language": "Go",
+          "stack": [
+            "go",
+            "python"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-04-04T19:14:43Z",
+          "createdAt": "2017-03-31T01:25:27Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_oauthtest",
+          "label": "oauthtest",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/oauthtest",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-02-13T03:11:11Z",
+          "createdAt": "2016-09-28T03:18:00Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_homebrew_akana",
+          "label": "homebrew-akana",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/homebrew-akana",
+          "desc": "Akana tools",
+          "stars": 1,
+          "language": "Ruby",
+          "stack": [
+            "ruby"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-02-13T03:01:14Z",
+          "createdAt": "2016-09-28T01:02:58Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_scoop_roguewave",
+          "label": "scoop-roguewave",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/scoop-roguewave",
+          "desc": "scoop.sh bucket for roguewave windows utilities",
+          "stars": 1,
+          "stack": [
+            "frontend",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-02-09T21:19:53Z",
+          "createdAt": "2017-01-10T15:55:53Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_homebrew_roguewave",
+          "label": "homebrew-roguewave",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/homebrew-roguewave",
+          "desc": "homebrew tap for roguewave utils",
+          "stars": 1,
+          "language": "Ruby",
+          "stack": [
+            "ruby"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-02-09T21:06:41Z",
+          "createdAt": "2017-01-09T00:27:28Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_atmotool",
+          "label": "atmotool",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/atmotool",
+          "desc": "Unofficial Akana API Platform CLI",
+          "stars": 2,
+          "language": "Go",
+          "stack": [
+            "cli",
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2017-01-10T17:51:07Z",
+          "createdAt": "2016-06-13T20:43:01Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_botsavesprincess",
+          "label": "botsavesprincess",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/botsavesprincess",
+          "desc": "hackerrank challenge",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2016-12-26T23:53:18Z",
+          "createdAt": "2016-12-26T23:48:54Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_urlsplit",
+          "label": "urlsplit",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/urlsplit",
+          "desc": "freemarker template output for splitting url",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "frontend",
+            "go",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2016-11-01T20:54:00Z",
+          "createdAt": "2016-11-01T20:52:11Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_youtubestreaming_staticimage",
+          "label": "youtubestreaming-staticimage",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/youtubestreaming-staticimage",
+          "stars": 1,
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2016-09-24T19:02:38Z",
+          "createdAt": "2016-09-24T19:02:37Z",
+          "connectivity": "bare"
+        },
+        {
+          "id": "repo_iot_lambda_code",
+          "label": "iot_lambda_code",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/iot_lambda_code",
+          "desc": "AWS IoT Lambda code samples",
+          "stars": 1,
+          "language": "JavaScript",
+          "stack": [
+            "frontend",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2016-05-17T18:42:22Z",
+          "createdAt": "2016-05-17T18:41:38Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_forgerock_docker",
+          "label": "forgerock-docker",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/forgerock-docker",
+          "desc": "Dockerfiles for ForgeRock OpenDJ",
+          "stars": 14,
+          "language": "Shell",
+          "stack": [
+            "shell"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2015-08-17T19:28:50Z",
+          "createdAt": "2015-03-06T22:06:03Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_awstool",
+          "label": "awstool",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/awstool",
+          "desc": "Rudimentary AWS Security Groups analysis",
+          "stars": 6,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2015-07-05T19:27:03Z",
+          "createdAt": "2015-07-04T18:02:28Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_wicsa2011",
+          "label": "wicsa2011",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/wicsa2011",
+          "desc": "Automatically exported from code.google.com/p/wicsa2011",
+          "stars": 1,
+          "language": "Java",
+          "stack": [
+            "go",
+            "java"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2015-03-14T17:48:51Z",
+          "createdAt": "2015-03-14T17:38:46Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_fhir_server",
+          "label": "fhir-server",
+          "parent": "domain_cloud_apis_integration",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/fhir-server",
+          "desc": "MITRE FHIR server Dockerfiles",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2015-03-06T01:07:48Z",
+          "createdAt": "2015-03-06T01:05:20Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_fizzbuzz",
+          "label": "fizzbuzz",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/fizzbuzz",
+          "desc": "FizzBuzz Test in Golang",
+          "stars": 1,
+          "language": "Go",
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2015-02-14T21:16:20Z",
+          "createdAt": "2015-02-14T21:13:28Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_wander",
+          "label": "wander",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/wander",
+          "desc": "Chrome extension that opens Google Maps to a new location",
+          "stars": 1,
+          "language": "JavaScript",
+          "stack": [
+            "frontend",
+            "go",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2015-02-13T14:46:36Z",
+          "createdAt": "2015-02-12T20:41:40Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_datasciencecoursera",
+          "label": "datasciencecoursera",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/datasciencecoursera",
+          "desc": "for Coursera's The Data Scientist’s Toolbox",
+          "stars": 1,
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2014-08-08T04:34:11Z",
+          "createdAt": "2014-08-08T04:32:25Z",
+          "connectivity": "standalone"
+        },
+        {
+          "id": "repo_gaegoangular",
+          "label": "gaegoangular",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/gaegoangular",
+          "desc": "Code for SatishVJ's excellent walkthrough of Go, Google App Engine, and AngularJS",
+          "stars": 2,
+          "stack": [
+            "go"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2014-03-29T05:43:38Z",
+          "createdAt": "2014-03-29T00:55:08Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_sample_cast",
+          "label": "sample-cast",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/sample-cast",
+          "desc": "validating aaronfrost's great chromecast intro example",
+          "stars": 2,
+          "language": "JavaScript",
+          "stack": [
+            "frontend",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2013-08-22T02:42:25Z",
+          "createdAt": "2013-08-17T04:28:08Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_loggo",
+          "label": "loggo",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/loggo",
+          "desc": "Simple Android login demonstration application",
+          "stars": 1,
+          "language": "Java",
+          "stack": [
+            "go",
+            "java"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2012-10-15T01:09:47Z",
+          "createdAt": "2012-10-14T18:37:44Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_tengwarjs_node",
+          "label": "tengwarjs-node",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/tengwarjs-node",
+          "desc": "node npm module of Kris Kowal's tengwarjs",
+          "stars": 1,
+          "language": "JavaScript",
+          "stack": [
+            "frontend",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2012-08-30T03:48:05Z",
+          "createdAt": "2012-08-30T02:51:04Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_tengwarjs_server",
+          "label": "tengwarjs-server",
+          "parent": "domain_creative_content_provenance",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/tengwarjs-server",
+          "desc": "node server for tengwar transcription",
+          "stars": 1,
+          "language": "JavaScript",
+          "stack": [
+            "frontend",
+            "javascript"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2012-08-30T03:38:09Z",
+          "createdAt": "2012-08-30T03:28:01Z",
+          "connectivity": "connected"
+        },
+        {
+          "id": "repo_spherowalkabout",
+          "label": "spherowalkabout",
+          "parent": "domain_developer_tools_systems",
+          "type": "repo",
+          "url": "https://github.com/ghchinoy/spherowalkabout",
+          "desc": "Sphero Walkabout",
+          "stars": 1,
+          "language": "Java",
+          "stack": [
+            "java"
+          ],
+          "status": "active",
+          "source": "auto",
+          "pushedAt": "2012-05-07T21:49:32Z",
+          "createdAt": "2012-05-06T20:15:55Z",
+          "connectivity": "standalone"
         }
       ],
       "edges": [
         {
-          "id": "repo_docstats-\u003etech_mcp",
-          "source": "repo_docstats",
+          "id": "repo_moonshine_go-\u003etech_ai",
+          "source": "repo_moonshine_go",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_moonshine_go-\u003etech_audio",
+          "source": "repo_moonshine_go",
+          "target": "tech_audio",
+          "label": "implements"
+        },
+        {
+          "id": "repo_moonshine_go-\u003etech_cli",
+          "source": "repo_moonshine_go",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_moonshine_go-\u003etech_go",
+          "source": "repo_moonshine_go",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_SonosFlow-\u003etech_mcp",
+          "source": "repo_SonosFlow",
           "target": "tech_mcp",
           "label": "implements"
         },
         {
-          "id": "repo_docstats-\u003etech_python",
-          "source": "repo_docstats",
-          "target": "tech_python",
-          "label": "implements"
-        },
-        {
-          "id": "repo_docstats-\u003etech_typescript",
-          "source": "repo_docstats",
-          "target": "tech_typescript",
+          "id": "repo_SonosFlow-\u003etech_cli",
+          "source": "repo_SonosFlow",
+          "target": "tech_cli",
           "label": "implements"
         },
         {
@@ -1006,6 +3842,90 @@
           "id": "repo_agent_skills-\u003etech_typescript",
           "source": "repo_agent_skills",
           "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_dgem-\u003etech_mcp",
+          "source": "repo_dgem",
+          "target": "tech_mcp",
+          "label": "implements"
+        },
+        {
+          "id": "repo_dgem-\u003etech_ai",
+          "source": "repo_dgem",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_dgem-\u003etech_cli",
+          "source": "repo_dgem",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_dgem-\u003etech_go",
+          "source": "repo_dgem",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_steamer-\u003etech_cli",
+          "source": "repo_steamer",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_steamer-\u003etech_go",
+          "source": "repo_steamer",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_docs_latex_addon-\u003etech_go",
+          "source": "repo_docs_latex_addon",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_docs_latex_addon-\u003etech_typescript",
+          "source": "repo_docs_latex_addon",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_mizan-\u003etech_ai",
+          "source": "repo_mizan",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_mizan-\u003etech_go",
+          "source": "repo_mizan",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_omi_pixel-\u003etech_ai",
+          "source": "repo_omi_pixel",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_a2acli-\u003etech_a2a",
+          "source": "repo_a2acli",
+          "target": "tech_a2a",
+          "label": "implements"
+        },
+        {
+          "id": "repo_a2acli-\u003etech_cli",
+          "source": "repo_a2acli",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_a2acli-\u003etech_go",
+          "source": "repo_a2acli",
+          "target": "tech_go",
           "label": "implements"
         },
         {
@@ -1033,6 +3953,12 @@
           "label": "implements"
         },
         {
+          "id": "repo_montage-\u003etech_go",
+          "source": "repo_montage",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
           "id": "repo_scream_ui-\u003etech_audio",
           "source": "repo_scream_ui",
           "target": "tech_audio",
@@ -1045,44 +3971,110 @@
           "label": "implements"
         },
         {
-          "id": "repo_agentskills-\u003etech_ai",
-          "source": "repo_agentskills",
-          "target": "tech_ai",
-          "label": "implements"
-        },
-        {
-          "id": "repo_agentskills-\u003etech_go",
-          "source": "repo_agentskills",
-          "target": "tech_go",
-          "label": "implements"
-        },
-        {
-          "id": "repo_editorial_look-\u003etech_go",
-          "source": "repo_editorial_look",
-          "target": "tech_go",
-          "label": "implements"
-        },
-        {
-          "id": "repo_moonshine_go-\u003etech_ai",
-          "source": "repo_moonshine_go",
-          "target": "tech_ai",
-          "label": "implements"
-        },
-        {
-          "id": "repo_moonshine_go-\u003etech_audio",
-          "source": "repo_moonshine_go",
+          "id": "repo_griffintts-\u003etech_audio",
+          "source": "repo_griffintts",
           "target": "tech_audio",
           "label": "implements"
         },
         {
-          "id": "repo_moonshine_go-\u003etech_cli",
-          "source": "repo_moonshine_go",
+          "id": "repo_griffintts-\u003etech_go",
+          "source": "repo_griffintts",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemini_agentic_video_go-\u003etech_ai",
+          "source": "repo_gemini_agentic_video_go",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemini_agentic_video_go-\u003etech_go",
+          "source": "repo_gemini_agentic_video_go",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_homectl-\u003etech_mcp",
+          "source": "repo_homectl",
+          "target": "tech_mcp",
+          "label": "implements"
+        },
+        {
+          "id": "repo_homectl-\u003etech_ai",
+          "source": "repo_homectl",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_homectl-\u003etech_cli",
+          "source": "repo_homectl",
           "target": "tech_cli",
           "label": "implements"
         },
         {
-          "id": "repo_moonshine_go-\u003etech_go",
-          "source": "repo_moonshine_go",
+          "id": "repo_homectl-\u003etech_go",
+          "source": "repo_homectl",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_audio_tools_for_agents-\u003etech_ai",
+          "source": "repo_audio_tools_for_agents",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_audio_tools_for_agents-\u003etech_audio",
+          "source": "repo_audio_tools_for_agents",
+          "target": "tech_audio",
+          "label": "implements"
+        },
+        {
+          "id": "repo_audio_tools_for_agents-\u003etech_python",
+          "source": "repo_audio_tools_for_agents",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_credentio_contributions-\u003etech_go",
+          "source": "repo_credentio_contributions",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_credentio_contributions-\u003etech_python",
+          "source": "repo_credentio_contributions",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_credentio_contributions-\u003etech_typescript",
+          "source": "repo_credentio_contributions",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_credentio_validator_web-\u003etech_typescript",
+          "source": "repo_credentio_validator_web",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_ai_paper_reproductions-\u003etech_python",
+          "source": "repo_ai_paper_reproductions",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_credentialctl-\u003etech_cli",
+          "source": "repo_credentialctl",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_credentialctl-\u003etech_go",
+          "source": "repo_credentialctl",
           "target": "tech_go",
           "label": "implements"
         },
@@ -1096,6 +4088,78 @@
           "id": "repo_moonshine_rs-\u003etech_rust",
           "source": "repo_moonshine_rs",
           "target": "tech_rust",
+          "label": "implements"
+        },
+        {
+          "id": "repo_mcp_server_go_template-\u003etech_mcp",
+          "source": "repo_mcp_server_go_template",
+          "target": "tech_mcp",
+          "label": "implements"
+        },
+        {
+          "id": "repo_mcp_server_go_template-\u003etech_ai",
+          "source": "repo_mcp_server_go_template",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_mcp_server_go_template-\u003etech_go",
+          "source": "repo_mcp_server_go_template",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_eldamoapi-\u003etech_ai",
+          "source": "repo_eldamoapi",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_eldamoapi-\u003etech_go",
+          "source": "repo_eldamoapi",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_agentskills-\u003etech_ai",
+          "source": "repo_agentskills",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_agentskills-\u003etech_typescript",
+          "source": "repo_agentskills",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_repotographer-\u003etech_go",
+          "source": "repo_repotographer",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_docstats-\u003etech_mcp",
+          "source": "repo_docstats",
+          "target": "tech_mcp",
+          "label": "implements"
+        },
+        {
+          "id": "repo_docstats-\u003etech_python",
+          "source": "repo_docstats",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_docstats-\u003etech_typescript",
+          "source": "repo_docstats",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_editorial_look-\u003etech_go",
+          "source": "repo_editorial_look",
+          "target": "tech_go",
           "label": "implements"
         },
         {
@@ -1171,50 +4235,8 @@
           "label": "implements"
         },
         {
-          "id": "repo_a2a_cli-\u003etech_a2a",
-          "source": "repo_a2a_cli",
-          "target": "tech_a2a",
-          "label": "implements"
-        },
-        {
-          "id": "repo_a2a_cli-\u003etech_ai",
-          "source": "repo_a2a_cli",
-          "target": "tech_ai",
-          "label": "implements"
-        },
-        {
-          "id": "repo_a2a_cli-\u003etech_cli",
-          "source": "repo_a2a_cli",
-          "target": "tech_cli",
-          "label": "implements"
-        },
-        {
-          "id": "repo_a2a_cli-\u003etech_go",
-          "source": "repo_a2a_cli",
-          "target": "tech_go",
-          "label": "implements"
-        },
-        {
           "id": "repo_pandemonium-\u003etech_go",
           "source": "repo_pandemonium",
-          "target": "tech_go",
-          "label": "implements"
-        },
-        {
-          "id": "repo_a2acli-\u003etech_a2a",
-          "source": "repo_a2acli",
-          "target": "tech_a2a",
-          "label": "implements"
-        },
-        {
-          "id": "repo_a2acli-\u003etech_cli",
-          "source": "repo_a2acli",
-          "target": "tech_cli",
-          "label": "implements"
-        },
-        {
-          "id": "repo_a2acli-\u003etech_go",
-          "source": "repo_a2acli",
           "target": "tech_go",
           "label": "implements"
         },
@@ -1237,15 +4259,855 @@
           "label": "implements"
         },
         {
-          "id": "repo_eldamoapi-\u003etech_ai",
-          "source": "repo_eldamoapi",
+          "id": "repo_watcher-\u003etech_ai",
+          "source": "repo_watcher",
           "target": "tech_ai",
           "label": "implements"
         },
         {
-          "id": "repo_eldamoapi-\u003etech_go",
-          "source": "repo_eldamoapi",
+          "id": "repo_jibotool-\u003etech_cli",
+          "source": "repo_jibotool",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_jibotool-\u003etech_go",
+          "source": "repo_jibotool",
           "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_eldamo_app-\u003etech_typescript",
+          "source": "repo_eldamo_app",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_kokoro_rs-\u003etech_audio",
+          "source": "repo_kokoro_rs",
+          "target": "tech_audio",
+          "label": "implements"
+        },
+        {
+          "id": "repo_kokoro_rs-\u003etech_cli",
+          "source": "repo_kokoro_rs",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_kokoro_rs-\u003etech_rust",
+          "source": "repo_kokoro_rs",
+          "target": "tech_rust",
+          "label": "implements"
+        },
+        {
+          "id": "repo_httpserver-\u003etech_go",
+          "source": "repo_httpserver",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemma_stt-\u003etech_ai",
+          "source": "repo_gemma_stt",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemma_stt-\u003etech_audio",
+          "source": "repo_gemma_stt",
+          "target": "tech_audio",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemma_stt-\u003etech_cli",
+          "source": "repo_gemma_stt",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemma_stt-\u003etech_python",
+          "source": "repo_gemma_stt",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_jiborelay-\u003etech_go",
+          "source": "repo_jiborelay",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_fishaudio-\u003etech_ai",
+          "source": "repo_fishaudio",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_fishaudio-\u003etech_audio",
+          "source": "repo_fishaudio",
+          "target": "tech_audio",
+          "label": "implements"
+        },
+        {
+          "id": "repo_fishaudio-\u003etech_cli",
+          "source": "repo_fishaudio",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_fishaudio-\u003etech_python",
+          "source": "repo_fishaudio",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_magenta_player-\u003etech_ai",
+          "source": "repo_magenta_player",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_magnifica_epub-\u003etech_go",
+          "source": "repo_magnifica_epub",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_pdf2epub-\u003etech_python",
+          "source": "repo_pdf2epub",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemma4_tuning-\u003etech_ai",
+          "source": "repo_gemma4_tuning",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemma4_tuning-\u003etech_python",
+          "source": "repo_gemma4_tuning",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_misotts_mlx-\u003etech_ai",
+          "source": "repo_misotts_mlx",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_misotts_mlx-\u003etech_audio",
+          "source": "repo_misotts_mlx",
+          "target": "tech_audio",
+          "label": "implements"
+        },
+        {
+          "id": "repo_misotts_mlx-\u003etech_python",
+          "source": "repo_misotts_mlx",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_pixie_anim-\u003etech_rust",
+          "source": "repo_pixie_anim",
+          "target": "tech_rust",
+          "label": "implements"
+        },
+        {
+          "id": "repo_drivectl-\u003etech_cli",
+          "source": "repo_drivectl",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_drivectl-\u003etech_go",
+          "source": "repo_drivectl",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_pirate_weather-\u003etech_ai",
+          "source": "repo_pirate_weather",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_pirate_weather-\u003etech_go",
+          "source": "repo_pirate_weather",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_AudioVoxBench-\u003etech_ai",
+          "source": "repo_AudioVoxBench",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_AudioVoxBench-\u003etech_audio",
+          "source": "repo_AudioVoxBench",
+          "target": "tech_audio",
+          "label": "implements"
+        },
+        {
+          "id": "repo_yt_cli-\u003etech_ai",
+          "source": "repo_yt_cli",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_yt_cli-\u003etech_cli",
+          "source": "repo_yt_cli",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_yt_cli-\u003etech_go",
+          "source": "repo_yt_cli",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_cloud_status-\u003etech_mcp",
+          "source": "repo_cloud_status",
+          "target": "tech_mcp",
+          "label": "implements"
+        },
+        {
+          "id": "repo_cloud_status-\u003etech_cli",
+          "source": "repo_cloud_status",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_cloud_status-\u003etech_go",
+          "source": "repo_cloud_status",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_apikeyscan-\u003etech_go",
+          "source": "repo_apikeyscan",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemini_on_rails-\u003etech_ai",
+          "source": "repo_gemini_on_rails",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_mattey_banana-\u003etech_typescript",
+          "source": "repo_mattey_banana",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_morphlab-\u003etech_ai",
+          "source": "repo_morphlab",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_morphlab-\u003etech_typescript",
+          "source": "repo_morphlab",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_litflow-\u003etech_typescript",
+          "source": "repo_litflow",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_filterjson-\u003etech_typescript",
+          "source": "repo_filterjson",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_dot_to_xyflow-\u003etech_go",
+          "source": "repo_dot_to_xyflow",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_echo_storyteller-\u003etech_ai",
+          "source": "repo_echo_storyteller",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_echo_storyteller-\u003etech_audio",
+          "source": "repo_echo_storyteller",
+          "target": "tech_audio",
+          "label": "implements"
+        },
+        {
+          "id": "repo_adk_go_tutorial-\u003etech_ai",
+          "source": "repo_adk_go_tutorial",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_adk_go_tutorial-\u003etech_go",
+          "source": "repo_adk_go_tutorial",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_learning_a2a-\u003etech_a2a",
+          "source": "repo_learning_a2a",
+          "target": "tech_a2a",
+          "label": "implements"
+        },
+        {
+          "id": "repo_learning_a2a-\u003etech_ai",
+          "source": "repo_learning_a2a",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_learning_a2a-\u003etech_go",
+          "source": "repo_learning_a2a",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_image_generation-\u003etech_go",
+          "source": "repo_image_generation",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_calctl-\u003etech_mcp",
+          "source": "repo_calctl",
+          "target": "tech_mcp",
+          "label": "implements"
+        },
+        {
+          "id": "repo_calctl-\u003etech_go",
+          "source": "repo_calctl",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_youtubectl-\u003etech_go",
+          "source": "repo_youtubectl",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_mcp_google_drive-\u003etech_mcp",
+          "source": "repo_mcp_google_drive",
+          "target": "tech_mcp",
+          "label": "implements"
+        },
+        {
+          "id": "repo_mcp_google_drive-\u003etech_go",
+          "source": "repo_mcp_google_drive",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_html2pdf-\u003etech_go",
+          "source": "repo_html2pdf",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_internet_clock-\u003etech_python",
+          "source": "repo_internet_clock",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gen-\u003etech_ai",
+          "source": "repo_gen",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gen-\u003etech_cli",
+          "source": "repo_gen",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gen-\u003etech_go",
+          "source": "repo_gen",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemini_mcp-\u003etech_mcp",
+          "source": "repo_gemini_mcp",
+          "target": "tech_mcp",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemini_mcp-\u003etech_ai",
+          "source": "repo_gemini_mcp",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemini_mcp-\u003etech_python",
+          "source": "repo_gemini_mcp",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_fabulae-\u003etech_ai",
+          "source": "repo_fabulae",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_fabulae-\u003etech_audio",
+          "source": "repo_fabulae",
+          "target": "tech_audio",
+          "label": "implements"
+        },
+        {
+          "id": "repo_fabulae-\u003etech_go",
+          "source": "repo_fabulae",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_studio_scaffold-\u003etech_python",
+          "source": "repo_studio_scaffold",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_mesop_arena-\u003etech_python",
+          "source": "repo_mesop_arena",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_drivetogcs-\u003etech_ai",
+          "source": "repo_drivetogcs",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_drivetogcs-\u003etech_go",
+          "source": "repo_drivetogcs",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemini_websockets_proxy-\u003etech_ai",
+          "source": "repo_gemini_websockets_proxy",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gemini_websockets_proxy-\u003etech_python",
+          "source": "repo_gemini_websockets_proxy",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_go_gemini_mm_live-\u003etech_ai",
+          "source": "repo_go_gemini_mm_live",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_go_gemini_mm_live-\u003etech_go",
+          "source": "repo_go_gemini_mm_live",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gecko_agent-\u003etech_ai",
+          "source": "repo_gecko_agent",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_soapgen_cli-\u003etech_cli",
+          "source": "repo_soapgen_cli",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_mesop_svg_icon-\u003etech_python",
+          "source": "repo_mesop_svg_icon",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_mesop_svg_icon-\u003etech_typescript",
+          "source": "repo_mesop_svg_icon",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_openapi_from_grpc-\u003etech_go",
+          "source": "repo_openapi_from_grpc",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_rss2mp3s-\u003etech_go",
+          "source": "repo_rss2mp3s",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_bqgeo_examples-\u003etech_go",
+          "source": "repo_bqgeo_examples",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_twitterage-\u003etech_ai",
+          "source": "repo_twitterage",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_twitterage-\u003etech_typescript",
+          "source": "repo_twitterage",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_hello_container_py-\u003etech_python",
+          "source": "repo_hello_container_py",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_contentrouter-\u003etech_ai",
+          "source": "repo_contentrouter",
+          "target": "tech_ai",
+          "label": "implements"
+        },
+        {
+          "id": "repo_contentrouter-\u003etech_go",
+          "source": "repo_contentrouter",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_clever_gcp-\u003etech_cli",
+          "source": "repo_clever_gcp",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_httplifx_sample-\u003etech_cli",
+          "source": "repo_httplifx_sample",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_httplifx_sample-\u003etech_go",
+          "source": "repo_httplifx_sample",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_graphql_apollo_run-\u003etech_typescript",
+          "source": "repo_graphql_apollo_run",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_goweb-\u003etech_go",
+          "source": "repo_goweb",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_go_cx_examples-\u003etech_go",
+          "source": "repo_go_cx_examples",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_es_intentmgmt-\u003etech_go",
+          "source": "repo_es_intentmgmt",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_whereami_go-\u003etech_go",
+          "source": "repo_whereami_go",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gcloud_iterm2_statusbarcomponent-\u003etech_go",
+          "source": "repo_gcloud_iterm2_statusbarcomponent",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gcloud_iterm2_statusbarcomponent-\u003etech_python",
+          "source": "repo_gcloud_iterm2_statusbarcomponent",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_bucket_review-\u003etech_go",
+          "source": "repo_bucket_review",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_monorepo-\u003etech_go",
+          "source": "repo_monorepo",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_octane_extension-\u003etech_typescript",
+          "source": "repo_octane_extension",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_aoc2018-\u003etech_go",
+          "source": "repo_aoc2018",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_cectl-\u003etech_cli",
+          "source": "repo_cectl",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_cectl-\u003etech_go",
+          "source": "repo_cectl",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_ce_go-\u003etech_go",
+          "source": "repo_ce_go",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_twilioapps-\u003etech_go",
+          "source": "repo_twilioapps",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gotwilio-\u003etech_cli",
+          "source": "repo_gotwilio",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gotwilio-\u003etech_go",
+          "source": "repo_gotwilio",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_workday_analysis-\u003etech_go",
+          "source": "repo_workday_analysis",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_echoserver-\u003etech_go",
+          "source": "repo_echoserver",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_ce_examples-\u003etech_go",
+          "source": "repo_ce_examples",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_slowstartserver-\u003etech_go",
+          "source": "repo_slowstartserver",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_intermittentfailure-\u003etech_go",
+          "source": "repo_intermittentfailure",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_slowendpoint-\u003etech_go",
+          "source": "repo_slowendpoint",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_cloudelements_flogo-\u003etech_go",
+          "source": "repo_cloudelements_flogo",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo__rwctl-\u003etech_cli",
+          "source": "repo__rwctl",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo__rwctl-\u003etech_go",
+          "source": "repo__rwctl",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_zillowcomparables-\u003etech_go",
+          "source": "repo_zillowcomparables",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_faaload-\u003etech_go",
+          "source": "repo_faaload",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_go_serverless-\u003etech_go",
+          "source": "repo_go_serverless",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_go_serverless-\u003etech_python",
+          "source": "repo_go_serverless",
+          "target": "tech_python",
+          "label": "implements"
+        },
+        {
+          "id": "repo_oauthtest-\u003etech_go",
+          "source": "repo_oauthtest",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_scoop_roguewave-\u003etech_typescript",
+          "source": "repo_scoop_roguewave",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_atmotool-\u003etech_cli",
+          "source": "repo_atmotool",
+          "target": "tech_cli",
+          "label": "implements"
+        },
+        {
+          "id": "repo_atmotool-\u003etech_go",
+          "source": "repo_atmotool",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_botsavesprincess-\u003etech_go",
+          "source": "repo_botsavesprincess",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_urlsplit-\u003etech_go",
+          "source": "repo_urlsplit",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_urlsplit-\u003etech_typescript",
+          "source": "repo_urlsplit",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_iot_lambda_code-\u003etech_typescript",
+          "source": "repo_iot_lambda_code",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_awstool-\u003etech_go",
+          "source": "repo_awstool",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_wicsa2011-\u003etech_go",
+          "source": "repo_wicsa2011",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_fhir_server-\u003etech_go",
+          "source": "repo_fhir_server",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_fizzbuzz-\u003etech_go",
+          "source": "repo_fizzbuzz",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_wander-\u003etech_go",
+          "source": "repo_wander",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_wander-\u003etech_typescript",
+          "source": "repo_wander",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_gaegoangular-\u003etech_go",
+          "source": "repo_gaegoangular",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_sample_cast-\u003etech_typescript",
+          "source": "repo_sample_cast",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_loggo-\u003etech_go",
+          "source": "repo_loggo",
+          "target": "tech_go",
+          "label": "implements"
+        },
+        {
+          "id": "repo_tengwarjs_node-\u003etech_typescript",
+          "source": "repo_tengwarjs_node",
+          "target": "tech_typescript",
+          "label": "implements"
+        },
+        {
+          "id": "repo_tengwarjs_server-\u003etech_typescript",
+          "source": "repo_tengwarjs_server",
+          "target": "tech_typescript",
           "label": "implements"
         }
       ]
@@ -1318,19 +5180,19 @@
           selector: 'node[?isDomain][?isCollapsed]',
           style: {
             'shape': 'round-rectangle',
-            'corner-radius': '8px',
+            'corner-radius': '10px',
             'width': 'label',
             'height': 'label',
-            'padding': '14px',
+            'padding': '18px',
             'text-wrap': 'wrap',
-            'text-max-width': '160px',
+            'text-max-width': '190px',
             'background-color': colors.collapsedBg,
-            'border-width': 2,
+            'border-width': 2.5,
             'border-color': colors.collapsedBorder,
             'border-style': 'solid',
             'label': 'data(displayLabel)',
             'font-family': 'Inter, system-ui, sans-serif',
-            'font-size': '11px',
+            'font-size': '12px',
             'font-weight': '700',
             'color': colors.textMain,
             'text-valign': 'center',
@@ -1384,7 +5246,8 @@
             'color': colors.textMain,
             'text-valign': 'center',
             'text-halign': 'center',
-            'cursor': 'pointer'
+            'cursor': 'pointer',
+            'min-zoomed-font-size': 6.5
           }
         },
         {
@@ -1419,6 +5282,7 @@
             'text-valign': 'center',
             'text-halign': 'center',
             'cursor': 'pointer',
+            'min-zoomed-font-size': 6.5,
             'z-index': 20
           }
         },
@@ -1464,14 +5328,39 @@
       ];
     }
 
+    let currentLayout = null;
+    let lastExpandedDomain = null;
+    let userHasInteracted = false;
+
     function initGraph() {
+      const container = document.getElementById('cy');
       cy = cytoscape({
-        container: document.getElementById('cy'),
+        container: container,
         style: buildStyles(),
         wheelSensitivity: 0.25,
-        minZoom: 0.2,
+        minZoom: 0.25,
         maxZoom: 3.0
       });
+
+      
+      container.addEventListener('pointerdown', () => {
+        userHasInteracted = true;
+      });
+
+      
+      const cyObserver = new ResizeObserver(() => {
+        if (cy) {
+          cy.resize();
+          if (!userHasInteracted) {
+            safeFit(cy.nodes(), 60);
+          }
+        }
+      });
+      cyObserver.observe(container);
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => { if (cy) cy.resize(); });
+      }
 
       cy.on('tap', (evt) => {
         if (evt.target === cy) {
@@ -1482,6 +5371,8 @@
 
       cy.on('tap', 'node', (evt) => {
         const node = evt.target;
+        userHasInteracted = true;
+
         if (node.data('isSubBucket')) {
           const domainId = node.data('domainId');
           if (expandedSubBuckets.has(domainId)) expandedSubBuckets.delete(domainId);
@@ -1491,8 +5382,14 @@
         }
         if (node.data('isDomain') || node.isParent()) {
           const id = node.id();
-          if (collapsedDomains.has(id)) collapsedDomains.delete(id);
-          else { collapsedDomains.add(id); expandedSubBuckets.delete(id); }
+          if (collapsedDomains.has(id)) {
+            collapsedDomains.delete(id);
+            lastExpandedDomain = id;
+          } else {
+            collapsedDomains.add(id);
+            expandedSubBuckets.delete(id);
+            lastExpandedDomain = null;
+          }
           allExpanded = collapsedDomains.size === 0;
           document.getElementById('btnExpandAll').textContent = allExpanded ? '⊟' : '⊞';
           loadData();
@@ -1501,8 +5398,38 @@
         selectNode(node);
       });
 
+      
+      const btnLegend = document.getElementById('btnLegend');
+      const legendPopover = document.getElementById('legendPopover');
+      if (btnLegend && legendPopover) {
+        btnLegend.onclick = () => {
+          const isClosed = legendPopover.style.display === 'none';
+          legendPopover.style.display = isClosed ? 'flex' : 'none';
+          btnLegend.textContent = isClosed ? '✕ Close' : 'ℹ Legend';
+        };
+      }
+
+      setupSearch();
       loadData();
       renderFilters();
+    }
+
+    function safeFit(eles, padding = 50) {
+      if (!cy) return;
+      const targetEles = (eles && eles.length > 0) ? eles : cy.nodes();
+      if (!targetEles || targetEles.length === 0) return;
+
+      cy.fit(targetEles, padding);
+      cy.center(targetEles);
+
+      const z = cy.zoom();
+      if (z < 0.55) {
+        cy.zoom(0.55);
+        cy.center(targetEles);
+      } else if (z > 1.25) {
+        cy.zoom(1.25);
+        cy.center(targetEles);
+      }
     }
 
     function loadData() {
@@ -1521,6 +5448,9 @@
           else domainStandaloneCounts[n.parent] = (domainStandaloneCounts[n.parent] || 0) + 1;
         }
       });
+
+      const isAllCollapsed = (rawData.domains || []).length > 0 &&
+        collapsedDomains.size === (rawData.domains || []).length;
 
       (rawData.domains || []).forEach(d => {
         const isCollapsed = collapsedDomains.has(d.id);
@@ -1556,76 +5486,148 @@
         }
       });
 
-      (rawData.nodes || []).forEach(n => {
-        const isDomainChild = !!n.parent;
-        const isInsideCollapsed = isDomainChild && collapsedDomains.has(n.parent);
-        const isConn = (n.connectivity || 'connected') === 'connected';
-        const isSubExpanded = isDomainChild && expandedSubBuckets.has(n.parent);
+      
+      if (!isAllCollapsed && rawData.nodes) {
+        const activeTechHubs = new Set();
 
-        let classes = '';
-        if (n.connectivity) classes += ` node-${n.connectivity}`;
-        if (isInsideCollapsed) classes += ' hidden';
-        else if (isDomainChild && !isConn && !isSubExpanded) classes += ' hidden';
+        (rawData.nodes || []).forEach(n => {
+          if (n.type === 'tech') return;
 
-        elements.push({
-          group: 'nodes',
-          data: { ...n, parent: isInsideCollapsed ? undefined : n.parent },
-          classes: classes.trim()
+          
+          if (n.parent && collapsedDomains.has(n.parent)) return;
+
+          const isConn = (n.connectivity || 'connected') === 'connected';
+          const isSubExpanded = n.parent && expandedSubBuckets.has(n.parent);
+
+          
+          if (!isConn && !isSubExpanded) return;
+
+          
+          if (hideStandalone && !isConn) return;
+
+          
+          if (activeFilter && activeFilter !== 'all') {
+            const stack = n.stack || [];
+            if (!stack.includes(activeFilter)) return;
+          }
+
+          elements.push({
+            group: 'nodes',
+            data: { ...n, parent: n.parent },
+            classes: `node-${n.connectivity || 'connected'}`
+          });
+
+          if (n.stack && Array.isArray(n.stack)) {
+            n.stack.forEach(s => activeTechHubs.add(s));
+          }
         });
-      });
 
+        
+        (rawData.nodes || []).forEach(n => {
+          if (n.type === 'tech') {
+            const techStacks = n.stack || [];
+            const isRelevant = techStacks.some(s => activeTechHubs.has(s)) ||
+              (rawData.edges || []).some(e => {
+                const other = e.source === n.id ? e.target : (e.target === n.id ? e.source : null);
+                return other && elements.some(el => el.data.id === other);
+              });
+
+            if (isRelevant) {
+              elements.push({
+                group: 'nodes',
+                data: { ...n },
+                classes: 'node-tech'
+              });
+            }
+          }
+        });
+      }
+
+      
+      const mountedNodeIds = new Set(elements.map(el => el.data.id));
       const virtualEdgeSet = new Set();
-      (rawData.edges || []).forEach(e => {
-        const srcDomain = childToDomainMap[e.source];
-        const tgtDomain = childToDomainMap[e.target];
-        const srcCollapsed = srcDomain && collapsedDomains.has(srcDomain);
-        const tgtCollapsed = tgtDomain && collapsedDomains.has(tgtDomain);
 
-        if (srcCollapsed || tgtCollapsed) {
-          const effSrc = srcCollapsed ? srcDomain : e.source;
-          const effTgt = tgtCollapsed ? tgtDomain : e.target;
-          if (effSrc !== effTgt) {
+      (rawData.edges || []).forEach(e => {
+        const sourceMounted = mountedNodeIds.has(e.source);
+        const targetMounted = mountedNodeIds.has(e.target);
+
+        if (sourceMounted && targetMounted) {
+          elements.push({ group: 'edges', data: { ...e } });
+        } else {
+          const srcDomain = childToDomainMap[e.source];
+          const tgtDomain = childToDomainMap[e.target];
+
+          const effSrc = sourceMounted ? e.source : (srcDomain && mountedNodeIds.has(srcDomain) ? srcDomain : null);
+          const effTgt = targetMounted ? e.target : (tgtDomain && mountedNodeIds.has(tgtDomain) ? tgtDomain : null);
+
+          if (effSrc && effTgt && effSrc !== effTgt) {
+            
+            if (isAllCollapsed && (!srcDomain || !tgtDomain)) return;
+
             const vKey = `${effSrc}->${effTgt}`;
             if (!virtualEdgeSet.has(vKey)) {
               virtualEdgeSet.add(vKey);
               elements.push({
                 group: 'edges',
-                data: { id: `virt_${vKey}`, source: effSrc, target: effTgt, label: e.label || '' },
+                data: { id: `virt_${vKey}`, source: effSrc, target: effTgt, label: '' },
                 classes: 'virtual-summary-edge'
               });
             }
           }
-        } else {
-          elements.push({ group: 'edges', data: { ...e } });
         }
       });
 
       cy.add(elements);
-      applyFilter();
       runLayout();
     }
 
     function runLayout() {
-      const visibleCount = cy.nodes(':visible').length;
-      const visibleEdges = cy.edges(':visible').length;
+      if (currentLayout) {
+        try { currentLayout.stop(); } catch(e) {}
+      }
+
+      const isAllCollapsed = (rawData.domains || []).length > 0 &&
+        collapsedDomains.size === (rawData.domains || []).length;
+
+      if (isAllCollapsed) {
+        
+        const domainCount = (rawData.domains || []).length;
+        const cols = domainCount <= 4 ? 2 : 3;
+        currentLayout = cy.layout({
+          name: 'grid',
+          rows: 2,
+          cols: cols,
+          fit: true,
+          padding: 80,
+          avoidOverlap: true,
+          animate: true,
+          animationDuration: 280,
+          stop: () => safeFit(cy.nodes(), 80)
+        });
+        currentLayout.run();
+        return;
+      }
+
+      const visibleCount = cy.nodes().length;
+      const visibleEdges = cy.edges().length;
       const density = visibleEdges / Math.max(1, visibleCount);
 
       let idealEdgeLength, nodeSeparation, edgeElasticity, gravity, numIter, quality;
 
       if (visibleCount < 30) {
         if (density > 1.2) {
-          idealEdgeLength = 240; nodeSeparation = 150; edgeElasticity = 0.05; gravity = 0.05; numIter = 2500; quality = 'proof';
+          idealEdgeLength = 220; nodeSeparation = 130; edgeElasticity = 0.06; gravity = 0.06; numIter = 2200; quality = 'proof';
         } else {
-          idealEdgeLength = 180; nodeSeparation = 120; edgeElasticity = 0.09; gravity = 0.08; numIter = 2000; quality = 'proof';
+          idealEdgeLength = 170; nodeSeparation = 110; edgeElasticity = 0.10; gravity = 0.08; numIter = 1800; quality = 'proof';
         }
       } else if (visibleCount < 60) {
-        idealEdgeLength = 140; nodeSeparation = 90; edgeElasticity = 0.18; gravity = 0.15; numIter = 1500; quality = 'default';
+        idealEdgeLength = 130; nodeSeparation = 85; edgeElasticity = 0.20; gravity = 0.15; numIter = 1400; quality = 'default';
       } else {
         idealEdgeLength = 95; nodeSeparation = 65; edgeElasticity = 0.35; gravity = 0.20; numIter = 1000; quality = 'default';
       }
 
       try {
-        cy.layout({
+        currentLayout = cy.layout({
           name: 'fcose',
           quality: quality,
           randomize: false,
@@ -1645,47 +5647,32 @@
           tilingPaddingVertical: 20,
           tilingPaddingHorizontal: 20,
           fit: true,
-          padding: 40
-        }).run();
+          padding: 40,
+          stop: () => {
+            if (lastExpandedDomain) {
+              const dNode = cy.getElementById(lastExpandedDomain);
+              const children = cy.nodes(`[parent = "${lastExpandedDomain}"]`);
+              const focusGroup = dNode.add(children);
+              if (focusGroup.length > 0) {
+                safeFit(focusGroup, 50);
+              }
+              lastExpandedDomain = null;
+            } else if (!userHasInteracted) {
+              safeFit(cy.nodes(), 45);
+            }
+          }
+        });
+        currentLayout.run();
       } catch (err) {
-        cy.layout({ name: 'cose', fit: true, padding: 40, animate: false }).run();
+        currentLayout = cy.layout({
+          name: 'cose',
+          fit: true,
+          padding: 40,
+          animate: false,
+          stop: () => safeFit(cy.nodes(), 45)
+        });
+        currentLayout.run();
       }
-    }
-
-    function applyFilter() {
-      cy.batch(() => {
-        cy.nodes().forEach(node => {
-          if (node.data('isDomain')) { node.removeClass('hidden'); return; }
-          if (node.data('isSubBucket')) {
-            if (hideStandalone) node.addClass('hidden');
-            else node.removeClass('hidden');
-            return;
-          }
-
-          const isInsideCollapsed = node.data('parent') && collapsedDomains.has(node.data('parent'));
-          if (isInsideCollapsed) { node.addClass('hidden'); return; }
-
-          const isConn = (node.data('connectivity') || 'connected') === 'connected';
-          const isSubExpanded = node.data('parent') && expandedSubBuckets.has(node.data('parent'));
-
-          if (!isConn && !isSubExpanded) { node.addClass('hidden'); return; }
-          if (hideStandalone && !isConn) { node.addClass('hidden'); return; }
-
-          if (!activeFilter || activeFilter === 'all') node.removeClass('hidden');
-          else {
-            const stack = node.data('stack') || [];
-            if (stack.includes(activeFilter)) node.removeClass('hidden');
-            else node.addClass('hidden');
-          }
-        });
-
-        cy.edges().forEach(edge => {
-          const src = edge.source();
-          const tgt = edge.target();
-          if (src.hasClass('hidden') || tgt.hasClass('hidden')) edge.addClass('hidden');
-          else edge.removeClass('hidden');
-        });
-      });
     }
 
     function renderFilters() {
@@ -1705,8 +5692,7 @@
           container.querySelectorAll('.filter-chip:not(.filter-chip-toggle)').forEach(c => c.classList.remove('active'));
           btn.classList.add('active');
           activeFilter = tag;
-          applyFilter();
-          runLayout();
+          loadData();
         };
         container.appendChild(btn);
       });
@@ -1717,8 +5703,7 @@
       toggleBtn.onclick = () => {
         hideStandalone = !hideStandalone;
         toggleBtn.classList.toggle('active', hideStandalone);
-        applyFilter();
-        runLayout();
+        loadData();
       };
       container.appendChild(toggleBtn);
     }
@@ -1732,6 +5717,14 @@
         nh.addClass('highlighted');
         cy.elements().not(node).not(nh).addClass('faded');
       });
+
+      cy.animate({
+        center: { eles: node },
+        zoom: Math.max(cy.zoom(), 0.88),
+        duration: 350,
+        easing: 'ease-out-cubic'
+      });
+
       openInspector(selectedNode);
     }
 
@@ -1764,6 +5757,31 @@
         tagsEl.appendChild(badge);
       });
 
+      
+      const connEl = document.getElementById('inspConnections');
+      if (connEl) {
+        connEl.innerHTML = '';
+        const neighbors = getConnectedNeighbors(data.id);
+        if (neighbors && neighbors.length > 0) {
+          const lbl = document.createElement('div');
+          lbl.className = 'inspector-section-label';
+          lbl.textContent = `Connected Nodes (${neighbors.length})`;
+          connEl.appendChild(lbl);
+
+          const list = document.createElement('div');
+          list.className = 'inspector-neighbors-list';
+          neighbors.forEach(nbr => {
+            const btn = document.createElement('button');
+            btn.className = `inspector-nbr-btn nbr-${nbr.type}`;
+            btn.innerHTML = `<span class="nbr-indicator"></span><span class="nbr-label">${nbr.label}</span>`;
+            btn.title = `Jump to ${nbr.label}`;
+            btn.onclick = () => focusNode(nbr.id);
+            list.appendChild(btn);
+          });
+          connEl.appendChild(list);
+        }
+      }
+
       const linksEl = document.getElementById('inspLinks');
       linksEl.innerHTML = '';
       if (data.url) {
@@ -1778,11 +5796,185 @@
       clearHighlighting();
     }
 
+    function getConnectedNeighbors(nodeId) {
+      const neighborMap = new Map();
+      (rawData.edges || []).forEach(e => {
+        let otherId = null;
+        if (e.source === nodeId) otherId = e.target;
+        else if (e.target === nodeId) otherId = e.source;
+
+        if (otherId && !neighborMap.has(otherId)) {
+          const found = (rawData.nodes || []).find(n => n.id === otherId);
+          if (found) {
+            neighborMap.set(otherId, {
+              id: found.id,
+              label: found.label || found.id,
+              type: found.type || 'repo'
+            });
+          }
+        }
+      });
+      return Array.from(neighborMap.values());
+    }
+
+    function focusDomain(domainId) {
+      userHasInteracted = true;
+      if (collapsedDomains.has(domainId)) {
+        collapsedDomains.delete(domainId);
+        lastExpandedDomain = domainId;
+        loadData();
+      } else {
+        const dNode = cy.getElementById(domainId);
+        const children = cy.nodes(`[parent = "${domainId}"]`);
+        safeFit(dNode.add(children), 50);
+      }
+    }
+
+    function focusNode(nodeId) {
+      userHasInteracted = true;
+      const isDomain = (rawData.domains || []).some(d => d.id === nodeId);
+      if (isDomain) {
+        focusDomain(nodeId);
+        return;
+      }
+
+      const nodeInfo = (rawData.nodes || []).find(n => n.id === nodeId);
+      if (!nodeInfo) return;
+
+      let needsReload = false;
+      if (nodeInfo.parent && collapsedDomains.has(nodeInfo.parent)) {
+        collapsedDomains.delete(nodeInfo.parent);
+        lastExpandedDomain = nodeInfo.parent;
+        needsReload = true;
+      }
+
+      const isConn = (nodeInfo.connectivity || 'connected') === 'connected';
+      if (!isConn && nodeInfo.parent && !expandedSubBuckets.has(nodeInfo.parent)) {
+        expandedSubBuckets.add(nodeInfo.parent);
+        needsReload = true;
+      }
+
+      if (needsReload) {
+        loadData();
+      }
+
+      setTimeout(() => {
+        const target = cy.getElementById(nodeId);
+        if (target && target.length > 0) {
+          selectNode(target);
+        }
+      }, needsReload ? 350 : 20);
+    }
+
+    function setupSearch() {
+      const input = document.getElementById('searchInput');
+      const dropdown = document.getElementById('searchDropdown');
+      const clearBtn = document.getElementById('searchClear');
+      if (!input || !dropdown) return;
+
+      input.oninput = () => {
+        const q = input.value.trim().toLowerCase();
+        if (!q) {
+          dropdown.style.display = 'none';
+          dropdown.innerHTML = '';
+          if (clearBtn) clearBtn.style.display = 'none';
+          return;
+        }
+
+        if (clearBtn) clearBtn.style.display = 'block';
+
+        const matchedDomains = (rawData.domains || []).filter(d =>
+          d.label.toLowerCase().includes(q)
+        );
+        const matchedTech = (rawData.nodes || []).filter(n =>
+          n.type === 'tech' && n.label.toLowerCase().includes(q)
+        );
+        const matchedRepos = (rawData.nodes || []).filter(n =>
+          n.type !== 'tech' && (
+            n.label.toLowerCase().includes(q) ||
+            (n.desc || '').toLowerCase().includes(q) ||
+            (n.stack || []).some(s => s.toLowerCase().includes(q))
+          )
+        ).slice(0, 8);
+
+        const total = matchedDomains.length + matchedTech.length + matchedRepos.length;
+        if (total === 0) {
+          dropdown.innerHTML = '<div class="search-empty">No matching repositories or domains</div>';
+          dropdown.style.display = 'block';
+          return;
+        }
+
+        dropdown.innerHTML = '';
+        matchedDomains.forEach(d => {
+          const item = document.createElement('div');
+          item.className = 'search-result';
+          item.innerHTML = `<span class="res-badge res-domain">Domain</span><span class="res-label">${d.label}</span>`;
+          item.onclick = () => {
+            focusDomain(d.id);
+            dropdown.style.display = 'none';
+          };
+          dropdown.appendChild(item);
+        });
+
+        matchedTech.forEach(t => {
+          const item = document.createElement('div');
+          item.className = 'search-result';
+          item.innerHTML = `<span class="res-badge res-tech">Core Tech</span><span class="res-label">${t.label}</span>`;
+          item.onclick = () => {
+            focusNode(t.id);
+            dropdown.style.display = 'none';
+          };
+          dropdown.appendChild(item);
+        });
+
+        matchedRepos.forEach(r => {
+          const item = document.createElement('div');
+          item.className = 'search-result';
+          item.innerHTML = `<span class="res-badge res-repo">Repo</span><span class="res-label">${r.label}</span>`;
+          item.onclick = () => {
+            focusNode(r.id);
+            dropdown.style.display = 'none';
+          };
+          dropdown.appendChild(item);
+        });
+
+        dropdown.style.display = 'block';
+      };
+
+      if (clearBtn) {
+        clearBtn.onclick = () => {
+          input.value = '';
+          dropdown.style.display = 'none';
+          clearBtn.style.display = 'none';
+          input.focus();
+        };
+      }
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-box')) {
+          dropdown.style.display = 'none';
+        }
+      });
+    }
+
     document.getElementById('inspClose').onclick = closeInspector;
-    document.getElementById('btnFit').onclick = () => cy.fit(undefined, 35);
-    document.getElementById('btnZoomIn').onclick = () => cy.zoom(cy.zoom() * 1.25);
-    document.getElementById('btnZoomOut').onclick = () => cy.zoom(cy.zoom() * 0.8);
+    document.getElementById('btnFit').onclick = () => {
+      userHasInteracted = true;
+      safeFit(cy.nodes(), 50);
+    };
+    document.getElementById('btnZoomIn').onclick = () => {
+      userHasInteracted = true;
+      const center = { x: cy.width() / 2, y: cy.height() / 2 };
+      cy.zoom({ level: Math.min(cy.maxZoom(), cy.zoom() * 1.25), renderedPosition: center });
+    };
+    document.getElementById('btnZoomOut').onclick = () => {
+      userHasInteracted = true;
+      const center = { x: cy.width() / 2, y: cy.height() / 2 };
+      cy.zoom({ level: Math.max(cy.minZoom(), cy.zoom() * 0.8), renderedPosition: center });
+    };
     document.getElementById('btnExpandAll').onclick = () => {
+      userHasInteracted = true;
+      lastExpandedDomain = null;
       if (allExpanded) {
         collapsedDomains = new Set((rawData.domains || []).map(d => d.id));
         expandedSubBuckets.clear();
@@ -1800,6 +5992,8 @@
       allExpanded = false;
       activeFilter = 'all';
       hideStandalone = false;
+      userHasInteracted = false;
+      lastExpandedDomain = null;
       document.getElementById('btnExpandAll').textContent = '⊞';
       renderFilters();
       loadData();

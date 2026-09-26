@@ -46,6 +46,18 @@ func TestRenderHTMLAndDOT(t *testing.T) {
 	if !strings.Contains(string(htmlContent), "cytoscape") {
 		t.Errorf("expected HTML to include cytoscape script")
 	}
+	if !strings.Contains(string(htmlContent), "searchInput") {
+		t.Errorf("expected HTML to include search input")
+	}
+	if !strings.Contains(string(htmlContent), "btnLegend") {
+		t.Errorf("expected HTML to include legend overlay")
+	}
+	if !strings.Contains(string(htmlContent), "inspConnections") {
+		t.Errorf("expected HTML to include inspector connections container")
+	}
+	if !strings.Contains(string(htmlContent), "safeFit") {
+		t.Errorf("expected HTML to include safeFit helper")
+	}
 
 	dotPath := filepath.Join(tmpDir, "graph.dot")
 	if err := RenderDOT(graph, dotPath); err != nil {
